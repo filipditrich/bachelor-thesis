@@ -140,7 +140,9 @@
     \openright
     \tableofcontents
 %%% jednotlivé kapitoly
-    \include{pages/chapters/01_uvod}
+    \include{pages/chapters/uvod}
+% TODO: doplnit kapitoly
+    \include{pages/chapters/prakticka_cast}
 
 %%% TODO: seznam použité literatury
 %%% Reference se hledají v souboru priklady_literatury.bib. Aby se
@@ -149,24 +151,28 @@
 %%% latexem. Tím se vytvoří seznam použitých referencí
 %%% (BcPrace.bbl) a vloží se do práce na místě, kde se nachází příkaz
 %%% \bibliography, tedy sem.
-%    \bibliography{priklady_literatury}
+    \bibliography{main}
 %%% seznam obrázků
-%    \listoffigures
+    \listoffigures
 %%% seznam tabulek
-%    \listoftables
+    \listoftables
 
 %%% TODO
-%%% Použité zkratky v bakalářské práci, existují-li, včetně jejich vysvětlení.
-%    \chapter*{Seznam použitých zkratek}
-%    \addcontentsline{toc}{chapter}{Seznam použitých zkratek}
-
+%%% Použité zkratky v bakalářské práci, včetně jejich vysvětlení.
+    \chapter*{Seznam použitých zkratek}
+    \addcontentsline{toc}{chapter}{Seznam použitých zkratek}
+    \begin{description}
+        \item[API] Application Programming Interface
+        \item[SVG] Scalable Vector Graphics
+        \item[HTML] HyperText Markup Language
+    \end{description}
 
 %%% TODO
 %%% Přílohy k bakalářské práci, existují-li (různé dodatky jako výpisy programů,
 %%% diagramy apod.). Každá příloha musí být alespoň jednou odkazována z vlastního
 %%% textu práce. Přílohy se číslují.
-%    \chapter*{Přílohy}
-%    \addcontentsline{toc}{chapter}{Přílohy}
+    \chapter*{Přílohy}
+    \addcontentsline{toc}{chapter}{Přílohy}
 
 
 \end{document}
