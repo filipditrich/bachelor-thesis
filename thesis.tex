@@ -1,0 +1,172 @@
+%%%%% Základní nastavení pro jednostranný tisk:
+%%%%% ----------------------------------------------------
+% Okraje: levý 40mm, pravý 25mm, horní a dolní 25mm (ale pozor, LaTeX si sám přidává 1in)
+\documentclass[12pt, a4paper]{report}
+\usepackage{geometry}
+\setlength\textwidth{145mm}
+\setlength\textheight{247mm}
+\setlength\oddsidemargin{15mm}
+\setlength\evensidemargin{15mm}
+\setlength\topmargin{0mm}
+\setlength\headsep{0mm}
+\setlength\headheight{0mm}
+% \openright zařídí, aby následující text začínal na pravé straně knihy
+\newcommand{\openright}{\clearpage}
+
+
+%%%%% Základní nastavení pro oboustranný tisk:
+%%%%% ----------------------------------------------------
+% \documentclass[12pt, a4paper, twoside, openright]{report}
+% \setlength\textwidth{145mm}
+% \setlength\textheight{247mm}
+% \setlength\oddsidemargin{15mm}
+% \setlength\evensidemargin{0mm}
+% \setlength\topmargin{0mm}
+% \setlength\headsep{0mm}
+% \setlength\headheight{0mm}
+% \let\openright=\cleardoublepage
+
+
+%%%%% Nastavení kódování vstupních souborů: UTF-8
+%%%%% ---------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+
+
+%%%%% Nastavení češtiny (slovenština analogicky)
+%%%%% ---------------------------------------------------------------
+
+%%% Existují dvě hlavní možnosti, jak zacházet s češtinou. Je zapotřebí zvolit právě jednu.
+%%%
+
+%%% MOŽNOST 1 (doporučujeme):
+%%% * použití balíčku czech
+%%%   (mimo jiné již obsahuje příkaz \uv pro sazbu českých uvozovek)
+%%% * kompilace musí následně probíhat pomocí CSLaTeXu (příkaz
+%%%   cslatex, resp. cspdflatex)
+% \usepackage{czech}
+
+%%% MOŽNOST 2: (zde zakomentovaná)
+%%% * použití balíčku babel s volbou pro češtinu
+%%% * kompilace následně probíhá standardním LaTeXem (příkaz latex,
+%%% resp. pdflatex)
+\usepackage[czech]{babel}
+\ifx\uv\undefined\newcommand{\uv}[1]{,,#1``}\fi
+%%% příkaz pro sazbu českých/slovenských uvozovek
+%%% (v novějších verzích babelu je již k dispozici, stejně tak je již
+%%% k dispozici v balíčku czech)
+
+
+%%% Další užitečné balíčky (jsou součástí běžných distribucí LaTeXu)
+%%% ----------------------------------------------------------------
+\usepackage{amsmath}                %%% rozšíření pro sazbu matematiky
+\usepackage{amsfonts}               %%% matematické fonty
+\usepackage{amsthm}                 %%% sazba vět, definic apod.
+\usepackage{bm}                     %%% tučné symboly (příkaz \bm)
+\usepackage{graphicx}               %%% vkládání obrázků
+\usepackage{psfrag}                 %%% dodatečná úprava popisků v postscriptových obrázcích
+\usepackage{fancyvrb}               %%% vylepšené prostředí pro strojové písmo
+\usepackage{natbib}                 %%% zajištuje možnost odkazovat na reference stylem AUTOR (ROK), resp. AUTOR [ČÍSLO]
+\usepackage{tikz}                   %%% vkládání vektorových obrázků
+\usepackage{bbding}                 %%% balíček s nejrůznějšími symboly
+\usepackage{icomma}                 %%% inteligetní čárka v matematickém módu
+\usepackage{dcolumn}                %%% lepší zarovnání sloupců v tabulkách
+\usepackage{booktabs}               %%% lepší vodorovné linky v tabulkách
+\usepackage{paralist}               %%% lepší enumerate a itemize
+\usepackage{indentfirst}            %%% zaveď odsazení 1. odstavce
+\usepackage[nottoc]{tocbibind}      %%% zajistí přidání seznamu literatury, obrázků a tabulek do obsahu
+\usepackage[unicode]{hyperref}      %%% zajištuje generování hyperodkazů, bookmarků atp.
+\hypersetup{pdftitle=Webové řešení na prodej vstupenek s~rezervací míst,
+    pdfauthor=Filip Ditrich
+    ps2pdf,
+    colorlinks=false,               %% hyperlinky budou označeny červenými rámečky, které budou neviditelné při tisku na papír
+    urlcolor=blue,
+    pdfstartview=FitH,
+    pdfpagemode=UseOutlines,
+    pdfnewwindow,
+    breaklinks                      %% zajistí, aby se dlouhé hyperodkazy mohly lámat přes více řádků
+}
+\usepackage{titlesec}
+\titlespacing*{\chapter}{0pt}{-10mm}{5mm}
+\titleformat{\chapter}{\normalfont\huge\bfseries}{\thechapter}{1em}{}
+
+
+%%% Příkazy zjednodušující přenositelnost
+%%% -------------------------------------
+\newcommand{\FIGDIR}{./figures}    %%% cesta do adresare s obrazky
+
+
+%%% Seznam použité literatury
+%%% Příkaz \bibliographystyle určuje, jakým stylem budou citovány
+%%% odkazy v textu, a podle jakého stylu se automaticky vygeneruje
+%%% seznam literatury. V závorce je název zvoleného .bst souboru.
+%%% Styly plainnat a unsrt jsou standardní součástí latexových
+%%% distribucí. Styl czplainnat vyžaduje přítomnost souboru
+%%% czplainnat.bst ve stejném direktoráři, v němž se nachází
+%%% kompilovaná práce.
+%%%
+%%% Seznam literatury se vytváří na konci práce příkazem \bibliography, kde v závorce
+%%% uvádíme název databázového bib souboru.
+%%%
+%%%
+\bibliographystyle{czplainnat}    %% Autor (rok) s českými spojkami
+%\bibliographystyle{plainnat}     %% Autor (rok) s anglickými spojkami
+%\bibliographystyle{unsrt}        %% [číslo]
+
+\renewcommand{\bibname}{Seznam použité literatury}
+
+
+%%%%% Použití fancyvrb (fancy verbatim) při definici prostředí pro
+%%%%% sazbu kódu, resp. výstupů z počítačových programů
+%%%%% ------------------------------------------------------------
+\DefineVerbatimEnvironment{PCinout}{Verbatim}{fontsize=\small, frame=single}
+
+
+%%%%% Hlavní část dokumentu
+%%%%% ---------------------
+\begin{document}
+%%% titulní strana
+    \include{pages/cover}
+%%% TODO: kopie zadání
+%%% čestné prohlášení
+    \include{pages/affidavit}
+%%% poděkování
+    \include{pages/acknowledgements}
+%%% první stránka
+    \include{pages/firstpage}
+%%% abstrakt
+    \include{pages/abstract}
+%%% obsah
+    \newpage
+    \openright
+    \tableofcontents
+%%% jednotlivé kapitoly
+    \include{pages/chapters/01_uvod}
+
+%%% TODO: seznam použité literatury
+%%% Reference se hledají v souboru priklady_literatury.bib. Aby se
+%%% vytvořil seznam literatury, je třeba ocitovat alespoň jednu
+%%% referenci, zkompilovat tento soubor latexem, pak bibtexem a znovu
+%%% latexem. Tím se vytvoří seznam použitých referencí
+%%% (BcPrace.bbl) a vloží se do práce na místě, kde se nachází příkaz
+%%% \bibliography, tedy sem.
+%    \bibliography{priklady_literatury}
+%%% seznam obrázků
+%    \listoffigures
+%%% seznam tabulek
+%    \listoftables
+
+%%% TODO
+%%% Použité zkratky v bakalářské práci, existují-li, včetně jejich vysvětlení.
+%    \chapter*{Seznam použitých zkratek}
+%    \addcontentsline{toc}{chapter}{Seznam použitých zkratek}
+
+
+%%% TODO
+%%% Přílohy k bakalářské práci, existují-li (různé dodatky jako výpisy programů,
+%%% diagramy apod.). Každá příloha musí být alespoň jednou odkazována z vlastního
+%%% textu práce. Přílohy se číslují.
+%    \chapter*{Přílohy}
+%    \addcontentsline{toc}{chapter}{Přílohy}
+
+
+\end{document}
