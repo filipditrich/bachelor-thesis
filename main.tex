@@ -49,11 +49,26 @@
 \usepackage{dcolumn}                %%% lepší zarovnání sloupců v tabulkách
 \usepackage{booktabs}               %%% lepší vodorovné linky v tabulkách
 \usepackage{paralist}               %%% lepší enumerate a itemize
+\usepackage{float}                  %%% lepší práce s float objekty (obrázky, tabulky, ...)
+\usepackage{subcaption}             %%% umožňuje vkládat podnadpisy k obrázkům a tabulkám
+% TODO
 %\usepackage{indentfirst}            %%% zaveď odsazení 1. odstavce
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.75\baselineskip}
 \usepackage[nottoc]{tocbibind}      %%% zajistí přidání seznamu literatury, obrázků a tabulek do obsahu
 \usepackage[unicode]{hyperref}      %%% zajištuje generování hyperodkazů, bookmarků atp.
 \usepackage{pdfpages}               %%% umožňuje vkládat PDF soubory do dokumentu
 \usepackage{fancyhdr}               %%% umožňuje nastavit vlastní hlavičky a patičky stránky
+
+% TODO
+% Load the setspace package
+\usepackage{setspace}
+% Using \doublespacing in the preamble
+% changes text to double line spacing
+\onehalfspacing
+
+
+\newcommand\foreign[1]{\emph{#1}}  %%% zvýraznění cizích slov
 
 %%%%% Nastavení hyperodkazů
 %%%%% ------------------------------------------------------------
@@ -120,6 +135,12 @@
     \include{pages/chapters/implementace-frontendu}
     \include{pages/chapters/zaver}
 %%% seznam použité literatury
+%%% Reference se hledají v souboru priklady_literatury.bib. Aby se
+%%% vytvořil seznam literatury, je třeba ocitovat alespoň jednu
+%%% referenci, zkompilovat tento soubor latexem, pak bibtexem a znovu
+%%% latexem. Tím se vytvoří seznam použitých referencí
+%%% (BcPrace.bbl) a vloží se do práce na místě, kde se nachází příkaz
+%%% \bibliography, tedy sem.
     \bibliography{main}
 %%% seznam obrázků
     \listoffigures
