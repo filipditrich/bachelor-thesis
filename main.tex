@@ -95,7 +95,7 @@
 
 %%%%% Seznam použité literatury
 %%%%% ---------------------------------------------------------------
-%\bibliographystyle{czplainnat}    %% Autor (rok) s českými spojkami
+%\bibliographystyle{/Users/filipditrich/University/BC_THESIS/thesis/czplainnat}    %% Autor (rok) s českými spojkami
 %\bibliographystyle{plainnat}     %% Autor (rok) s anglickými spojkami
 \bibliographystyle{unsrt}        %% [číslo]
 \renewcommand{\bibname}{Seznam použité literatury}
@@ -125,7 +125,7 @@
     \include{pages/abstract}
 %%% obsah
     \newpage
-    \pagestyle{empty}
+    \pagestyle{plain}
     \tableofcontents
 %%% TODO: jednotlivé kapitoly
     \include{pages/chapters/uvod}
@@ -141,7 +141,9 @@
 %%% latexem. Tím se vytvoří seznam použitých referencí
 %%% (BcPrace.bbl) a vloží se do práce na místě, kde se nachází příkaz
 %%% \bibliography, tedy sem.
-    \bibliography{main}
+    \begin{flushleft}
+    \bibliography{/Users/filipditrich/University/BC_THESIS/thesis/main}
+    \end{flushleft}
 %%% seznam obrázků
     \listoffigures
 %%% seznam tabulek

@@ -4,7 +4,7 @@
 \label{ch:specifikace}
 
 Praktická část pojednává o~vývoji prototypu frontendu webové aplikace pro prodej vstupenek s~důrazem na implementaci funkčnosti rezervace míst.
-Nutno podotknout že výsledný prototyp nebude a ani není v plánu, aby byl plně funkční, nýbrž pouze ukazuje možnou implementaci konrkétních zvolených částí.
+Nutno podotknout že výsledný prototyp nebude a ani není v plánu, aby byl plně funkční, nýbrž pouze ukazuje možnou implementaci konkrétních zvolených částí.
 
 K implementaci prototypu je důležité předem vydefinovat jasnou specifikaci a požadavky na výsledný produkt.
 Bez těchto specifkací by nebylo možné finální výsledek objektivně zhodnotit.
@@ -68,7 +68,7 @@ Díky použití odlišných barev pro různé typy sedadel se zákazník v mapě
 Obrázek~\ref{fig:goout-color-codes} zobrazuje plánek míst sezení služby GoOut, který barevně odlišuje různé kategorie míst, dostupnost a cenové úrovně.
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{\FIGDIR/goout-color-codes.png}
+    \includegraphics[width=\linewidth]{\FIGDIR/goout-color-codes}
     \centering
     \caption{Mapa barevně odlišených sedadel GoOut}
     \label{fig:goout-color-codes}
@@ -97,13 +97,13 @@ Po přiblížení se zobrazí podrobnější zobrazení jednotlivých míst ve v
 \begin{figure}[H]
     \centering
     \begin{subfigure}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{\FIGDIR/ticketmaster-o2-zoom-out.png}
+        \includegraphics[width=\textwidth]{\FIGDIR/ticketmaster-o2-zoom-out}
         \caption{Oddálený pohled}
         \label{fig:ticketmaster-o2-zoom-in}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{\FIGDIR/ticketmaster-o2-zoom-in.png}
+        \includegraphics[width=\textwidth]{\FIGDIR/ticketmaster-o2-zoom-in}
         \caption{Přiblížený pohled}
         \label{fig:ticketmaster-o2-zoom-out}
     \end{subfigure}
@@ -131,7 +131,7 @@ Obrázek~\ref{fig:ticketmaster-o2-seat-info} zobrazuje mapu sedadel se stavem a 
 Uživatelé si mohou zobrazit  dostupnost, cenu a další důležité údaje o jednotlivých místech, což jim usnadňuje výběr preferovaných míst k sezení.
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{\FIGDIR/ticketmaster-o2-seat-info.png}
+    \includegraphics[width=\linewidth]{\FIGDIR/ticketmaster-o2-seat-info}
     \centering
     \caption{Informace o sedadle na mapě v síti Ticketmaster.}
     \label{fig:ticketmaster-o2-seat-info}
@@ -174,48 +174,200 @@ Tyto metody budou později rozebrány v implementační části práce.
 
 %%% TODO: Sekce - Nákupní košík
 %%% --------------------------------------------------------------
-\section{TODO: Nákupní košík}
+\section{Nákupní košík}
 \label{sec:specifikace-nakupni-kosik}
-TODO
+Velmi důležitou součástí fungování celého systému je efektivní správa a vizualizace nákupního košíku.
+Ta například zákazníkovi poskytuje přehledný souhrn položek, které si objednává, a umožňuje mu je případně upravit či odebrat.
+Nicméně ale tím nejdůležitejším aspektem nákupního košíku jsou jaká data jsou v něm uchovány a jakým způsobem jsou zpracována.
+
+Tato podkapitola se zabývá popisem hlavním funkčností a požadavků na nákupní košík, které jsou nezbytné pro jeho efektivní fungování v rámci webového řešení s využitím rezervace sedadel.
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{\FIGDIR/ticketportal-cart}
+    \centering
+    \caption{Obsah nákupního košíku na portálu Ticketportal.cz}
+    \label{fig:ticketportal-cart}
+\end{figure}
+
+%%% TODO: Podsekce - Správa dat
+%%% --------------------------------------------------------------
+\subsection{Správa dat}
+\label{sec:specifikace-nakupni-kosik-sprava}
+Nákupní košík by z datové perspektivy měl být implementován jako objekt, který uchovává informace o všech vybraných sedačkách a vstupenkách.
+Datová struktura a uchovávaná data uvnitř daného objektu o stavu nákupního košíku by měla být jasně definovaná a dostupná ve formátu vyhovujícímu užití aplikace.
+Díky těmto datům by mělo být vždy možné zrekonstruovat stav nákupního košíku a to i v případě, že uživatel opustí stránku nebo zavře prohlížeč.
+
+Touto problematikou se bude primárně zabývat kapitola~\ref{sec:implementace-kosik}, ve které bude podrobně popsána datavá struktura a finální funkčnost nákupního košíku.
 
 %%% TODO: Podsekce - Přehled obsahu košíku
 %%% --------------------------------------------------------------
-\subsection{TODO: Přehled obsahu košíku}
+\subsection{Přehled obsahu košíku}
 \label{sec:specifikace-nakupni-kosik-prehled}
-TODO
+Pro zákazníka nákupní košík slouží primárně k přehlednému zobrazení všech vybraných položek, které budou tvořit jeho objednávku. V případně této webové aplikace se primárně jedná o vstupenky a zarezervované sedačky.
+
+Zákazník by měl být schopen jednoduše zjistit, jaké položky si objednává a jaké mají parametry. Seznam všech těchto položek posléze tvoří celkový přehled nákupního košíku, který umožňuje zákazníkovi zkontrolovat jeho výběr a provést případné změny před dokončením objednávky.
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{\FIGDIR/ticketmaster-cart-overview}
+    \centering
+    \caption{Nákupní košík na portálu Ticketmaster.com}
+    \label{fig:ticketmaster-cart-overview}
+\end{figure}
+
+Nákupní košík by zároveň měl zobrazit přehled cen jednotlivých položek a celkovou cenu objednávky včetně všech daní a dalších případních poplatků. Tato funkcionalita zákazníkovi zajišťuje naprostou transparentnost v nabízených službách a umožňuje mu předem zkontrolovat celkovou cenu objednávky.
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{\FIGDIR/ticketmaster-cart-summary}
+    \centering
+    \caption{Souhrn objednávky na portálu Ticketmaster.com}
+    \label{fig:ticketmaster-cart-summary}
+\end{figure}
+
 
 %%% TODO: Podsekce - Rezervace míst
 %%% --------------------------------------------------------------
-\subsection{TODO: Rezervace míst}
+\subsection{Rezervace míst}
 \label{sec:specifikace-nakupni-kosik-rezervace}
-TODO
+V rámci nákupního procesu si zákazník vybírá místa, které jsou dostupná a při jejich výběru se zákaznikovi přidají do nákupního košíku. Tato vybraná místa zákazníkem by se měla rezervovat, aby se předešlo nepříjemným situacím při dokončení objednávky, kdy zákazník zjistí, že jeho vybrané místo je již obsazené.
 
-%%% TODO: Sekce - Checkout Process
+V případně aplikace, která se primárně zaměřuje na sedadlový prodej vstupenek je tato funkcionalita naprosto esenciální. Zákazník by měl mít možnost vybrat si místa, která jsou v danou chvíli dostupná a při jejich výběru by se měla pomocí rezervačnícho mechanismu v rámci vytvářené objednávky zákazníkovi zarezervovat a garantovat mu v případně dokonení objednávky jejich dostupnost.
+
+Tento rezervační systém by měl dále implementovat funkčnost časového omezení rezervace, která zajistí uvolnění rezervovaných míst po uplynutí určitého časového limitu. Tato funkčnost je velmi důležitá pro zajištění dostupnosti míst pro všechny zákazníky a zabraňuje zarezervování sedadel, která by nebyla zakoupena například z důvodu opuštění nákupního procesu zákazníkem.
+
+V rámci tohoto rezervačního mechanismu by také mělo být zákazníkovi jasně zobrazeno, že má určitý časový limit, ve rámci kterého musí svou objednávku dokončit, jinak se jeho rezervace uvolní a bude si muset místa vybrat znovu.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{\FIGDIR/nfctron-tickets-reservation-pending}
+        \caption{Běžící rezervace}
+        \label{fig:nfctron-tickets-reservation-pending}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{\FIGDIR/nfctron-tickets-reservation-expiring}
+        \caption{Blížící se expirace}
+        \label{fig:nfctron-tickets-reservation-expiring}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{\FIGDIR/nfctron-tickets-reservation-expired}
+        \caption{Expirovaná rezervace}
+        \label{fig:nfctron-tickets-reservation-expired}
+    \end{subfigure}
+
+    \caption{Rezervační mechanismus služby NFCtron Tickets na zkušební akci}
+    \label{fig:nfctron-tickets-reservation}
+\end{figure}
+
+%%% TODO: Sekce - Dokončení objednávky
 %%% --------------------------------------------------------------
-\section{TODO: Dokončení objednávky}
+\section{Dokončení objednávky}
 \label{sec:specifikace-dokonceni-objednavky}
-TODO
+Jakmile si zákazník vybere požadované vstupenky a rezervovaná místa, je jeho posledním úkolem dokončit a tím tak vytvořit objednávku, kteoru následně zaplatí.
+Tento proces je většinou rozdělen do několika kroků, které zákazníka postupně provedou celým procesem dokončení objednávky.
+
+Tato podkapitola se bude těmito kroky zabývat a bude se snažit popsat jejich jednotlivé části a funkčnosti, které by měly být v takovémto systému implementovány.
+
+Avšak je nutné nejprve uvést, že následující funkčnosti jsou v práci uvedené pouze z důvodu kompletnosti představení celého procesu nákupu vstupenek s rezervací míst a záměrně nebudou v rámci praktické části plně implementovány nýbrž pouze orientačně využity – a to z důvodu toho, že se jedná již převážně o funkčnosti a procesy na straně backednového systému a ne frontendového, který je předmětem této práce.
 
 %%% TODO: Podsekce - Osobní informace
 %%% --------------------------------------------------------------
-\subsection{TODO: Osobní informace}
+\subsection{Osobní informace}
 \label{sec:specifikace-dokonceni-objednavky-osobni-informace}
-TODO
+Pro účely dokončení objednávky je nutné, aby si zákazník vyplnil své osobní informace, které jsou potřebné pro vytvoření objednávky a následné doručení vstupenek. Tyto informace by měly obsahovat minimálně následující údaje:
+
+\begin{itemize}
+    \item Jméno a příjmení
+    \item Emailová adresa
+    \item Telefonní číslo
+\end{itemize}
+
+Tyto informace jsou nezbytné například pro odeslání potvrzení objednávky, doručení vstupenek či poskytování případné podpory zákazníkům.
+
+Někteří poskytovatelé stále nabízí doručení fyzických vstupenek na adresu zákazníka, nicméně tento způsob je spíše přežitek. V dnešní moderní době je výhodnější i ekologičtější využít možnost digitálních vstupenek, které zákazník obdrží v elektronické podobě například prostřednictvím emailu či SMS zprávy.
+
+V rámci dokončení objednávky je také časté vybídnutí zákazníka k dokončení registrace na dané platformě či službě, přes kterou vstupenky nakupuje. Tato registrace je většinou dobrovolná, ale může být i povinná, pokud chce zákazník využít některé z výhod, které jsou s touto registrací spojeny.
 
 %%% TODO: Podsekce - Výběr platební metody
 %%% --------------------------------------------------------------
-\subsection{TODO: Výběr platební metody}
+\subsection{Výběr platební metody}
 \label{sec:specifikace-dokonceni-objednavky-vyber-platebni-metody}
-TODO
+Proces dokončení objednávky by v posledním kroku měl zákazníkovi nabídnout několik možností platby. Nejčastěji se jedná o platební metody jako:
+
+\begin{itemize}
+    \item platba kartou
+    \item platba přes PayPal
+    \item platba přes Apple Pay
+    \item platba přes Google Pay
+    \item platba přes bankovní převod
+\end{itemize}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{\FIGDIR/goout-payment-methods}
+    \centering
+    \caption{Vyběr platební metody na GoOut.net}
+    \label{fig:goout-payment-methods}
+\end{figure}
+
+Na obrázku \ref{fig:goout-payment-methods} je vidět výběr platební metody ve službě GoOut.net, která nabízí výše zmíněné platební metody\footnote{platební metoda Apple Pay zde není uvedena, jelikož je dostupná pouze v rámci prohlížečů Safari: \url{https://support.apple.com/guide/iphone/use-apple-pay-in-apps-app-clips-and-safari-iph67e89f7c8/ios}} spolu i dalšími jako například platba přes službu Twisto či Sodexo a další jiné benefitní programy.
+
+Pro účely platby kartou je nutné, aby byl zákazník přesměrován na platební bránu, která je schopna tuto platbu zpracovat.
+Většinou se jedná o platební brány třetích stran, které jsou schopny zpracovat platby z různých platebních karet a poskytovatelů.
+Mezi nejznámější poskytovatele platebních brán na českém trhu patří například:
+
+\begin{itemize}
+    \item \emph{Comgate} (\url{https://www.comgate.cz/platebni-brana})
+    \item \emph{GoPay} (\url{https://www.gopay.com/cs/})
+    \item \emph{PayU} (\url{https://czech.payu.com/payu-moderni-platebni-reseni/})
+    \item \emph{GP webpay} (\url{https://www.gpwebpay.cz/})
+    \item \emph{Stripe} (\url{https://stripe.com/en-cz})
+\end{itemize}
+
+Na obrázcích~\ref{fig:comgate-fees-table} a~\ref{fig:comgate-payment-methods} je vidět, že každý poskytovatel platební brány nabízí jiné výhody a poplatkové modely, nicméně všechny mají společné to, že zpracovávají platby z různých platebních karet a poskytovatelů a přímo podporují i mobilní platby přes Apple Pay a Google Pay.
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{\FIGDIR/comgate-fees-table}
+    \centering
+    \caption{Srovnání platebních bran dle Comgate.cz~\cite{comgate_srovnani_platebnich_bran}}
+    \label{fig:comgate-fees-table}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{\FIGDIR/comgate-payment-methods}
+    \centering
+    \caption{Platební metody poskytované platebními poskytovateli dle Comgate.cz~\cite{comgate_srovnani_platebnich_bran}}
+    \label{fig:comgate-payment-methods}
+\end{figure}
+
+Některé e-shopy však nabízí i vlastní platební bránu, nicméně tato možnost je spíše výjimkou.
+Stát se provozovatelem vlastní platební brány je totiž velmi náročné na vývoj, udržbu a provoz a je k němu nutné mít i licenci platební instituce (PI)~\cite{schejbal_platebni_instituce}, kterou vydává Česká národní banka (ČNB)~\cite{cnb_dohled_platebni_instituce}.
+
+Platby přes bankovní převod mohou být pro poskytovatele řešení prodeje vstupenek velmi výhodné, jelikož se jedná o levnější způsob převodu peněz, než je tomu u plateb kartou.
+Platební brány si totiž účtují poplatky za zpracování každé z plateb a to nejčastěji v režimu pevného sazebníku či MIF++ modelu\footnote{někdy také označován jako Interchange++}, který rozděluje poplatky mezi vydavatelskou bankou, karetním schématem (např.\ Visa, MasterCard) a platební bránou.
+
+Do nedávna byla platba bankovním převodem pro zákazníky stále méně oblíbená, jelikož bylo nutné počkat na připsání peněz na účet poskytovatele, což mohlu trvat i několik dní.
+V dnešní době je však možné využít tzv. instantní platby, které jsou schopny převést peníze mezi účty různých bank během několika sekund.
+V České republice aktuálně podporuje instantní platby již několik bank, jako například Komerční banka, a.s., MONETA Money Bank, a.s.\ či Fio banka, a.s.\ a další\footnote{kompletní seznam účastníků okamžitých plateb dle ČNB dostupný z: \url{https://www.cnb.cz/export/sites/cnb/cs/platebni-styk/.galleries/certis/download/seznam_okamzite_platby.pdf}}.
+
+Pro účely této práce, jak bylo již zmíněno na začátku podsekce \ref{sec:specifikace-dokonceni-objednavky}, bude backendový systém celou funkčnost plateb pouze simulovat a nebude se snažit o integraci s žádnou platební bránou.
+
 
 %%% TODO: Podsekce - Souhrn objednávky
 %%% --------------------------------------------------------------
-\subsection{TODO: Souhrn objednávky}
+\subsection{Souhrn objednávky}
 \label{sec:specifikace-dokonceni-objednavky-souhrn-objednavky}
-TODO
+Po vyplnění všech potřebných informací a výběru platební metody by zákazníkovi měl být před finálním potvrzením objednávky zobrazen její souhrn.
+Tento souhrn zákazníkovi umožní zkontrolovat, zda jsou všechny údaje správně vyplněné a zda je vše v pořádku.
+Pokud zákazník zjistí, že je něco špatně, měl by mít možnost vrátit se zpět a údaje opravit.
+Pokud je vše v pořádku, měl by mít možnost objednávku potvrdit a přejít k platebnímu procesu.
+
+Součástí potrvzení objednávky také často bývá zaškrtnutí souhlasu se zpracováním osobních údajů a obchodních podmínek či i případně dalších informací, jako například zasílání novinek a reklamních nabídek na e-mailovou adresu zákazníka.
 
 %%% TODO: Podsekce - Vytvoření objednávky a potvrzení
 %%% --------------------------------------------------------------
-\subsection{TODO: Vytvoření objednávky a potvrzení}
+\subsection{Vytvoření objednávky a potvrzení}
 \label{sec:specifikace-dokonceni-objednavky-vytvoreni-objednavky-a-potvrzeni}
-TODO
+Po potvrzení objednávky by měla být vytvořena objednávka v databázi a zákazníkovi by mělo být zobrazeno potvrzení o jejím vytvoření.
+Na základě vybrané platbní metody by měl být dále přesměrován k jejímu zaplacení a posléze zpět na detail objednávky s potrvzením o zaplacení.
+Při úspěšné platbě by zákazníkovi měl systém doručit zakoupené vstupenky v elektronické podobě, například v podobě PDF souboru, který bude obsahovat vstupenky ve formátu QR kódu.
