@@ -1,17 +1,221 @@
 %%%%% Kapitola 4 - Návrh uživatelského rozhraní
 %%%%% ------------------------------------------------------------
 \chapter{Návrh uživatelského rozhraní}
-\label{chap:navrh-uzivatelskeho-rozhrani}
-TODO: návrh UI obecně, metodika, postupy, co navrhovat, best practices, atd.
+\label{ch:navrh-uzivatelskeho-rozhrani}
+Ve světě digitálních produktů a jejich designu jsou uživatelské rozhraní, z anglického \foreign{\acf{ui}}, a uživatelský zážitek, z anglického \foreign{\acf{ux}}, dva pojmy, které se často zaměňují, ačkoli se jedná o velmi odlišné aspekty procesu vývoje produktu.
+Tato kapitola si klade za cíl představit koncepty \ac{ui} a \ac{ux}, prozkoumat jejich vzájemný vztah a zabývat se specifiky návrhu \ac{ui} pro aplikaci pro prodej vstupenek s rezervací míst.
+
+\textbf{\ac{ui}} se vztahuje k vizuálním prvkům produktu, se kterými uživatel interaguje – tedy tlačítkům, textu, ikonografii, formulářům a všem vizuálním prvkům, které umožňují uživateli interagovat s produktem.
+V kontextu aplikace pro prodej vstupenek s rezervací míst se \ac{ui} vztahuje například k interaktivnímu plánu sedaček, výběru vstupenek, tlačítku pro přechod k dokončení objednávky nebo nákupnímu košíku.
+
+\textbf{\ac{ux}} je na druhou stranu celkový zážitek uživatele při interakci s produktem.
+Je ovlivněn snadností použití, hodnotou, kterou uživatel z produktu získává, a emocemi, které jsou při interakci vyvolány.
+\ac{ux} bere v potaz celou cestu uživatele, od okamžiku, kdy uživatel do aplikace vstoupí, až po okamžik, kdy dokončí nákup.
+
+Významným aspektem \ac{ux} je uživatelská cesta, z anglického \foreign{User Journey}, která popisuje cestu uživatele při interakci s produktem.
+Uživatelská cesta se skládá z jednotlivých kroků, které uživatel musí absolvovat, aby dosáhl svého cíle.
+
+Souhra \ac{ui} a \ac{ux} je v procesu návrhu produktu klíčová.
+Dobře navržené \ac{ui} usnadňuje \ac{ux}.
+Například intuitivně navržený plán sedadel (\ac{ui}) může proces výběru sedadla zpříjemnit a zjednodušit (\ac{ux}).
+
+Následující sekce této kapitoly prozkoumají základní principy návrhu \ac{ui} a možná použití Maslowovy hierarchie, za účelem návrhu rozhraní více zaměřeného na uživatele.
+Dále budou uvedeny a porovnány různé nástroje, které jsou k dispozici pro návrh \ac{ui} a důvody rozhodnutí pro konkrétní nástroj.
+Následně budou analyzovány specifikace prototypu z kapitoly~\ref{ch:specifikace} z hlediska \ac{ui}/\ac{ux} se zaměřením na tzv.\ uživatelské příběhy, které tvoří základ \ac{ux} designu.
+
+Závěr této kapitoly bude věnován návrhu interaktivního plánu sedaček, který je klíčovým \ac{ui} prvkem vyvýjeného prototypu aplikace.
+
+%%% Sekce - Principy návrhu uživatelského rozhraní
+%%% --------------------------------------------------------------
+\section{Principy návrhu uživatelkého rozhraní}
+\label{sec:navrh-principy}
+Návrh uživatelského rozhraní je poměrně rozsáhlá disciplína, která se zaměřuje na vizuální a interaktivní aspekty produktu.
+Při návrhu \ac{ui} je důležité dodržovat určité principy, které zajišťují optimální uživatelskou zkušenost.
+Tato sekce shrnuje některé základní principy návrhu \ac{ui} a posuzuje jejich implikace v kontextu aplikace pro prodej vstupenek s rezervací míst.
+
+\textbf{Konzistence}: Tento princip prosazuje zachování jednotnosti napříč všemi prvky \ac{ui}.
+Konzistence se projevuje v použití podobných prvků, akcí a designu napříč celým rozhraním.
+Například pokud určitá barva značí interaktivní prvek na plánu sedadel, stejná barva by měla být použita i pro značení interaktivních prvků jinde v rámci aplikace.
+Tímto se zvyšuje předvídatelnost, což uživatelům usnadňuje orientaci a navigaci v rozhraní.
+
+\textbf{Uživatel v kontrole}: Základním principem návrhu \ac{ui} je umožnit uživateli cítit se vždy v kontrole nad produktem.
+Toho lze dosáhnout návrhem transparentního a intuitivního systému, ve kterém uživatel vždy ví, kde se nachází a jak postupovat.
+V kontextu aplikace pro prodej vstupenek to může znamenat poskytnutí jasného a zřejmého způsobu, jak uživatelé mohou přejít k výběru sedadla, přidání do košíku a dokončení objednávky.
+
+\textbf{Zpětná vazba}: Zpětná vazba je klíčovým aspektem každé interakce, protože potvrzuje nebo informuje  uživatele o vykonaných akcích.
+Vizuální indikátory, jako je zvýraznění vybraného sedadla nebo potvrzovací zpráva při přidání vstupenky do košíku, poskytují uživateli okamžitou zpětnou vazbu.
+Tím se snižuje nejistota a zvyšuje se důvěra uživatele v rozhraní.
+
+\textbf{Jednoduchost}: Návrh \ac{ui} by měl směřovat k jednoduchosti.
+Čím méně úsilí musí uživatel vynaložit na pochopení rozhraní, tím lepší bude celková uživatelská zkušenost.
+Čisté, jednoduché rozhraní s jasným zaměřením na funkčnost snižuje kognitivní zátěž a zvyšuje použitelnost.
+
+\textbf{Prevence a řešení chyb}: Chyby jsou nevyhnutelné v jakékoli interakci, ale dobře navržené \ac{ui} může zabránit většině uživatelských chyb nebo zjednodušit jejich řešení.
+To může znamenat například zakázání tlačítka \textit{Pokračovat} dokud není vybráno sedadlo nebo zobrazení jasných a užitečných chybových zpráv, když něco selže.
+
+\textbf{Afordance a signifikance}: \foreign{Afordance} se vztahuje k vlastnosti objektu, která naznačuje, jak se má používat.
+\foreign{Signifikance} jsou vizuálními nápovědami k témto \foreign{afordancím}.
+Například sedadlo na plánu sedadel může být navrženo tak, aby naznačovalo, že na něj lze kliknout (\foreign{afordance}), a změna kurzoru při najetí na sedadlo (\foreign{signifikance}) může tuto zprávu posílit.
+
+Pochopení a aplikace těchto základních principů návrhu \ac{ui} je klíčové pro vytvoření intuitivního a uživatelsky přívětivého rozhraní.
+Tyto principy řídí rozhodnutí v rámci návrhu a pomáhají návrhu \ac{ui} s celkovým cílem poskytnout uživatelům bezproblémový zážitek z rezervace vstupenek.
+Další sekce se zabývá tím, jak lze hierarchii Maslowa aplikovat pro další zlepšení uživatelsky orientovaného návrhu.
+
+%%% Sekce - Aplikovaná psychologie na návrh uživatelských rozhraní
+%%% --------------------------------------------------------------
+\section{Aplikovaná psychologie na UI/UX}
+\label{sec:navrh-psychologie}
+
+\epigraph{\textit{``Some people say, "Give the customers what they want." But that's not my approach. Our job is to figure out what they're going to want before they do.''}}{-- Steve Jobs}
+
+Proces návrhu uživatelského rozhraní se netýká pouze estetiky nebo funkcionality v izolaci.
+Ve skutečnosti, k vytvoření rozhraní, které skutečně rezonuje s uživateli, si lze vypůjčit koncept z psychologie - Maslowovu hierarchii potřeb.
+Tato hierarchie, obvykle vizualizovaná jako pyramidová struktura, ilustruje cestu jednotlivce k seberealizaci a naplnění, začínající od základních fyziologických potřeb až po složitější emoční a psychologické potřeby.
+
+\textit{Maslowova hierarchie potřeb} je teorie psychologa Abrahama Maslowa, která se snaží vysvětlit, co motivuje lidi.
+Maslow tvrdil, že lidé mají potřeby, které se snaží uspokojit, ale některé z nich jsou naléhavější než jiné.
+Když jsou tyto potřeby uspokojeny, lidé se mohou cítit šťastnější, ale když nejsou, lidé mohou být frustrovaní a nespokojení.\cite{maslow}
+Maslow rozdělil lidské potřeby do pěti základních úrovní, které jsou znázorněny na obrázku~\ref{fig:maslow} níže.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{\FIGDIR/maslow}
+    \caption{Maslowova hierarchie potřeb\cite{wiki_potreby}}
+    \label{fig:maslow}
+\end{figure}
+
+\begin{enumerate}
+    \item \textbf{Fyziologické potřeby}: základní potřeby pro přežití, jako je potrava, voda, teplo a spánek
+    \item \textbf{Potřeby bezpečí}: potřeby, které se týkají bezpečnosti a zabezpečení
+    \item \textbf{Sociální potřeby}: potřeby, které se týkají příslušnosti, lásky a přátelství
+    \item \textbf{Potřeby uznání}: potřeby, které se týkají úcty a sebeúcty
+    \item \textbf{Potřeby seberealizace}: potřeby, které se týkají osobního růstu a rozvoje
+\end{enumerate}
+
+Jak to tedy ale souvisí s návrhem \ac{ui} a zejména s návrhem aplikace pro prodej vstupenek?
+
+\textbf{Maslowova hierarchie potřeb} může být aplikována na návrh \ac{ui} tak, že každá úroveň hierarchie představuje jeden základní aspekt návrhu \ac{ui}.
+
+V roce 2010 navrhl Steven Bradley v článku \textit{Designing For A Hierarchy Of Needs} podobnou hierarchii specificky pro design, se pěti odpovídajícími úrovněmi znázorněnými na obrázku~\ref{fig:design-hierarchy-of-needs}.\cite{bradley_hierarchy_of_needs}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{\FIGDIR/design-hierarchy-of-needs}
+    \caption{Hierarchie potřeb v návrhu \ac{ui} dle Stevena Bradleyho\cite{bradley_hierarchy_of_needs}}
+    \label{fig:design-hierarchy-of-needs}
+\end{figure}
+
+\textbf{Funkčnost}: Na základě pyramidy jsou základní fyziologické potřeby.
+V kontextu návrhu \ac{ui} to znamená základní funkčnost.
+Aplikace musí fungovat tak, jak se očekává, aby si uživatelé mohli vybrat sedadlo, přidat vstupenku do košíku a dokončit proces objednávky bez jakýchkoli problémů.
+Základní funkčnost musí být spolehlivá a robustní.
+
+\textbf{Spolehlivost}: Další úroveň pyramidy je bezpečnost, která se v návrhu \ac{ui} týká spolehlivosti.
+Rozhraní by mělo být navrženo tak, aby se uživatelé cítili bezpečně a sebevědomě při interakci s ním.
+Poskytování jasných pokynů, okamžité zpětné vazby a potvrzení o úspěšných akcích (například přidání vstupenky do košíku) přispívá k pocitu bezpečí a použitelnosti.
+
+\textbf{Použitelnost}: Střední část pyramidy pokrývá sociální potřeby, které se v \ac{ui} termínech rovnají uživatelské spokojenosti.
+Esteticky příjemné rozhraní, personalizovaný uživatelský zážitek a interaktivní prvky (jako interaktivní plán sedadel) mohou významně zvýšit uživatelskou spokojenost.
+
+\textbf{Odbornost}: Potřeby sebeúcty zahrnují touhu po uznání a respektu.
+V kontextu aplikace pro prodej vstupenek by to mohlo znamenat přidání funkcí, které překračují očekávání uživatelů a zpříjemňují jim zážitek.
+Může se jednat o něco tak jednoduchého, jako je blahopřání po úspěšném nákupu, nebo vizuální animace při výběru sedadla.
+
+\textbf{Kreativita}: Na vrcholu pyramidy se nachází seberealizace, která se týká realizace osobního potenciálu a hledání osobního růstu a vrcholných zážitků.
+Uživatelské rozhraní by mohlo přispět k této potřebě tím, že uživatelům umožní kreativně řešit problémy a dosáhnout svých cílů.
+Například nabízení návrhů na nejlepší dostupná sedadla nebo podobných akcí může uživatele posílit a zlepšit jejich zážitek.
+
+Použití Maslowovy hierarchie pro návrh \ac{ui} aplikace pro prodej vstupenek může pomoci zajistit, aby návrh splňoval potřeby uživatelů na různých úrovních.
+Z počátku je nutné zajistit základní funkčnosti a spolehlivost, aby uživatelé mohli využívat aplikaci bez jakýchkoli problémů.
+Dále je nutné zaměřit se na použitelnost, aby byl proces výběru sedadla a nákupu vstupenky co nejvíce zjednodušen.
+Při postupu v hierarchii se budou zkoumat různé metody, jak zvýšit uživatelskou spokojenost a zlepšit jejich zážitek.
+Cílem na vrcholu tohoto procesu je navrhnout rozhraní, které vyvažuje praktičnost a uživatelskou přívětivost, zatímco zároveň zajišťuje vizuální přitažlivost a emoční zapojení.
+To povede k přínosnějšímu, uspokojivějšímu a úspěšnějšímu uživatelskému zážitku.
+
+Další sekce se bude zabývat nástroji dostupnými pro návrh \ac{ui} a o důvodech pro výběr konkrétního nástroje pro tento projekt.
+
+%%% TODO: Sekce - Nástroje pro návrh
+%%% --------------------------------------------------------------
+\section{Nástroje pro návrh}
+\label{sec:navrh-ui-nastroje}
+V oblasti návrhu uživatelského rozhraní má návrhář k dispozici širokou škálu nástrojů.
+Tyto nástroje usnadňují nízkoúrovňové i vysokoúrovňové prototypování, přičemž každý z nich představuje jedinečnou sadu vlastností přispívajících k tvorbě, spolupráci a testování návrhů.
+Tato sekce stručně popisuje tři nejčastěji používané nástroje pro návrh uživatelského rozhraní, a to Figma, Adobe XD a Sketch.
+
+%%% TODO: Podsekce - Figma
+%%% --------------------------------------------------------------
+\subsection{Figma}
+\label{subsec:navrh-ui-nastroje-figma}
+Figma je nástroj pro návrh uživatelského rozhraní, který funguje v prohlížeči a je založen na cloudových technologiích.
+Jeho hlavními výhodami jsou platformní nezávislost a snadná spolupráce.
+Figma je také vybavena sadou funkcí, které usnadňují návrh uživatelského rozhraní, jako je vektorové kreslení, prototypování a předávání vývojářům.
+\cite{figma}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{\FIGDIR/figma}
+    \caption{Ukázka nástroje Figma\cite{figma}}
+    \label{fig:figma}
+\end{figure}
+
+%%% TODO: Podsekce - Adobe XD
+%%% --------------------------------------------------------------
+\subsection{Adobe XD}
+\label{subsec:navrh-ui-nastroje-adobe-xd}
+Adobe XD je nástroj od společnosti Adobe pro návrh uživatelského rozhraní, který funguje na platformách Windows i MacOS.
+Jeho hlavními výhodami jsou jednoduché uživatelské rozhraní, prototypování a snadná integrace s ostatními produkty Adobe Suite.
+\cite{adobe-xd}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{\FIGDIR/adobe-xd}
+    \caption{Ukázka nástroje Adobe XD\cite{adobe-xd}}
+    \label{fig:adobe-xd}
+\end{figure}
+
+%%% TODO: Podsekce - Sketch
+%%% --------------------------------------------------------------
+\subsection{Sketch}
+\label{subsec:navrh-ui-nastroje-sketch}
+Sketch je nástroj pro návrh uživatelského rozhraní, který funguje výhradně na platformě MacOS.
+Je to vektorový nástroj, který je chválen pro svou jednoduchost a rychlost.
+Je užitečný při tvorbě rozhraní, webových stránek a ikon, i když absence vestavěných prototypovacích schopností může být pro některé návrháře omezujícím faktorem.
+\cite{sketch}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{\FIGDIR/sketch}
+    \caption{Ukázka nástroje Sketch\cite{sketch}}
+    \label{fig:sketch}
+\end{figure}
+
+%%% TODO: Podsekce - Výběr nástroje
+%%% --------------------------------------------------------------
+\subsection{Výběr nástroje}
+\label{subsec:navrh-ui-nastroje-vyber}
+Po podrobném zhodnocení byl pro návrh uživatelského rozhraní vyvíjené aplikace na prodej vstupenek s rezervací míst vybrán nástroj \textbf{Figma} z několika důvodů:
+
+\textbf{Cloudově založený}: Figma umožňuje snadný přístup k návrhu z jakéhokoli zařízení, čímž odpadá nutnost instalace jakéhokoliv softwaru.
+Nezáleží tedy ani na operačním systému, postačí pouze webový prohlížeč a připojení k internetu.
+
+\textbf{Spolupráce v reálném čase}: I když se jedná o samostatný projekt, funkce spolupráce v reálném čase se ukazuje jako výhodná při poptávání zpětné vazby od možných budoucích zákazníků nebo konzultanta, čímž se zefektivňuje proces návrhu.
+
+\textbf{Prototypování}: Rozsáhlé prototypovací schopnosti Figma usnadňují tvorbu interaktivních prototypů s vysokou kvalitou a důvěryhodností.
+
+\textbf{Bezplatný}: Figma nabízí bezplatný plán, který je dostatečný pro většinu projektů.
+Jedná se tedy o velmi výhodné řešení pro projekt, který není komerční či pro začínající návrháře.
+
+\textbf{Vlastní zkušenost}: Osobně jsem měl možnost pracovat se všemi třemi nástroji a Figma se ukázala jako nejvhodnější pro tento projekt.
+Zejména z důvodu jednoduchého uživatelského rozhraní, lehkosti použití a rychlosti prototypování.
 
 %%% Sekce - Analýza specifikací a návrh UI
 %%% --------------------------------------------------------------
 \section{Analýza specifikací a návrh UI}
 \label{sec:navrh-ui-analyza}
-TODO: analýza specifikací, rozpad na jednotlivé části
+TODO: analýza specifikací, návrh UI, rozpad do user story, komponenty, interakce
 
 %%% Sekce - Návrh UI mapy
 %%% --------------------------------------------------------------
 \section{Návrh UI mapy}
 \label{sec:navrh-ui-mapa}
-TODO: návrh UI mapy a jejích částí (sektorů, sedaček, míst ke stání, atd.)
+TODO: navrh rozhraní mapy, sedadel, hlavní komponenta
