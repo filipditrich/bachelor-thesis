@@ -52,6 +52,9 @@
 \usepackage{float}                  %%% lepší práce s float objekty (obrázky, tabulky, ...)
 \usepackage{subcaption}             %%% umožňuje vkládat podnadpisy k obrázkům a tabulkám
 \usepackage{epigraph}               %%% umožňuje vkládat citáty
+\usepackage{tcolorbox}              %%% umožňuje vkládat rámečky
+% TODO: color box presets
+\newtcolorbox{gray-box}[1]{colback=gray!5!white,colframe=gray!50!black,title=#1}
 % TODO
 \usepackage{acro}                   %%% balíček pro práci s akronymy
 \DeclareAcronym{ui}{short=UI,       long=User Interface }

@@ -208,11 +208,153 @@ Jedná se tedy o velmi výhodné řešení pro projekt, který není komerční 
 \textbf{Vlastní zkušenost}: Osobně jsem měl možnost pracovat se všemi třemi nástroji a Figma se ukázala jako nejvhodnější pro tento projekt.
 Zejména z důvodu jednoduchého uživatelského rozhraní, lehkosti použití a rychlosti prototypování.
 
-%%% Sekce - Analýza specifikací a návrh UI
+%%% Sekce - Uživatelské příběhy
 %%% --------------------------------------------------------------
-\section{Analýza specifikací a návrh UI}
-\label{sec:navrh-ui-analyza}
-TODO: analýza specifikací, návrh UI, rozpad do user story, komponenty, interakce
+\section{Uživatelské příběhy}
+\label{sec:navrh-ui-uzivatelske-pribehy}
+Při navrhování uživatelského rozhraní (\ac{ui}) nejde pouze o estetiku nebo funkčnost; vyžaduje to pochopení potřeb a očekávání uživatele.
+Zahrnuje vytváření cesty, která uživatele bezproblémově provede aplikací a zároveň zajistí, aby mohli své úkoly vykonávat efektivně a s potěšením.
+Technika, která se často používá v návrhu \ac{ui}/\ac{ux} k dosažení tohoto cíle, se nazývá \textit{User Stories} (uživatelské příběhy).
+Uživatelské příběhy slouží jako nástroj, který pomáhá udržovat návrh zaměřený na uživatele a zajišťuje, že konečný produkt efektivně splňuje jeho potřeby.
+
+Uživatelské příběhy, z anglického \foreign{User Stories}, jsou stručné, přímočaré popisy funkce nebo funkcionality, vyprávěné z pohledu uživatele.
+Tyto příběhy kladou důraz na to, čeho uživatelé chtějí dosáhnout, podporují empatii a podporují návrhový proces, který se zaměřuje na uživatele.
+Porozumění roli uživatelských příběhů při návrhu \ac{ui} webového řešení pro prodej vstupenek je klíčové pro efektivní splnění potřeb koncových uživatelů.
+
+%%% TODO: Podsekce - Co jsou User Stories
+%%% --------------------------------------------------------------
+\subsection{Co jsou uživatelské příbehy}
+\label{subsec:navrh-ui-uzivatelske-pribehy-co-jsou}
+
+Uživatelské příběhy jsou součástí agilních vývojových praktik, široce používaných v návrhu \ac{ui}/\ac{ux} k zachycení zjednodušených popisů potenciálních funkcí aplikace z pohledu koncových uživatelů.
+Slouží jako rychlý a jednoduchý způsob, jak popsat uživatele, co chtějí a proč to chtějí.
+Každá \foreign{User Story} následuje strukturovaný formát:
+
+\begin{gray-box}{Formát uživatelského příběhu}
+    ``\textbf{Jako} [\textit{typ uživatele}] \textbf{chci} [\textit{vykonat nějakou akci}], \textbf{abych} [\textit{dosáhl nějakého cíle}].``
+\end{gray-box}
+
+V tomto formátu:
+\begin{itemize}
+    \item \textbf{Typ uživatele} pomáhá definovat roli uživatele, který bude používat danou funkcionalitu.
+    \item \textbf{Vykonat nějakou akci} umožňuje zjistit, co chce uživatel pomocí dané funkcionality udělat nebo čeho chce dosáhnout.
+    \item \textbf{Dosáhl nějakého cíle} vysvětluje základní motivaci nebo hodnotu, kterou uživatel získá provedením akce.
+\end{itemize}
+
+Tento formát je velmi užitečný při vytváření uživatelských příběhů, jelikož pomáhá udržovat stručnost, jednoznačnost a zároveň poskytuje dostatek informací, aby bylo možné pochopit, co uživatel chce a proč to chce.
+
+Uživatelské příběhy hrají také klíčovou roli při definování akceptačních kritérií, která dále podrobně popisují, jak by měla určitá funkce fungovat z pohledu uživatele.
+To pomáhá stanovit jasnou představu o účelu a očekávaném chování funkce, čímž usměrňuje její vývoj a testování.
+
+V kontextu navrhovaného uživatelského rozhraní pro webové řešení prodeje vstupenek mohou tyto uživatelské příběhy pomoci přesně určit funkcionality, které jsou pro uživatele nejdůležitější.
+Pomáhají porozumět potencionálním uživatelům –~návštěvníkům událostí, jejich potřebám (jako jsou např.\ prohlížení místa konání, výběr sedadel), jejich akce (přidání vstupenek do košíku, přechod k zaplacení) a jejich motivaci (užít si bezproblémový nákup vstupenek).
+
+Následující sekce se zabývá tím, jak lze uživatelské příběhy konkrétně použít k navrhování uživatelského rozhraní.
+
+%%% TODO: Podsekce - Psaní efektivních uživatelských příběhů
+%%% --------------------------------------------------------------
+\subsection{Psaní efektivních uživatelských příběhů}
+\label{subsec:navrh-ui-uzivatelske-pribehy-psani-efektivnich}
+
+Při psaní efektivních uživatelských příběhů pro platformu prodeje vstupenek je klíčové porozumět perspektivě koncového uživatele.
+Tento proces vyžaduje identifikaci potřeb, motivací a požadovaných výsledků uživatele při používání platformy.
+Některé očekávané úkoly pro platformu prodeje vstupenek mohou zahrnovat prohlížení události, výběr sedadla a dokončení nákupu vstupenky.
+
+První krok je identifikace a pochopení různých ``personas`` nebo typů uživatelů, kteří budou pravděpodobně s platformou interagovat.
+Pro platformu prodeje vstupenek je primárním uživatelem obvykle někdo, kdo má zájem o nákup vstupenek na události.
+Sekundární uživatelé, jako jsou organizátoři událostí nebo manažeři prostorů, však mohou také s platformou interagovat s odlišnými požadavky na funkcionalitu.
+
+Dalším krokem je zjištění, co uživatelé chtějí dosáhnout.
+To může zahrnovat jednoduché úkoly, jako je ``prohlížení nadcházejících událostí``, nebo složitější úkoly, jako je ``rezervace místa na konkrétní událost``.
+Každý uživatelský příběh by měl zůstat stručný a zaměřený na jednu akci.
+
+Posledním krokem je definování ``hodnoty`` nebo ``výhody``, kterou uživatel získá provedením dané akce, což je známé jako jeho motivace.
+Tento krok je klíčový, protože pomáhá při prioritizaci funkcí na základě hodnoty, kterou poskytují uživateli.
+
+Při tvoření těchto uživatelských příběhů je užitečné dodržovat princip \foreign{INVEST} (\foreign{Independent}, \foreign{Negotiable}, \foreign{Valuable}, \foreign{Estimable}, \foreign{Small}, \foreign{Testable}).
+Tento princip zajišťuje, že každý uživatelský příběh je dobře definován a má potřebné charakteristiky pro efektivní implementaci v procesu vývoje.
+
+Příkladem uživatelského příběhu pro platformu prodeje vstupenek může být:
+
+\begin{gray-box}{Ukázka uživatelského příběhu}
+    \textit{``Jako zákazník si chci být schopen vybrat konkrétní sedadlo, abych se mohl akce zúčastnit.``}
+\end{gray-box}
+
+Tento uživatelský příběh je nezávislý na ostatních uživatelských příbězích, je jednoduchý a snadno pochopitelný, poskytuje hodnotu uživateli a je snadno testovatelný.
+Při dodržení tohoto principu mohou uživatelské příběhy poskytnout cenný náhled do toho, jak by měla platforma prodeje vstupenek fungovat z pohledu uživatele.
+
+%%% TODO: Podsekce - Uživatelské příběhy aplikace
+%%% --------------------------------------------------------------
+\subsection{Uživatelské příběhy aplikace}
+\label{subsec:navrh-ui-uzivatelske-pribehy-aplikace}
+Na základě pochopení získaného v předchozích sekcích se lze nyní zaměřit na konstrukci konkrétních uživatelských příběhů pro implementované webové řešení prodeje vstupenek s rezervací míst.
+Nejprve je však nutné definovat hlavní uživatelský typ, který bude tuto aplikaci používat.
+V základu lze říci, že hlavní rolí uživatele je potencionální zákazník, který má zájem o nákup vstupenky na konkrétní událost.
+Pro další účely bude ale použito pouze záměrné označení ``zákazník``.
+Každý příběh bude představen ve stanoveném formátu.
+Dále budou sepsána určitá kritéria přijatelnosti, dle kterých bude jednoduše zhodnotitelné splnění příběhu.
+Na závěr bude diskutováno o tom, jak daný příběh ovlivňuje návrh uživatelského rozhraní.
+
+\begin{gray-box}{Uživatelský příběh 1 – Vizualizace místa konání}
+    \textit{``Jako zákazník, chci vidět, jak vypadá místo konání, abych si mohl vybrat místo, které mi bude vyhovovat.``}
+\end{gray-box}
+
+Tento uživatelský příběh zdůrazňuje důležitost jasné a intuitivní vizualizace místa konání.
+Mapa musí poskytovat přesnou reprezentaci uspořádání sedadel a nabízet dostatek detailů, aby uživatelé mohli snadno vybrat místo, které jim vyhovuje.
+Pro tento příběh lze kritéria přijatelnosti definovat jako:
+\begin{enumerate}
+    \item Mapa místa konání je dobře viditelná
+    \item Mapa místa konání přesně reprezentuje uspořádání sedadel
+    \item Sedadla na mapě jsou jasně označena a snadno rozpoznatelná
+\end{enumerate}
+
+\begin{gray-box}{Uživatelský příběh 2 – Výběr sedadla}
+    \textit{``Jako zákazník, si chci označit či odznačit konkrétní sedadla, abych si mohl vybrat místa, která mi budou vyhovovat.``}
+\end{gray-box}
+
+Flexibilní výběr sedadla je klíčovým prvkem prodeje vstupenek.
+Uživatelé by měli mít možnost vybrat si konkrétní sedadlo, které jim vyhovuje, a měli by mít možnost si vybrat více sedadel, pokud si přejí sedět s přáteli nebo rodinou.
+Uživatelské rozhraní by tedy mělo uživatelům umožnit snadno vybrat a zrušit výběr sedadel, aby mohli vyzkoušet různé možnosti výběru, které jsou k dispozici.
+Pro tento příběh jsou kritéria přijatelnosti následující:
+\begin{enumerate}
+    \item Uživatelé mohou kliknutím vybrat konkrétní sedadlo
+    \item Uživatelé mohou vybrat více sedadel
+    \item Zvolená sedadla jsou jasně označena
+    \item Uživatelé mohou kliknutím zrušit výběr sedadla
+\end{enumerate}
+
+\begin{gray-box}{Uživatelský příběh 3 – Nákupní košík}
+    \textit{``Jako zákazník, chci mít jasný přehled o přidaných vstupenkách do nákupního košíku, abych měl přehled o svém nákupu.``}
+\end{gray-box}
+
+Tento uživatelský příběh například zdůrazňuje důležitost uživatelského rozhraní nákupního košíku se vstupenkami.
+Uživatelé by měli mít možnost snadno zobrazit, jaké vstupenky mají v nákupním košíku, a měli by mít možnost snadno upravovat jeho obsah.
+To vyžaduje jednoduché a přístupné uživatelské rozhraní spravující funkci nákupního košíku.
+Pro přijetí tohoto příběhu jsou adekvátní kritéria přijatelnosti:
+\begin{enumerate}
+    \item Uživatel může snadno zobrazit aktuálně přidané vstupenky v nákupním košíku
+    \item Uživatel může upravovat přidané vstupenky v košíku
+    \item Uživatel může vstupenky z košíku odebrat
+    \item Uživatel může zobrazit celkovou cenu nákupu
+\end{enumerate}
+
+\begin{gray-box}{Uživatelský příběh 4 – Vyřízení objednávky}
+    \textit{``Jako zákazník, chci jasný a jednoduchý proces vyřízení objednávky, abych mohl svůj nákup vstupenek sebejistě dokončit.``}
+\end{gray-box}
+
+Poslední zmíněný uživatelský příběh se zaměřuje na proces vyřízení objednávky.
+Zdůrazňuje potřebu jednoduchého a intuitivního uživatelského rozhraní, které umožní uživatelům snadno dokončit svůj nákup vstupenek.
+Uživatelské rozhraní dokončení objednávky by tedy mělo minimalizovat komplexitu a zmatečnost, čímž zajistí uživatelům důvěru při dokončování své objednávky.
+Pro tento příběh sestrojit kritéria přijatelnosti následovně:
+\begin{enumerate}
+    \item Proces dokončení objednávky je jednoduchý a intuitivní
+    \item Objednávku lze dokončit v několika málo krocích
+    \item Uživatel obdrží potvrzení o dokončení objednávky
+\end{enumerate}
+
+Z důvodu zachování přehlednosti a jednoduchosti, ačkoliv by mohlo být vytvořeno více uživatelských příběhů, budou v této práci použity pouze tyto čtyři hlavní uživatelské příběhy.
+Tyto příběhy, budou v následující kapitole použity jako základní stavební kameny pro návrh uživatelského rozhraní vyvíjené webové aplikace.
+
 
 %%% Sekce - Návrh UI mapy
 %%% --------------------------------------------------------------
