@@ -55,6 +55,12 @@
 \usepackage{tcolorbox}              %%% umožňuje vkládat rámečky
 % TODO: color box presets
 \newtcolorbox{gray-box}[1]{colback=gray!5!white,colframe=gray!50!black,title=#1}
+\newcommand{\userstory}[4]{
+    \begin{gray-box}{Uživatelský příběh #1 – #2}
+        \textit{``#3``}
+    \end{gray-box}
+    #4
+}
 % TODO
 \usepackage{acro}                   %%% balíček pro práci s akronymy
 \DeclareAcronym{ui}{short=UI,       long=User Interface }

@@ -295,9 +295,11 @@ Každý příběh bude představen ve stanoveném formátu.
 Dále budou sepsána určitá kritéria přijatelnosti, dle kterých bude jednoduše zhodnotitelné splnění příběhu.
 Na závěr bude diskutováno o tom, jak daný příběh ovlivňuje návrh uživatelského rozhraní.
 
-\begin{gray-box}{Uživatelský příběh 1 – Vizualizace místa konání}
-    \textit{``Jako zákazník, chci vidět, jak vypadá místo konání, abych si mohl vybrat místo, které mi bude vyhovovat.``}
-\end{gray-box}
+%%% user story 1
+\newcommand{\userstoryvenuemap}{
+    \userstory{1}{Vizualizace místa konání}{Jako zákazník, chci vidět, jak vypadá místo konání, abych si mohl vybrat místo, které mi bude vyhovovat.}
+}
+\userstoryvenuemap
 
 Tento uživatelský příběh zdůrazňuje důležitost jasné a intuitivní vizualizace místa konání.
 Mapa musí poskytovat přesnou reprezentaci uspořádání sedadel a nabízet dostatek detailů, aby uživatelé mohli snadno vybrat místo, které jim vyhovuje.
@@ -308,9 +310,11 @@ Pro tento příběh lze kritéria přijatelnosti definovat jako:
     \item Sedadla na mapě jsou jasně označena a snadno rozpoznatelná
 \end{enumerate}
 
-\begin{gray-box}{Uživatelský příběh 2 – Výběr sedadla}
-    \textit{``Jako zákazník, si chci označit či odznačit konkrétní sedadla, abych si mohl vybrat místa, která mi budou vyhovovat.``}
-\end{gray-box}
+%%% user story 2
+\newcommand{\userstoryseatselection}{
+    \userstory{2}{Výběr sedadla}{Jako zákazník, si chci označit či odznačit konkrétní sedadla, abych si mohl vybrat místa, která mi budou vyhovovat.}
+}
+\userstoryseatselection
 
 Flexibilní výběr sedadla je klíčovým prvkem prodeje vstupenek.
 Uživatelé by měli mít možnost vybrat si konkrétní sedadlo, které jim vyhovuje, a měli by mít možnost si vybrat více sedadel, pokud si přejí sedět s přáteli nebo rodinou.
@@ -323,9 +327,11 @@ Pro tento příběh jsou kritéria přijatelnosti následující:
     \item Uživatelé mohou kliknutím zrušit výběr sedadla
 \end{enumerate}
 
-\begin{gray-box}{Uživatelský příběh 3 – Nákupní košík}
-    \textit{``Jako zákazník, chci mít jasný přehled o přidaných vstupenkách do nákupního košíku, abych měl přehled o svém nákupu.``}
-\end{gray-box}
+%%% user story 3
+\newcommand{\userstoryshoppingcart}{
+    \userstory{3}{Nákupní košík}{Jako zákazník, chci mít jasný přehled o přidaných vstupenkách do nákupního košíku, abych měl přehled o svém nákupu.}
+}
+\userstoryshoppingcart
 
 Tento uživatelský příběh například zdůrazňuje důležitost uživatelského rozhraní nákupního košíku se vstupenkami.
 Uživatelé by měli mít možnost snadno zobrazit, jaké vstupenky mají v nákupním košíku, a měli by mít možnost snadno upravovat jeho obsah.
@@ -338,9 +344,11 @@ Pro přijetí tohoto příběhu jsou adekvátní kritéria přijatelnosti:
     \item Uživatel může zobrazit celkovou cenu nákupu
 \end{enumerate}
 
-\begin{gray-box}{Uživatelský příběh 4 – Vyřízení objednávky}
-    \textit{``Jako zákazník, chci jasný a jednoduchý proces vyřízení objednávky, abych mohl svůj nákup vstupenek sebejistě dokončit.``}
-\end{gray-box}
+%%% user story 4
+\newcommand{\userstorycheckout}{
+    \userstory{4}{Vyřízení objednávky}{Jako zákazník, chci jasný a jednoduchý proces vyřízení objednávky, abych mohl svůj nákup vstupenek sebejistě dokončit.}
+}
+\userstorycheckout
 
 Poslední zmíněný uživatelský příběh se zaměřuje na proces vyřízení objednávky.
 Zdůrazňuje potřebu jednoduchého a intuitivního uživatelského rozhraní, které umožní uživatelům snadno dokončit svůj nákup vstupenek.
@@ -356,8 +364,85 @@ Z důvodu zachování přehlednosti a jednoduchosti, ačkoliv by mohlo být vytv
 Tyto příběhy, budou v následující kapitole použity jako základní stavební kameny pro návrh uživatelského rozhraní vyvíjené webové aplikace.
 
 
-%%% Sekce - Návrh UI mapy
+%%% Sekce - Transformace uživatelských příběhů
 %%% --------------------------------------------------------------
-\section{Návrh UI mapy}
-\label{sec:navrh-ui-mapa}
-TODO: navrh rozhraní mapy, sedadel, hlavní komponenta
+\section{Transformace uživatelských příběhů}
+\label{sec:navrh-ui-transformace-uzivatelskych-pribehu}
+\acl{ui} a \acl{ux} jsou oba úzce spjaty s pochopením potřeb uživatele.
+Když je produkt navrhován, není vždy okamžitě jasné, jakým způsobem by mělo být jeho uživatelské rozhraní vypadat.
+Uživatelské příběhy, pokud jsou správně navrženy, usnadňují spojení mezi potřebami uživatele a strukturální kompozicí produktu.
+Primárním cílem je v této sekci přetvořit výše navržené uživatelské příběhy do jednotlivých komponent uživatelského rozhraní, které nakonec utvoří interaktivní architekturu produktu.
+
+\ac{ui} komponenty jsou prvky, které tvoří interaktivní a vizuální aspekty uživatelského rozhraní produktu.
+Tyto komponenty mohou zahrnovat menší jednodušší designové prvky, jako jsou například tlačítka či ikony, nebo větší a složitější funkční jednotky, jako je ku příkladu navigační menu nebo interaktivní plánek sedaček.
+
+Převedení uživatelských příběhů do \ac{ui} komponent je klíčovým krokem v procesu uživatelsky zaměřeného návrhu.
+Tento proces vyžaduje hluboké porozumění potřebám uživatele tak, jak jsou vyjádřeny v uživatelských příbězích, a schopnost vizualizovat, jak tyto potřeby mohou být zhmotněny prostřednictvím různých \ac{ui} komponent.
+Pro produkt, jako je aplikace na prodej vstupenek, to znamená zaměřit se na komponenty, které umožňují uživatelům navigovat po interaktivním plánu sedadel, vybrat si svá požadovaná místa a dokončit nákup vstupenek s minimálním distrakcí a maximální jednoduchostí.
+
+Tato kapitola se dále zaměří na proces převodu výše sestrojených uživatelských příběhů do \ac{ui} konkrétních komponent, které budou tvořit výsledný návrh uživatelského rozhraní vyvíjené webové aplikace.
+
+%%% TODO: Podsekce - Vizualizace místa konání
+%%% --------------------------------------------------------------
+\subsection{Vizualizace místa konání}
+\label{subsec:narvh-ui-transformace-uzivatelskych-pribehu-vizualizace-mista-konani}
+\userstoryvenuemap
+
+Základní myšlenkou tohoto příběhu je, že uživatelé by měli mít možnost zobrazit si plán sedadel místa konání, aby mohli snadno vybrat svá požadovaná místa.
+To znamená navržení komplexní komponenty, která bude tuto funkčnost zajišťovat.
+Tato komponenta by měla být schopna zobrazit plán sedadel místa konání, který bude obsahovat informace o jednotlivých sedadlech, jako je například jejich cena, dostupnost či umístění.
+
+\begin{figure}[hbt]
+    \centering
+    \includegraphics[width=0.8\textwidth]{\FIGDIR/ui-user-story-1}
+    \caption{Návrh komponent pro vizualizaci plánu sedadel místa konání}
+    \label{fig:ui-user-story-1}
+\end{figure}
+
+Na obrázku~\ref{fig:ui-user-story-1} je zobrazen návrh komponenty, která by měla být schopna zobrazit plán sedadel místa konání.
+Součástí této komponenty je i boční ovládací panel, které umožňuje manuální přiblížení či oddálení plánu sedadel.
+U této komponenty se předpokládá, že její ovladatelnost bude primárně zajištěna pomocí myši, případně pomocí dotykové obrazovky.
+
+%%% TODO: Podsekce - Výběr sedadel
+%%% --------------------------------------------------------------
+\subsection{Výběr sedadel}
+\label{subsec:narvh-ui-transformace-uzivatelskych-pribehu-vyber-sedadel}
+\userstoryseatselection
+
+TODO: Popis návrhu komponenty pro výběr sedadel
+
+\begin{figure}[hbt]
+    \centering
+    \includegraphics[width=0.8\textwidth]{\FIGDIR/ui-user-story-2}
+    \caption{Návrh komponent pro výběr sedadel}
+    \label{fig:ui-user-story-2}
+\end{figure}
+
+Na obrázku~\ref{fig:ui-user-story-2} TODO
+
+%%% TODO: Podsekce - Nákupní košík
+%%% --------------------------------------------------------------
+\subsection{Nákupní košík}
+\label{subsec:narvh-ui-transformace-uzivatelskych-pribehu-nakupni-kosik}
+\userstoryseatselection
+
+TODO: Popis návrhu komponenty nákupního košíku
+
+\begin{figure}[hbt]
+    \centering
+    \includegraphics[width=0.8\textwidth]{\FIGDIR/ui-user-story-3}
+    \caption{Návrh komponent nákupního košíku}
+    \label{fig:ui-user-story-3}
+\end{figure}
+
+Na obrázku~\ref{fig:ui-user-story-3} TODO
+
+%%% TODO: Podsekce - Vyřízení objednávky
+%%% --------------------------------------------------------------
+\subsection{Vyřízení objednávky}
+\label{subsec:narvh-ui-transformace-uzivatelskych-pribehu-vyrizeni-objednavky}
+\userstoryseatselection
+
+TODO: Popis návrhu komponent procesu vyřízení objednávky
+
+TODO: obrázek
