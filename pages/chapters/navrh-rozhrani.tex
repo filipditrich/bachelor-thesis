@@ -392,14 +392,21 @@ Základní myšlenkou tohoto příběhu je, že uživatelé by měli mít možno
 To znamená navržení komplexní komponenty, která bude tuto funkčnost zajišťovat.
 Tato komponenta by měla být schopna zobrazit plán sedadel místa konání, který bude obsahovat informace o jednotlivých sedadlech, jako je například jejich cena, dostupnost či umístění.
 
-\begin{figure}[hbt]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{\FIGDIR/ui-user-story-1}
+    \begin{subfigure}{0.775\textwidth}
+        \includegraphics[width=\textwidth]{\FIGDIR/ui/us1-seating-map-desktop-1}
+        \label{fig:us1-seating-map-desktop-1}
+    \end{subfigure}
+    \begin{subfigure}{0.2\textwidth}
+        \includegraphics[width=\textwidth]{\FIGDIR/ui/us1-seating-map-mobile-1}
+        \label{fig:us1-seating-map-mobile-1}
+    \end{subfigure}
     \caption{Návrh komponent pro vizualizaci plánu sedadel místa konání}
-    \label{fig:ui-user-story-1}
+    \label{fig:us1-seating-map}
 \end{figure}
 
-Na obrázku~\ref{fig:ui-user-story-1} je zobrazen návrh komponenty, která by měla být schopna zobrazit plán sedadel místa konání.
+Na obrázku~\ref{fig:us1-seating-map} je zobrazen návrh komponenty, která by měla být schopna zobrazit plán sedadel místa konání.
 Součástí této komponenty je i boční ovládací panel, které umožňuje manuální přiblížení či oddálení plánu sedadel.
 U této komponenty se předpokládá, že její ovladatelnost bude primárně zajištěna pomocí myši, případně pomocí dotykové obrazovky.
 
@@ -411,38 +418,122 @@ U této komponenty se předpokládá, že její ovladatelnost bude primárně za
 
 TODO: Popis návrhu komponenty pro výběr sedadel
 
-\begin{figure}[hbt]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{\FIGDIR/ui-user-story-2}
+    \begin{subfigure}{0.775\textwidth}
+        \includegraphics[width=\textwidth]{\FIGDIR/ui/us2-seat-selection-desktop-1}
+        \label{fig:us2-seat-selection-desktop-1}
+    \end{subfigure}
+    \begin{subfigure}{0.2\textwidth}
+        \includegraphics[width=\textwidth]{\FIGDIR/ui/us2-seat-selection-mobile-1}
+        \label{fig:us2-seat-selection-mobile-1}
+    \end{subfigure}
     \caption{Návrh komponent pro výběr sedadel}
-    \label{fig:ui-user-story-2}
+    \label{fig:us2-seat-selection}
 \end{figure}
 
-Na obrázku~\ref{fig:ui-user-story-2} TODO
+Na obrázku~\ref{fig:us2-seat-selection} TODO
 
 %%% TODO: Podsekce - Nákupní košík
 %%% --------------------------------------------------------------
 \subsection{Nákupní košík}
 \label{subsec:narvh-ui-transformace-uzivatelskych-pribehu-nakupni-kosik}
-\userstoryseatselection
+\userstoryshoppingcart
 
 TODO: Popis návrhu komponenty nákupního košíku
 
-\begin{figure}[hbt]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{\FIGDIR/ui-user-story-3}
-    \caption{Návrh komponent nákupního košíku}
-    \label{fig:ui-user-story-3}
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\textwidth]{\FIGDIR/ui/us3-cart-summary-desktop-1}
+        \label{fig:uus3-cart-summary-desktop-1}
+    \end{subfigure}
+    \caption{Návrh komponent přehledu nákupního košíku (desktopová verze)}
+    \label{fig:us3-cart-summary-desktop}
 \end{figure}
 
-Na obrázku~\ref{fig:ui-user-story-3} TODO
+Na obrázku~\ref{fig:us3-cart-summary-desktop} TODO
 
-%%% TODO: Podsekce - Vyřízení objednávky
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=\textwidth]{\FIGDIR/ui/us3-cart-summary-mobile-1}
+        \caption{sbaleno}
+        \label{fig:us3-cart-summary-mobile-1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=\textwidth]{\FIGDIR/ui/us3-cart-summary-mobile-2}
+        \caption{rozbaleno}
+        \label{fig:us3-cart-summary-mobile-2}
+    \end{subfigure}
+
+    \caption{Návrh komponent přehledu nákupního košíku (mobilní verze)}
+    \label{fig:us3-cart-summary-mobile}
+\end{figure}
+
+Na obrázku~\ref{fig:us3-cart-summary-mobile} TODO
+
+%%% TODO: Podsekce - Vyřízení a potrvzení objednávky
 %%% --------------------------------------------------------------
-\subsection{Vyřízení objednávky}
-\label{subsec:narvh-ui-transformace-uzivatelskych-pribehu-vyrizeni-objednavky}
-\userstoryseatselection
+\subsection{Vyřízení a potvrzení objednávky}
+\label{subsec:narvh-ui-transformace-uzivatelskych-pribehu-vyrideni-a-potvrzeni-objednavky}
+\userstorycheckout
 
 TODO: Popis návrhu komponent procesu vyřízení objednávky
 
-TODO: obrázek
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\FIGDIR/ui/us4-cart-checkout-desktop-1}
+    \caption{Návrh komponent dokončení objednávky (desktopová verze)}
+    \label{fig:us4-cart-checkout-desktop}
+\end{figure}
+
+Na obrázku~\ref{fig:us4-cart-checkout-desktop} TODO
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=\textwidth]{\FIGDIR/ui/us4-cart-checkout-mobile-1}
+        \label{fig:us4-cart-checkout-mobile-1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=\textwidth]{\FIGDIR/ui/us4-cart-checkout-mobile-2}
+        \label{fig:us4-cart-checkout-mobile-2}
+    \end{subfigure}
+
+    \caption{Návrh komponent dokončení objednávky (mobilní verze)}
+    \label{fig:us4-cart-checkout-mobile}
+\end{figure}
+
+Na obrázku~\ref{fig:us4-cart-checkout-mobile} TODO
+
+TODO: Popis návrhu komponenty potvrzení dokončení objednávky
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\FIGDIR/ui/us4-order-confirmation-desktop-1}
+    \caption{Návrh komponent potrvzení objednávky (desktopová verze)}
+    \label{fig:us4-order-confirmation-desktop}
+\end{figure}
+
+Na obrázku~\ref{fig:us4-order-confirmation-desktop} TODO
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=\textwidth]{\FIGDIR/ui/us4-order-confirmation-mobile-1}
+        \label{fig:us4-order-confirmation-mobile-1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=\textwidth]{\FIGDIR/ui/us4-order-confirmation-mobile-2}
+        \label{fig:us4-order-confirmation-mobile-2}
+    \end{subfigure}
+
+    \caption{Návrh komponent potrvzení objednávky (mobilní verze)}
+    \label{fig:us4-order-confirmation-mobile}
+\end{figure}
+
+Na obrázku~\ref{fig:us4-order-confirmation-mobile} TODO
