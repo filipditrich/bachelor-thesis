@@ -1,4 +1,7 @@
 %%%%% Kapitola 3 - Specifikace prototypu
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%%%% ------------------------------------------------------------
 \chapter{Specifikace prototypu}
 \label{ch:specifikace}
@@ -12,6 +15,9 @@ A právě tato kapitola se zabývá různými klíčovými funkcemi a součástm
 Tyto specifikace a požadavky později poslouží jako základ pro návrh a implementaci prototypu a následně i pro objektivní zhodnocení finálního výsledku.
 
 %%% Sekce - Interaktivní mapa
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \section{Interaktivní mapa}
 \label{sec:specifikace-interaktivni-mapa}
@@ -20,9 +26,12 @@ Tato podkapitola se zabývá nejhlavnějšími aspekty vizualizace mapy sedaček
 V každé sekci budou tyto aspekty podrobněji rozebrány, ukázány příklady z reálného světa a vysvětlena jejich důležitost.
 
 %%% Podsekce - Rozložení a struktura
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Rozložení a struktura}
-\label{sec:specifikace-interaktivni-mapa-rozlozeni-a-struktura}
+\label{subsec:specifikace-interaktivni-mapa-rozlozeni-a-struktura}
 Pro docílení přehledného a uživatelsky přívětivého zobrazení plánku sedaček je třeba zajistit správnou vizuální stukturu a ideální rozložení prvků na obrazovce.
 Dobře uspořádané uživatelské rozhraní pomáhá zákazníkům lépe se v mapě orientovat a vybrat tak preferovaná místa rychleji a snadněji.
 
@@ -30,7 +39,7 @@ Obrázek~\ref{fig:venue-map-visualization-layout-and-structure} zobrazuje přík
 V tomto zobrazení nalezneme indikaci hlediště, dostupných i nedostupných míst k sezení a číslování řad sedaček.
 Toto zobrazení, ačkoliv poskytuje všechny důležité informace, není tolik uživatelsky přívětivé a atraktivní.
 Například výběr správně kontrastního barevného zobrazení sedaček by celkovému zobrazení velmi prospělo.
-Problematiku barevného kódování dále rozebírá následující sekce~\ref{sec:specifikace-interaktivni-mapa-barevne-kody}.
+Problematiku barevného kódování dále rozebírá následující sekce~\ref{subsec:specifikace-interaktivni-mapa-barevne-kody}.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{\FIGDIR/ticketportal-divadlo-u-hasicu}
@@ -56,12 +65,15 @@ Tyto prvky by měli být jasně vizuálně definované a na mapě přehledně ro
 Záleží převážně o správnou definici a nakreslení prvků na mapě, což je úzce spojeno s administrací mapy a jejího nastavení.
 Tu totiž musí někdo prvně vydefinovat a uložit do nějakého datového formátu.
 Data si v tomto formátu poté vyžádá aplikace a na jejich základě mapu vykreslí uživateli v prohlížeči.
-Touto problematikou se následně více zabývá sekce \ref{sec:implementace-mapa} v implementační části práce.
+Touto problematikou se následně více zabývá sekce~\ref{sec:implementace-mapa} v implementační části práce.
 
 %%% Podsekce - Barevné kódování
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Barevné kódování}
-\label{sec:specifikace-interaktivni-mapa-barevne-kody}
+\label{subsec:specifikace-interaktivni-mapa-barevne-kody}
 Barevné kódování je dalším zásadním aspektem vizuálního zobrazení mapy místa konání, protože pomáhá uživatelům rychle identifikovat například kategorie míst, dostupnost a cenové úrovně sedadel.
 Díky použití odlišných barev pro různé typy sedadel se zákazník v mapě může snadněji a rychleji orientovat.
 
@@ -80,9 +92,12 @@ Pro zachování jednotného a přehledného zobrazení je výhodné předem defi
 Užitím palety barev lze také jednodušeji udržet jednotnout vizuální identitu mapy a lze také předcházet zobrazenímu nekontrastních barevných kombinací, například textu na barevném podkladu.
 
 %%% Podsekce - Ovládání mapy
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Ovládání mapy}
-\label{sec:specifikace-interaktivni-mapa-ovladani}
+\label{subsec:specifikace-interaktivni-mapa-ovladani}
 Ovládání zobrazení mapy je důležitou částí implementace, jelikož dodává větší interaktivnost tím, že umožňuje například pohyb kamery mapy po ose \em{x} a \em{y}, rotaci či přiblížení a oddálení.
 Tyto funkce zákazníkovi umožňují podrobněji prozkoumat celou mapu místa a zároveň zobrazit více informací na jednom zobrazení.
 Díky těmto funkcím získá zákazník také lepší přehled o celkovém rozpoložení míst v areálu.
@@ -120,9 +135,12 @@ Je tedy třeba zajistit podporu pro dotyková i nedotyková zařízení.
 V těchto lištách je také vhodné umístit tlačítko na vrácení zobrazení mapy do výchozího zobrazení.
 
 %%% Podsekce - Stav a informace o sedadlech
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Stav a informace o sedadlech}
-\label{sec:specifikace-interaktivni-mapa-stav-a-informace-o-sedadlech}
+\label{subsec:specifikace-interaktivni-mapa-stav-a-informace-o-sedadlech}
 Sedadla a ostatní místa k výběru o sobě nesou informace, které na mapě nemusejí být zřejmá a které zákazníkovi usnadňují výběr místa.
 Tyto informace mohou být pro zákazníka zásadní, jelikož poskytují podrobnosti, jako je dostupnost, cena, přístupnost či další jiné popisy.
 Díky těmto informacím se zákazník může lépe rozhodnout a vybrat si sedadlo, které nejlépe vyhovuje jeho preferncím a požadavkům.
@@ -155,24 +173,30 @@ Toto okno či lišta by měla obsahovat ty nejdůležitější informace o zvole
 
 
 %%% Podsekce - Data a jejich dostupnost
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Data a jejich dostupnost}
-\label{sec:specifikace-interaktivni-mapa-data-a-dostupnost}
+\label{subsec:specifikace-interaktivni-mapa-data-a-dostupnost}
 Pro zobrazení a fungování aplikace je nezbytné mapu a celý její stav zkonstruovat pomocí reálných a aktualizovaných dat dostupných z backendového systému pomocí aplikačního rozhraní, označovaného jako \foreign{API}.
 Tato data obsahují informace o vstupenkách a sedačkách jako například dostupnost, cena, umístění a další ostatní relevantní informace.
 Struktura těchto dat by měla být jasně definovaná a dostupná ve formátu vyhovujícímu užití aplikace.
 
-Areály s velkým množství sedaček mohou být problematické a to převážně z pohledu objemu přenášených dat mezi klientem a API.
+Areály s velkým množství sedaček mohou být problematické a to převážně z pohledu objemu přenášených dat mezi klientem a API\@.
 Je důležité myslet na implementaci inteligentního datového přenosu, který zajistí komunikaci a přenos pouze nezbytných dat.
 Díky menšímu objemu přenášených dat se pak zdá aplikace rychlejší a responzivnější.
 
 Dalším aspektem práce s daty v takovéto aplikaci je aktualizace dat o dostupnosti.
 Tato funkčnost zajišťuje zákazníkovi zobrazení aktuálních informací o sedačkách či vstupenkách a snižuje tak například riziko konfliktu výběru již obsazené sedačky.
-Průběžné aktualizace dat lze docílit technologiemi jako například \foreign{WebSockets} nebo částečnými aktualizacemi dotazovanými skrze API.
+Průběžné aktualizace dat lze docílit technologiemi jako například \foreign{WebSockets} nebo částečnými aktualizacemi dotazovanými skrze API\@.
 Tyto metody budou později rozebrány v implementační části práce.
 
 
 %%% Sekce - Nákupní košík
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \section{Nákupní košík}
 \label{sec:specifikace-nakupni-kosik}
@@ -190,9 +214,12 @@ Tato podkapitola se zabývá popisem hlavním funkčností a požadavků na nák
 \end{figure}
 
 %%% Podsekce - Správa dat
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Správa dat}
-\label{sec:specifikace-nakupni-kosik-sprava}
+\label{subsec:specifikace-nakupni-kosik-sprava}
 Nákupní košík by z datové perspektivy měl být implementován jako objekt, který uchovává informace o všech vybraných sedačkách a vstupenkách.
 Datová struktura a uchovávaná data uvnitř daného objektu o stavu nákupního košíku by měla být jasně definovaná a dostupná ve formátu vyhovujícímu užití aplikace.
 Díky těmto datům by mělo být vždy možné zrekonstruovat stav nákupního košíku a to i v případě, že uživatel opustí stránku nebo zavře prohlížeč.
@@ -200,12 +227,17 @@ Díky těmto datům by mělo být vždy možné zrekonstruovat stav nákupního 
 Touto problematikou se bude primárně zabývat kapitola~\ref{sec:implementace-kosik}, ve které bude podrobně popsána datavá struktura a finální funkčnost nákupního košíku.
 
 %%% Podsekce - Přehled obsahu košíku
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Přehled obsahu košíku}
-\label{sec:specifikace-nakupni-kosik-prehled}
-Pro zákazníka nákupní košík slouží primárně k přehlednému zobrazení všech vybraných položek, které budou tvořit jeho objednávku. V případně této webové aplikace se primárně jedná o vstupenky a zarezervované sedačky.
+\label{subsec:specifikace-nakupni-kosik-prehled}
+Pro zákazníka nákupní košík slouží primárně k přehlednému zobrazení všech vybraných položek, které budou tvořit jeho objednávku.
+V případně této webové aplikace se primárně jedná o vstupenky a zarezervované sedačky.
 
-Zákazník by měl být schopen jednoduše zjistit, jaké položky si objednává a jaké mají parametry. Seznam všech těchto položek posléze tvoří celkový přehled nákupního košíku, který umožňuje zákazníkovi zkontrolovat jeho výběr a provést případné změny před dokončením objednávky.
+Zákazník by měl být schopen jednoduše zjistit, jaké položky si objednává a jaké mají parametry.
+Seznam všech těchto položek posléze tvoří celkový přehled nákupního košíku, který umožňuje zákazníkovi zkontrolovat jeho výběr a provést případné změny před dokončením objednávky.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{\FIGDIR/ticketmaster-cart-overview}
@@ -214,7 +246,8 @@ Zákazník by měl být schopen jednoduše zjistit, jaké položky si objednáv�
     \label{fig:ticketmaster-cart-overview}
 \end{figure}
 
-Nákupní košík by zároveň měl zobrazit přehled cen jednotlivých položek a celkovou cenu objednávky včetně všech daní a dalších případních poplatků. Tato funkcionalita zákazníkovi zajišťuje naprostou transparentnost v nabízených službách a umožňuje mu předem zkontrolovat celkovou cenu objednávky.
+Nákupní košík by zároveň měl zobrazit přehled cen jednotlivých položek a celkovou cenu objednávky včetně všech daní a dalších případních poplatků.
+Tato funkcionalita zákazníkovi zajišťuje naprostou transparentnost v nabízených službách a umožňuje mu předem zkontrolovat celkovou cenu objednávky.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{\FIGDIR/ticketmaster-cart-summary}
@@ -225,14 +258,20 @@ Nákupní košík by zároveň měl zobrazit přehled cen jednotlivých položek
 
 
 %%% Podsekce - Rezervace míst
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Rezervace míst}
-\label{sec:specifikace-nakupni-kosik-rezervace}
-V rámci nákupního procesu si zákazník vybírá místa, které jsou dostupná a při jejich výběru se zákaznikovi přidají do nákupního košíku. Tato vybraná místa zákazníkem by se měla rezervovat, aby se předešlo nepříjemným situacím při dokončení objednávky, kdy zákazník zjistí, že jeho vybrané místo je již obsazené.
+\label{subsec:specifikace-nakupni-kosik-rezervace}
+V rámci nákupního procesu si zákazník vybírá místa, které jsou dostupná a při jejich výběru se zákaznikovi přidají do nákupního košíku.
+Tato vybraná místa zákazníkem by se měla rezervovat, aby se předešlo nepříjemným situacím při dokončení objednávky, kdy zákazník zjistí, že jeho vybrané místo je již obsazené.
 
-V případně aplikace, která se primárně zaměřuje na sedadlový prodej vstupenek je tato funkcionalita naprosto esenciální. Zákazník by měl mít možnost vybrat si místa, která jsou v danou chvíli dostupná a při jejich výběru by se měla pomocí rezervačnícho mechanismu v rámci vytvářené objednávky zákazníkovi zarezervovat a garantovat mu v případně dokonení objednávky jejich dostupnost.
+V případně aplikace, která se primárně zaměřuje na rezervací míst při prodeji vstupenek je tato funkcionalita naprosto esenciální.
+Zákazník by měl mít možnost vybrat si místa, která jsou v danou chvíli dostupná a při jejich výběru by se měla pomocí rezervačnícho mechanismu v rámci vytvářené objednávky zákazníkovi zarezervovat a garantovat mu v případně dokonení objednávky jejich dostupnost.
 
-Tento rezervační systém by měl dále implementovat funkčnost časového omezení rezervace, která zajistí uvolnění rezervovaných míst po uplynutí určitého časového limitu. Tato funkčnost je velmi důležitá pro zajištění dostupnosti míst pro všechny zákazníky a zabraňuje zarezervování sedadel, která by nebyla zakoupena například z důvodu opuštění nákupního procesu zákazníkem.
+Tento rezervační systém by měl dále implementovat funkčnost časového omezení rezervace, která zajistí uvolnění rezervovaných míst po uplynutí určitého časového limitu.
+Tato funkčnost je velmi důležitá pro zajištění dostupnosti míst pro všechny zákazníky a zabraňuje zarezervování sedadel, která by nebyla zakoupena například z důvodu opuštění nákupního procesu zákazníkem.
 
 V rámci tohoto rezervačního mechanismu by také mělo být zákazníkovi jasně zobrazeno, že má určitý časový limit, ve rámci kterého musí svou objednávku dokončit, jinak se jeho rezervace uvolní a bude si muset místa vybrat znovu.
 
@@ -261,6 +300,9 @@ V rámci tohoto rezervačního mechanismu by také mělo být zákazníkovi jasn
 \end{figure}
 
 %%% Sekce - Dokončení objednávky
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \section{Dokončení objednávky}
 \label{sec:specifikace-dokonceni-objednavky}
@@ -272,10 +314,14 @@ Tato podkapitola se bude těmito kroky zabývat a bude se snažit popsat jejich 
 Avšak je nutné nejprve uvést, že následující funkčnosti jsou v práci uvedené pouze z důvodu kompletnosti představení celého procesu nákupu vstupenek s rezervací míst a záměrně nebudou v rámci praktické části plně implementovány nýbrž pouze orientačně využity – a to z důvodu toho, že se jedná již převážně o funkčnosti a procesy na straně backednového systému a ne frontendového, který je předmětem této práce.
 
 %%% Podsekce - Osobní informace
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Osobní informace}
-\label{sec:specifikace-dokonceni-objednavky-osobni-informace}
-Pro účely dokončení objednávky je nutné, aby si zákazník vyplnil své osobní informace, které jsou potřebné pro vytvoření objednávky a následné doručení vstupenek. Tyto informace by měly obsahovat minimálně následující údaje:
+\label{subsec:specifikace-dokonceni-objednavky-osobni-informace}
+Pro účely dokončení objednávky je nutné, aby si zákazník vyplnil své osobní informace, které jsou potřebné pro vytvoření objednávky a následné doručení vstupenek.
+Tyto informace by měly obsahovat minimálně následující údaje:
 
 \begin{itemize}
     \item Jméno a příjmení
@@ -285,15 +331,21 @@ Pro účely dokončení objednávky je nutné, aby si zákazník vyplnil své os
 
 Tyto informace jsou nezbytné například pro odeslání potvrzení objednávky, doručení vstupenek či poskytování případné podpory zákazníkům.
 
-Někteří poskytovatelé stále nabízí doručení fyzických vstupenek na adresu zákazníka, nicméně tento způsob je spíše přežitek. V dnešní moderní době je výhodnější i ekologičtější využít možnost digitálních vstupenek, které zákazník obdrží v elektronické podobě například prostřednictvím emailu či SMS zprávy.
+Někteří poskytovatelé stále nabízí doručení fyzických vstupenek na adresu zákazníka, nicméně tento způsob je spíše přežitek.
+V dnešní moderní době je výhodnější i ekologičtější využít možnost digitálních vstupenek, které zákazník obdrží v elektronické podobě například prostřednictvím emailu či SMS zprávy.
 
-V rámci dokončení objednávky je také časté vybídnutí zákazníka k dokončení registrace na dané platformě či službě, přes kterou vstupenky nakupuje. Tato registrace je většinou dobrovolná, ale může být i povinná, pokud chce zákazník využít některé z výhod, které jsou s touto registrací spojeny.
+V rámci dokončení objednávky je také časté vybídnutí zákazníka k dokončení registrace na dané platformě či službě, přes kterou vstupenky nakupuje.
+Tato registrace je většinou dobrovolná, ale může být i povinná, pokud chce zákazník využít některé z výhod, které jsou s touto registrací spojeny.
 
 %%% Podsekce - Výběr platební metody
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Výběr platební metody}
-\label{sec:specifikace-dokonceni-objednavky-vyber-platebni-metody}
-Proces dokončení objednávky by v posledním kroku měl zákazníkovi nabídnout několik možností platby. Nejčastěji se jedná o platební metody jako:
+\label{subsec:specifikace-dokonceni-objednavky-vyber-platebni-metody}
+Proces dokončení objednávky by v posledním kroku měl zákazníkovi nabídnout několik možností platby.
+Nejčastěji se jedná o platební metody jako:
 
 \begin{itemize}
     \item platba kartou
@@ -310,7 +362,7 @@ Proces dokončení objednávky by v posledním kroku měl zákazníkovi nabídno
     \label{fig:goout-payment-methods}
 \end{figure}
 
-Na obrázku \ref{fig:goout-payment-methods} je vidět výběr platební metody ve službě GoOut.net, která nabízí výše zmíněné platební metody\footnote{platební metoda Apple Pay zde není uvedena, jelikož je dostupná pouze v rámci prohlížečů Safari: \url{https://support.apple.com/guide/iphone/use-apple-pay-in-apps-app-clips-and-safari-iph67e89f7c8/ios}} spolu i dalšími jako například platba přes službu Twisto či Sodexo a další jiné benefitní programy.
+Na obrázku~\ref{fig:goout-payment-methods} je vidět výběr platební metody ve službě GoOut.net, která nabízí výše zmíněné platební metody\footnote{platební metoda Apple Pay zde není uvedena, jelikož je dostupná pouze v rámci prohlížečů Safari: \url{https://support.apple.com/guide/iphone/use-apple-pay-in-apps-app-clips-and-safari-iph67e89f7c8/ios}} spolu i dalšími jako například platba přes službu Twisto či Sodexo a další jiné benefitní programy.
 
 Pro účely platby kartou je nutné, aby byl zákazník přesměrován na platební bránu, která je schopna tuto platbu zpracovat.
 Většinou se jedná o platební brány třetích stran, které jsou schopny zpracovat platby z různých platebních karet a poskytovatelů.
@@ -347,16 +399,20 @@ Platby přes bankovní převod mohou být pro poskytovatele řešení prodeje vs
 Platební brány si totiž účtují poplatky za zpracování každé z plateb a to nejčastěji v režimu pevného sazebníku či MIF++ modelu\footnote{někdy také označován jako Interchange++}, který rozděluje poplatky mezi vydavatelskou bankou, karetním schématem (např.\ Visa, MasterCard) a platební bránou.
 
 Do nedávna byla platba bankovním převodem pro zákazníky stále méně oblíbená, jelikož bylo nutné počkat na připsání peněz na účet poskytovatele, což mohlu trvat i několik dní.
-V dnešní době je však možné využít tzv. instantní platby, které jsou schopny převést peníze mezi účty různých bank během několika sekund.
+V dnešní době je však možné využít tzv.
+instantní platby, které jsou schopny převést peníze mezi účty různých bank během několika sekund.
 V České republice aktuálně podporuje instantní platby již několik bank, jako například Komerční banka, a.s., MONETA Money Bank, a.s.\ či Fio banka, a.s.\ a další\footnote{kompletní seznam účastníků okamžitých plateb dle ČNB dostupný z: \url{https://www.cnb.cz/export/sites/cnb/cs/platebni-styk/.galleries/certis/download/seznam_okamzite_platby.pdf}}.
 
-Pro účely této práce, jak bylo již zmíněno na začátku podsekce \ref{sec:specifikace-dokonceni-objednavky}, bude backendový systém celou funkčnost plateb pouze simulovat a nebude se snažit o integraci s žádnou platební bránou.
+Pro účely této práce, jak bylo již zmíněno na začátku podsekce~\ref{sec:specifikace-dokonceni-objednavky}, bude backendový systém celou funkčnost plateb pouze simulovat a nebude se snažit o integraci s žádnou platební bránou.
 
 
 %%% Podsekce - Souhrn objednávky
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Souhrn objednávky}
-\label{sec:specifikace-dokonceni-objednavky-souhrn-objednavky}
+\label{subsec:specifikace-dokonceni-objednavky-souhrn-objednavky}
 Po vyplnění všech potřebných informací a výběru platební metody by zákazníkovi měl být před finálním potvrzením objednávky zobrazen její souhrn.
 Tento souhrn zákazníkovi umožní zkontrolovat, zda jsou všechny údaje správně vyplněné a zda je vše v pořádku.
 Pokud zákazník zjistí, že je něco špatně, měl by mít možnost vrátit se zpět a údaje opravit.
@@ -365,9 +421,12 @@ Pokud je vše v pořádku, měl by mít možnost objednávku potvrdit a přejít
 Součástí potrvzení objednávky také často bývá zaškrtnutí souhlasu se zpracováním osobních údajů a obchodních podmínek či i případně dalších informací, jako například zasílání novinek a reklamních nabídek na e-mailovou adresu zákazníka.
 
 %%% Podsekce - Vytvoření objednávky a potvrzení
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Vytvoření objednávky a potvrzení}
-\label{sec:specifikace-dokonceni-objednavky-vytvoreni-objednavky-a-potvrzeni}
+\label{subsec:specifikace-dokonceni-objednavky-vytvoreni-objednavky-a-potvrzeni}
 Po potvrzení objednávky by měla být vytvořena objednávka v databázi a zákazníkovi by mělo být zobrazeno potvrzení o jejím vytvoření.
 Na základě vybrané platbní metody by měl být dále přesměrován k jejímu zaplacení a posléze zpět na detail objednávky s potrvzením o zaplacení.
 Při úspěšné platbě by zákazníkovi měl systém doručit zakoupené vstupenky v elektronické podobě, například v podobě PDF souboru, který bude obsahovat vstupenky ve formátu QR kódu.
