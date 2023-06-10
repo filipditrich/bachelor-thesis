@@ -1,4 +1,7 @@
 %%%%% Kapitola 4 - Návrh uživatelského rozhraní
+%%%%%%% Wording: ⏳
+%%%%%%% Styling: ⏳
+%%%%%%% References: ⏳
 %%%%% ------------------------------------------------------------
 \chapter{Návrh uživatelského rozhraní}
 \label{ch:navrh-uzivatelskeho-rozhrani}
@@ -26,6 +29,9 @@ Následně budou analyzovány specifikace prototypu z kapitoly~\ref{ch:specifika
 Závěr této kapitoly bude věnován návrhu interaktivního plánu sedaček, který je klíčovým \ac{ui} prvkem vyvýjeného prototypu aplikace.
 
 %%% Sekce - Principy návrhu uživatelského rozhraní
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \section{Principy návrhu uživatelkého rozhraní}
 \label{sec:navrh-principy}
@@ -33,27 +39,33 @@ Návrh uživatelského rozhraní je poměrně rozsáhlá disciplína, která se 
 Při návrhu \ac{ui} je důležité dodržovat určité principy, které zajišťují optimální uživatelskou zkušenost.
 Tato sekce shrnuje některé základní principy návrhu \ac{ui} a posuzuje jejich implikace v kontextu aplikace pro prodej vstupenek s rezervací míst.
 
-\textbf{Konzistence}: Tento princip prosazuje zachování jednotnosti napříč všemi prvky \ac{ui}.
+\textbf{Konzistence}\\
+Tento princip prosazuje zachování jednotnosti napříč všemi prvky \ac{ui}.
 Konzistence se projevuje v použití podobných prvků, akcí a designu napříč celým rozhraním.
 Například pokud určitá barva značí interaktivní prvek na plánu sedadel, stejná barva by měla být použita i pro značení interaktivních prvků jinde v rámci aplikace.
 Tímto se zvyšuje předvídatelnost, což uživatelům usnadňuje orientaci a navigaci v rozhraní.
 
-\textbf{Uživatel v kontrole}: Základním principem návrhu \ac{ui} je umožnit uživateli cítit se vždy v kontrole nad produktem.
+\textbf{Pocit kontroly}\\
+Základním principem návrhu \ac{ui} je umožnit uživateli cítit se vždy v kontrole nad produktem.
 Toho lze dosáhnout návrhem transparentního a intuitivního systému, ve kterém uživatel vždy ví, kde se nachází a jak postupovat.
 V kontextu aplikace pro prodej vstupenek to může znamenat poskytnutí jasného a zřejmého způsobu, jak uživatelé mohou přejít k výběru sedadla, přidání do košíku a dokončení objednávky.
 
-\textbf{Zpětná vazba}: Zpětná vazba je klíčovým aspektem každé interakce, protože potvrzuje nebo informuje  uživatele o vykonaných akcích.
+\textbf{Zpětná vazba}\\
+Zpětná vazba je klíčovým aspektem každé interakce, protože potvrzuje nebo informuje  uživatele o vykonaných akcích.
 Vizuální indikátory, jako je zvýraznění vybraného sedadla nebo potvrzovací zpráva při přidání vstupenky do košíku, poskytují uživateli okamžitou zpětnou vazbu.
 Tím se snižuje nejistota a zvyšuje se důvěra uživatele v rozhraní.
 
-\textbf{Jednoduchost}: Návrh \ac{ui} by měl směřovat k jednoduchosti.
+\textbf{Jednoduchost}\\
+Návrh \ac{ui} by měl směřovat k jednoduchosti.
 Čím méně úsilí musí uživatel vynaložit na pochopení rozhraní, tím lepší bude celková uživatelská zkušenost.
 Čisté, jednoduché rozhraní s jasným zaměřením na funkčnost snižuje kognitivní zátěž a zvyšuje použitelnost.
 
-\textbf{Prevence a řešení chyb}: Chyby jsou nevyhnutelné v jakékoli interakci, ale dobře navržené \ac{ui} může zabránit většině uživatelských chyb nebo zjednodušit jejich řešení.
+\textbf{Prevence a řešení chyb}\\
+Chyby jsou nevyhnutelné v jakékoli interakci, ale dobře navržené \ac{ui} může zabránit většině uživatelských chyb nebo zjednodušit jejich řešení.
 To může znamenat například zakázání tlačítka \textit{Pokračovat} dokud není vybráno sedadlo nebo zobrazení jasných a užitečných chybových zpráv, když něco selže.
 
-\textbf{Afordance a signifikance}: \foreign{Afordance} se vztahuje k vlastnosti objektu, která naznačuje, jak se má používat.
+\textbf{Afordance a signifikance}\\
+\foreign{Afordance} se vztahuje k vlastnosti objektu, která naznačuje, jak se má používat.
 \foreign{Signifikance} jsou vizuálními nápovědami k témto \foreign{afordancím}.
 Například sedadlo na plánu sedadel může být navrženo tak, aby naznačovalo, že na něj lze kliknout (\foreign{afordance}), a změna kurzoru při najetí na sedadlo (\foreign{signifikance}) může tuto zprávu posílit.
 
@@ -62,15 +74,27 @@ Tyto principy řídí rozhodnutí v rámci návrhu a pomáhají návrhu \ac{ui} 
 Další sekce se zabývá tím, jak lze hierarchii Maslowa aplikovat pro další zlepšení uživatelsky orientovaného návrhu.
 
 %%% Sekce - Aplikovaná psychologie na návrh uživatelských rozhraní
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \section{Aplikovaná psychologie na UI/UX}
 \label{sec:navrh-psychologie}
 
-\epigraph{\textit{``Some people say, "Give the customers what they want." But that's not my approach. Our job is to figure out what they're going to want before they do.''}}{-- Steve Jobs}
+\setlength\epigraphwidth{0.8\textwidth}
+\epigraph{\textit{Some people say, ``Give the customers what they want.`` But that's not my approach. Our job is to figure out what they're going to want before they do.}}{-- Steve Jobs}
 
 Proces návrhu uživatelského rozhraní se netýká pouze estetiky nebo funkcionality v izolaci.
-Ve skutečnosti, k vytvoření rozhraní, které skutečně rezonuje s uživateli, si lze vypůjčit koncept z psychologie - Maslowovu hierarchii potřeb.
+Ve skutečnosti, k vytvoření rozhraní, které skutečně rezonuje s uživateli, si lze vypůjčit koncept z psychologie - \textbf{Maslowovu hierarchii potřeb}.
 Tato hierarchie, obvykle vizualizovaná jako pyramidová struktura, ilustruje cestu jednotlivce k seberealizaci a naplnění, začínající od základních fyziologických potřeb až po složitější emoční a psychologické potřeby.
+
+%%% Podsekce - Maslowova hierarchie potřeb
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsection{Maslowova hierarchie potřeb}
+\label{subsec:navrh-psychologie-maslow}
 
 \textit{Maslowova hierarchie potřeb} je teorie psychologa Abrahama Maslowa, která se snaží vysvětlit, co motivuje lidi.
 Maslow tvrdil, že lidé mají potřeby, které se snaží uspokojit, ale některé z nich jsou naléhavější než jiné.
@@ -94,6 +118,13 @@ Maslow rozdělil lidské potřeby do pěti základních úrovní, které jsou zn
 
 Jak to tedy ale souvisí s návrhem \ac{ui} a zejména s návrhem aplikace pro prodej vstupenek?
 
+%%% Podsekce - Hierarchie potřeb v návrhu uživatelského rozhraní
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsection{Hierarchie potřeb v návrhu uživatelského rozhraní}
+\label{subsec:navrh-psychologie-hierarchie}
 \textbf{Maslowova hierarchie potřeb} může být aplikována na návrh \ac{ui} tak, že každá úroveň hierarchie představuje jeden základní aspekt návrhu \ac{ui}.
 
 V roce 2010 navrhl Steven Bradley v článku \textit{Designing For A Hierarchy Of Needs} podobnou hierarchii specificky pro design, se pěti odpovídajícími úrovněmi znázorněnými na obrázku~\ref{fig:design-hierarchy-of-needs}.\cite{bradley_hierarchy_of_needs}
@@ -105,23 +136,28 @@ V roce 2010 navrhl Steven Bradley v článku \textit{Designing For A Hierarchy O
     \label{fig:design-hierarchy-of-needs}
 \end{figure}
 
-\textbf{Funkčnost}: Na základě pyramidy jsou základní fyziologické potřeby.
+\textbf{Funkčnost}\\
+Na základě pyramidy jsou základní fyziologické potřeby.
 V kontextu návrhu \ac{ui} to znamená základní funkčnost.
 Aplikace musí fungovat tak, jak se očekává, aby si uživatelé mohli vybrat sedadlo, přidat vstupenku do košíku a dokončit proces objednávky bez jakýchkoli problémů.
 Základní funkčnost musí být spolehlivá a robustní.
 
-\textbf{Spolehlivost}: Další úroveň pyramidy je bezpečnost, která se v návrhu \ac{ui} týká spolehlivosti.
+\textbf{Spolehlivost}\\
+Další úroveň pyramidy je bezpečnost, která se v návrhu \ac{ui} týká spolehlivosti.
 Rozhraní by mělo být navrženo tak, aby se uživatelé cítili bezpečně a sebevědomě při interakci s ním.
 Poskytování jasných pokynů, okamžité zpětné vazby a potvrzení o úspěšných akcích (například přidání vstupenky do košíku) přispívá k pocitu bezpečí a použitelnosti.
 
-\textbf{Použitelnost}: Střední část pyramidy pokrývá sociální potřeby, které se v \ac{ui} termínech rovnají uživatelské spokojenosti.
+\textbf{Použitelnost}\\
+Střední část pyramidy pokrývá sociální potřeby, které se v \ac{ui} termínech rovnají uživatelské spokojenosti.
 Esteticky příjemné rozhraní, personalizovaný uživatelský zážitek a interaktivní prvky (jako interaktivní plán sedadel) mohou významně zvýšit uživatelskou spokojenost.
 
-\textbf{Odbornost}: Potřeby sebeúcty zahrnují touhu po uznání a respektu.
+\textbf{Odbornost}\\
+Potřeby sebeúcty zahrnují touhu po uznání a respektu.
 V kontextu aplikace pro prodej vstupenek by to mohlo znamenat přidání funkcí, které překračují očekávání uživatelů a zpříjemňují jim zážitek.
 Může se jednat o něco tak jednoduchého, jako je blahopřání po úspěšném nákupu, nebo vizuální animace při výběru sedadla.
 
-\textbf{Kreativita}: Na vrcholu pyramidy se nachází seberealizace, která se týká realizace osobního potenciálu a hledání osobního růstu a vrcholných zážitků.
+\textbf{Kreativita}\\
+Na vrcholu pyramidy se nachází seberealizace, která se týká realizace osobního potenciálu a hledání osobního růstu a vrcholných zážitků.
 Uživatelské rozhraní by mohlo přispět k této potřebě tím, že uživatelům umožní kreativně řešit problémy a dosáhnout svých cílů.
 Například nabízení návrhů na nejlepší dostupná sedadla nebo podobných akcí může uživatele posílit a zlepšit jejich zážitek.
 
@@ -132,81 +168,13 @@ Při postupu v hierarchii se budou zkoumat různé metody, jak zvýšit uživate
 Cílem na vrcholu tohoto procesu je navrhnout rozhraní, které vyvažuje praktičnost a uživatelskou přívětivost, zatímco zároveň zajišťuje vizuální přitažlivost a emoční zapojení.
 To povede k přínosnějšímu, uspokojivějšímu a úspěšnějšímu uživatelskému zážitku.
 
-Další sekce se bude zabývat nástroji dostupnými pro návrh \ac{ui} a o důvodech pro výběr konkrétního nástroje pro tento projekt.
+V předchozích částech byly prozkoumány základní principy návrhu uživatelského rozhraní (\ac{ui}).
+Významná část tohoto průzkumu se soustředila na to, jak lze Maslowovu hierarchii potřeb použít v návrhu uživatelského rozhraní, což slouží jako cenný rámec pro vytváření intuitivní aplikace zaměřené na uživatele.
+Zvolený způsob designu, zaměřený na fyziologické potřeby uživatele až po seberealizaci, zajišťuje, že aplikace slouží nejen svému funkčnímu účelu, ale také vytváří pro uživatele poutavý a uspokojující zážitek.
 
-%%% TODO: Sekce - Nástroje pro návrh
-%%% --------------------------------------------------------------
-\section{Nástroje pro návrh}
-\label{sec:navrh-ui-nastroje}
-V oblasti návrhu uživatelského rozhraní má návrhář k dispozici širokou škálu nástrojů.
-Tyto nástroje usnadňují nízkoúrovňové i vysokoúrovňové prototypování, přičemž každý z nich představuje jedinečnou sadu vlastností přispívajících k tvorbě, spolupráci a testování návrhů.
-Tato sekce stručně popisuje tři nejčastěji používané nástroje pro návrh uživatelského rozhraní, a to Figma, Adobe XD a Sketch.
-
-%%% TODO: Podsekce - Figma
-%%% --------------------------------------------------------------
-\subsection{Figma}
-\label{subsec:navrh-ui-nastroje-figma}
-Figma je nástroj pro návrh uživatelského rozhraní, který funguje v prohlížeči a je založen na cloudových technologiích.
-Jeho hlavními výhodami jsou platformní nezávislost a snadná spolupráce.
-Figma je také vybavena sadou funkcí, které usnadňují návrh uživatelského rozhraní, jako je vektorové kreslení, prototypování a předávání vývojářům.
-\cite{figma}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{\FIGDIR/figma}
-    \caption{Ukázka nástroje Figma\cite{figma}}
-    \label{fig:figma}
-\end{figure}
-
-%%% TODO: Podsekce - Adobe XD
-%%% --------------------------------------------------------------
-\subsection{Adobe XD}
-\label{subsec:navrh-ui-nastroje-adobe-xd}
-Adobe XD je nástroj od společnosti Adobe pro návrh uživatelského rozhraní, který funguje na platformách Windows i MacOS.
-Jeho hlavními výhodami jsou jednoduché uživatelské rozhraní, prototypování a snadná integrace s ostatními produkty Adobe Suite.
-\cite{adobe-xd}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{\FIGDIR/adobe-xd}
-    \caption{Ukázka nástroje Adobe XD\cite{adobe-xd}}
-    \label{fig:adobe-xd}
-\end{figure}
-
-%%% TODO: Podsekce - Sketch
-%%% --------------------------------------------------------------
-\subsection{Sketch}
-\label{subsec:navrh-ui-nastroje-sketch}
-Sketch je nástroj pro návrh uživatelského rozhraní, který funguje výhradně na platformě MacOS.
-Je to vektorový nástroj, který je chválen pro svou jednoduchost a rychlost.
-Je užitečný při tvorbě rozhraní, webových stránek a ikon, i když absence vestavěných prototypovacích schopností může být pro některé návrháře omezujícím faktorem.
-\cite{sketch}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{\FIGDIR/sketch}
-    \caption{Ukázka nástroje Sketch\cite{sketch}}
-    \label{fig:sketch}
-\end{figure}
-
-%%% TODO: Podsekce - Výběr nástroje
-%%% --------------------------------------------------------------
-\subsection{Výběr nástroje}
-\label{subsec:navrh-ui-nastroje-vyber}
-Po podrobném zhodnocení byl pro návrh uživatelského rozhraní vyvíjené aplikace na prodej vstupenek s rezervací míst vybrán nástroj \textbf{Figma} z několika důvodů:
-
-\textbf{Cloudově založený}: Figma umožňuje snadný přístup k návrhu z jakéhokoli zařízení, čímž odpadá nutnost instalace jakéhokoliv softwaru.
-Nezáleží tedy ani na operačním systému, postačí pouze webový prohlížeč a připojení k internetu.
-
-\textbf{Spolupráce v reálném čase}: I když se jedná o samostatný projekt, funkce spolupráce v reálném čase se ukazuje jako výhodná při poptávání zpětné vazby od možných budoucích zákazníků nebo konzultanta, čímž se zefektivňuje proces návrhu.
-
-\textbf{Prototypování}: Rozsáhlé prototypovací schopnosti Figma usnadňují tvorbu interaktivních prototypů s vysokou kvalitou a důvěryhodností.
-
-\textbf{Bezplatný}: Figma nabízí bezplatný plán, který je dostatečný pro většinu projektů.
-Jedná se tedy o velmi výhodné řešení pro projekt, který není komerční či pro začínající návrháře.
-
-\textbf{Vlastní zkušenost}: Osobně jsem měl možnost pracovat se všemi třemi nástroji a Figma se ukázala jako nejvhodnější pro tento projekt.
-Zejména z důvodu jednoduchého uživatelského rozhraní, lehkosti použití a rychlosti prototypování.
+Kromě návrhu esteticky příjemného rozhraní je důležité vytvořit systém, který skutečně vyhovuje potřebám uživatelů.
+Konečným cílem je poskytnout uživatelům intuitivní, bezproblémový a příjemný zážitek při navigaci v aplikaci, výběru sedadel a nákupu vstupenek.
+Aby tohoto mohlo být dosaženo, se následující kapitola ponoří do efektivního nástroje v designu \ac{ui}/\ac{ux} známého jako „Uživatelské příběhy“.
 
 %%% Sekce - Uživatelské příběhy
 %%% --------------------------------------------------------------
@@ -221,7 +189,10 @@ Uživatelské příběhy, z anglického \foreign{User Stories}, jsou stručné, 
 Tyto příběhy kladou důraz na to, čeho uživatelé chtějí dosáhnout, podporují empatii a podporují návrhový proces, který se zaměřuje na uživatele.
 Porozumění roli uživatelských příběhů při návrhu \ac{ui} webového řešení pro prodej vstupenek je klíčové pro efektivní splnění potřeb koncových uživatelů.
 
-%%% TODO: Podsekce - Co jsou User Stories
+%%% Podsekce - Co jsou User Stories
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Co jsou uživatelské příbehy}
 \label{subsec:navrh-ui-uzivatelske-pribehy-co-jsou}
@@ -251,7 +222,10 @@ Pomáhají porozumět potencionálním uživatelům –~návštěvníkům událo
 
 Následující sekce se zabývá tím, jak lze uživatelské příběhy konkrétně použít k navrhování uživatelského rozhraní.
 
-%%% TODO: Podsekce - Psaní efektivních uživatelských příběhů
+%%% Podsekce - Psaní efektivních uživatelských příběhů
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Psaní efektivních uživatelských příběhů}
 \label{subsec:navrh-ui-uzivatelske-pribehy-psani-efektivnich}
@@ -283,7 +257,10 @@ Příkladem uživatelského příběhu pro platformu prodeje vstupenek může b�
 Tento uživatelský příběh je nezávislý na ostatních uživatelských příbězích, je jednoduchý a snadno pochopitelný, poskytuje hodnotu uživateli a je snadno testovatelný.
 Při dodržení tohoto principu mohou uživatelské příběhy poskytnout cenný náhled do toho, jak by měla platforma prodeje vstupenek fungovat z pohledu uživatele.
 
-%%% TODO: Podsekce - Uživatelské příběhy aplikace
+%%% Podsekce - Uživatelské příběhy aplikace
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Uživatelské příběhy aplikace}
 \label{subsec:navrh-ui-uzivatelske-pribehy-aplikace}
@@ -360,13 +337,269 @@ Pro tento příběh lze sestrojit kritéria přijatelnosti následovně:
 \end{enumerate}
 
 Z důvodu zachování přehlednosti a jednoduchosti, ačkoliv by mohlo být vytvořeno více uživatelských příběhů, budou v této práci použity pouze tyto čtyři hlavní uživatelské příběhy.
-Tyto příběhy, budou v následující kapitole použity jako základní stavební kameny pro návrh uživatelského rozhraní a jeho komponent v rámci vyvíjené webové aplikace.
+Tyto příběhy, budou v dále použity jako základní stavební kameny pro návrh uživatelského rozhraní a jeho komponent v rámci vyvíjené webové aplikace.
 
+Pro to bude ale nejdříve nutné vybrat vhodný návrhový nástroj, který bude schopen tyto příběhy transformovat do funkčního designu.
+Další sekce se nyní bude zabývat nástroji dostupnými pro návrh \ac{ui} a bude diskutováno o důvodech výběru konkrétního nástroje pro tento projekt.
 
-%%% Sekce - Transformace uživatelských příběhů
+%%% Sekce - Nástroje pro návrh
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
-\section{Transformace uživatelských příběhů}
-\label{sec:navrh-ui-transformace-uzivatelskych-pribehu}
+\section{Nástroje pro návrh}
+\label{sec:navrh-ui-nastroje}
+Při navrhování efektivního a efektivního uživatelského rozhraní hraje výběr vhodného návrhového nástroje zásadní roli.
+Vybraný nástroj musí mít schopnosti transformovat koncepční nápady a uživatelské příběhy do funkčního designu při dodržení nejlepších postupů a standardů.
+Všechny tři široce uznávané nástroje v oblasti návrhu uživatelského rozhraní, jmenovitě \foreign{Adobe XD}, \foreign{Figma} a \foreign{Sketch}, nabízejí jedinečnou sadu funkcí a mají své vlastní silné a slabé stránky.
+
+Následující části poskytují přehled těchto tří nástrojů s podrobným popisem jejich klíčových funkcí, silných a slabých stránek.
+Po srovnávací analýze bude zdůvodněn zvolený nástroj pro tento projekt.
+
+%%% Podsekce - Adobe XD
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsection{Adobe XD}
+\label{subsec:navrh-ui-nastroje-adobe-xd}
+\foreign{Adobe XD (Experience Design)} je vektorový nástroj vyvinutý a publikovaný společností \foreign{Adobe Inc.}
+Primárně se používá pro návrh a prototypování \ac{ux} pro webové a mobilní aplikace.
+\foreign{Adobe XD} usnadňuje celý proces návrhu od nápadu a návrhu po prototypování a náhled \ac{ux}~\cite{adobe-xd}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{\FIGDIR/adobe-xd-logo}
+    \caption{Logo nástroje \foreign{Adobe XD}\cite{adobe-xd}}
+    \label{fig:adobe-xd-logo}
+\end{figure}
+
+\foreign{Adobe XD}, jehož logo je zobrazeno na obrázku~\ref{fig:adobe-xd-logo}, je součástí \foreign{Adobe Creative Cloud}, který se integruje s dalšími nástroji \foreign{Adobe}, jako je \foreign{Photoshop} a \foreign{Illustrator}, a nabízí bezproblémovou kompatibilitu souborů.
+Mezi jeho klíčové funkčnosti patří:
+\begin{itemize}
+    \item \textbf{Repeat Grid}: Tato funkce umožňuje návrhářům replikovat designové prvky, což šetří čas při návrhu složitých \ac{ui}.
+    \item \textbf{Prototypování a animace}: \foreign{Adobe XD} poskytuje funkce pro vytváření interaktivních prototypů s lehkostí.
+    \item \textbf{Voice Prototyping}: \foreign{Adobe XD} poskytuje prototypování hlasu, které lze použít pro návrh hlasových asistentů a dalších hlasem ovládaných aplikací.
+    \item \textbf{Kolaborace}: \foreign{Adobe XD} podporuje kolaboraci v reálném čase, což umožňuje více členů týmu pracovat na stejném návrhu současně.
+    \item \textbf{Integrace}: \foreign{Adobe XD} se integruje s dalšími nástroji v sadě \foreign{Adobe Creative Cloud} a také s pluginy třetích stran, což poskytuje širokou škálu dalších funkcí.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{\FIGDIR/adobe-xd-example}
+    \caption{Ukázka rozhraní nástroje \foreign{Adobe XD}\cite{adobe-xd}}
+    \label{fig:adobe-xd-example}
+\end{figure}
+
+\textbf{Silné stránky:}
+\begin{itemize}
+    \item Bezproblémová integrace s dalšími nástroji \foreign{Adobe}.
+    \item Výkonné možnosti prototypování a animace.
+    \item Schopnost navrhovat pro různé platformy včetně webu, mobilu, tabletu a dalších.
+    \item Silná podpora komunity a zdrojů pro učení.
+\end{itemize}
+
+\textbf{Slabé stránky:}
+\begin{itemize}
+    \item Omezená podpora pro složité animace ve srovnání s některými jinými nástroji.
+    \item Je vyžadováno předplatné služby \foreign{Adobe Creative Cloud}, což může být pro některé uživatele drahé.
+    \item Možnosti kolaborace jsou dobré, ale mohou být omezenější než v některých jiných nástrojích.
+\end{itemize}
+
+
+%%% Podsekce - Figma
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsection{Figma}
+\label{subsec:navrh-ui-nastroje-figma}
+\foreign{Figma} je webový nástroj pro návrh \ac{ui} a prototypování.
+Získal významnou popularitu díky své pokročilé funkčnosti kolaborace.
+\foreign{Figma} je webově založené nástroj, který umožňuje spolupráci v reálném čase, což jej činí oblíbeným nástrojem pro mnoho týmů.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{\FIGDIR/figma-logo}
+    \caption{Logo nástroje \foreign{Figma}\cite{figma}}
+    \label{fig:figma-logo}
+\end{figure}
+
+\foreign{Figma} umožňuje, aby celý proces návrhu probíhat v rámci nástroje: od brainstormingu po vytváření interaktivních prototypů.
+Mezi některé klíčové funkce patří:
+\begin{itemize}
+    \item \textbf{Kolaborace v reálném čase}: Více lidí může současně pracovat na návrhu, podobně jako v \foreign{Google Docs}, což z \foreign{Figma} činí skvělý nástroj pro týmové projekty.
+    \item \textbf{Komponenty a style}: \foreign{Figma} podporuje komponenty (opakovaně použitelné designové prvky) a styly, které podporují konzistenci napříč návrhy a šetří čas.
+    \item \textbf{Prototypování a animace}: \foreign{Figma} umožňuje vytvářet interaktivní prototypy s přechody.
+    Ačkoli nemusí být tak robustní jako některé jiné nástroje, slouží pro většinu návrhových potřeb.
+    \item \textbf{Auto-layout}: Tato funkce umožňuje návrhářům vytvářet responzivní rozložení s lehkostí, což výrazně zrychluje proces návrhu.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{\FIGDIR/figma-example}
+    \caption{Ukázka rozhraní nástroje \foreign{Figma}\cite{figma}}
+    \label{fig:figma-example}
+\end{figure}
+
+\textbf{Silené stránky:}
+\begin{itemize}
+    \item Umožňuje spolupráci a společné úpravy v reálném čase.
+    \item Není třeba stahovat software; veškerá práce je uložena a přístupná prostřednictvím cloudu.
+    \item Zahrnuje design, prototypování a předávací nástroje na jednom místě.
+    \item Nezávislé na platformě, funguje v prohlížeči.
+\end{itemize}
+
+\textbf{Slabé stránky:}
+\begin{itemize}
+    \item Omezené možnosti práce v offline režimu
+    \item Pro většinu funkcí je vyžadováno připojení k internetu.
+    \item Na méně výkonných počítačích může běžet pomaleji.
+\end{itemize}
+
+%%% Podsekce - Sketch
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsection{Sketch}
+\label{subsec:navrh-ui-nastroje-sketch}
+\foreign{Sktech}, jenž byl kdysi průmyslovým standardem pro návrh \ac{ui} a \ac{ux}, je vektorový nástroj pro návrh \ac{ui} a \ac{ux} pro macOS\@.
+Byl spuštěn v roce 2010 a od té doby získal významnou uživatelskou základnu.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{\FIGDIR/sketch-logo}
+    \caption{Logo nástroje \foreign{Sketch}\cite{sketch}}
+    \label{fig:sketch-logo}
+\end{figure}
+
+\foreign{Sketch} je primárně určen pro návrh rozhraní a prototypování.
+Některé z jeho klíčových funkcí jsou:
+\begin{itemize}
+    \item \textbf{Symboly a styly}: \foreign{Sketch} podporuje symboly (opakovaně použitelné designové prvky) a styly, které podporují konzistenci napříč návrhy a šetří čas.
+    \item \textbf{Pluginy}: Jednou z hlavních sil nástroje \foreign{Sketch} je jeho široká škála pluginů, které lze použít k rozšíření jeho funkcionality.
+    \item \textbf{Prototypování}: Zatímco \foreign{Sketch} byl původně za jinými nástroji v oblasti prototypování, v této oblasti učinil významné pokroky.
+    \item \textbf{Sdílené knihovny}: \foreign{Sketch} má silnou podporu pro sdílené knihovny, což umožňuje snadné sdílení zdrojů, komponent a stylů napříč projekty.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{\FIGDIR/sketch-example}
+    \caption{Ukázka rozhraní nástroje \foreign{Sketch}\cite{sketch}}
+    \label{fig:sketch-example}
+\end{figure}
+
+\textbf{Silené stránky:}
+\begin{itemize}
+    \item Široká škála rozšíření/pluginů.
+    \item Silná komunita a dostupnost zdrojů.
+\end{itemize}
+
+\textbf{Slabé stránky:}
+\begin{itemize}
+    \item Dostupný pouze pro macOS, což omezuje jeho dostupnost.
+    \item Bez vestavěné podpory pro spolupráci nebo společné úpravy.
+\end{itemize}
+
+%%% Podsekce - Výběr nástroje
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsection{Výběr nástroje}
+\label{subsec:navrh-ui-nastroje-vyber}
+Aby bylo možné učinit rozhodnutí a vybrat nejvhodnější nástroj pro návrh uživatelského rozhraní pro platformu pro prodej vstupenek na akce, je nezbytné provést srovnávací analýzu tří nástrojů, které jsou podrobně popsány výše - \foreign{Adobe XD}, \foreign{Figma} a \foreign{Sketch}.
+Nástroje jsou porovnávány v několika klíčových aspektech, včetně dostupnosti, cenové politiky, prototypovacích schopností, správy komponent, stylování a knihoven, podpory pluginů, komunity a zdrojů.
+
+\textbf{Dostupnost platforem}\\
+\foreign{Figma} a \foreign{Adobe XD} vynikají svou dostupností napříč platformami.
+Oba nástroje lze používat na Windows a macOS a \foreign{Figma} je dostupná i na Linuxu prostřednictvím webového prohlížeče.
+\foreign{Sketch} je však omezen na macOS, což může být omezující pro týmy nebo jednotlivce používající různé operační systémy.
+
+\textbf{Cena}\\
+\foreign{Adobe XD} nabízí bezplatný startovací plán, přičemž placené plány nabízejí více funkcí.
+\foreign{Figma} také nabízí bezplatný plán s dalšími funkcemi dostupnými v profesionálních a organizačních plánech.
+\foreign{Sketch} poskytuje bezplatnou zkušební verzi s jednorázovou platbou za plnou verzi a dodatečnými náklady na roční aktualizace.
+
+\textbf{Prototypování}\\
+\foreign{Adobe XD}, \foreign{Figma} a \foreign{Sketch} nabízejí možnosti prototypování.
+\foreign{Adobe XD} a \foreign{Figma} však poskytují podporu pro složitější a interaktivnější prototypy ve srovnání s aplikací \foreign{Sketch}, která má základní možnosti vytváření prototypů.
+
+\textbf{Komponenty}\\
+\foreign{Adobe XD}, \foreign{Figma} a \foreign{Sketch} nabízejí knihovny komponent pro zjednodušení procesu navrhování.
+Komponenty a styly \foreign{Figma} jsou pokročilejší, což umožňuje lepší organizaci a efektivitu.
+
+\textbf{Stylování a knihovny}\\
+\foreign{Figma} a \foreign{Sketch} mají silnou podporu pro sdílené styly a knihovny, které umožňují konzistenci v designu.
+\foreign{Adobe XD} také podporuje sdílené prostředky, ale jeho možnosti nejsou tak robustní jako u \foreign{Figma} a \foreign{Sketch}.
+
+\textbf{Pluginy}\\
+\foreign{Sktech} původně vedl v podpoře pluginů, ale \foreign{Adobe XD} a \foreign{Figma} je rychle dohnaly a všechny tři nástroje nabízejí širokou škálu pluginů pro rozšíření funkčnosti.
+
+\textbf{Komunita a zdroje}\\
+\foreign{Sktech} je nejstarší z těchto tří nástrojů a má největší komunitu a nejširší škálu zdrojů.
+Nicméně \foreign{Figma}, přestože je relativně nová, si díky své popularitě a širokému použití vybudovala silnou komunitu.
+\foreign{Adobe XD} má také podpůrnou komunitu, ale není tak rozsáhlá jako \foreign{Figma} a \foreign{Sketch}.
+
+Stručně řečeno, všechny tři nástroje mají své vlastní silné stránky a uspokojují různé potřeby a preference.
+Toto celé srovnání je shrnuto v tabulce~\ref{tab:ui-design-tools-comparison} níže.
+
+\begin{table}[h]
+    \centering
+    \caption{Srovnání nástrojů pro návrh uživatelského rozhraní}
+    \label{tab:ui-design-tools-comparison}
+    \resizebox{\textwidth}{!}
+    {
+    %
+        \begin{tabular}{llll}
+            \toprule
+            \textbf{Funkčnost} & \textbf{Adobe XD} & \textbf{Figma} & \textbf{Sketch} \\
+            \midrule
+            Podpora Windows & Ano & Ano & Ne \\
+            Podpora macOS & Ano & Ano & Ano \\
+            Webová aplikace & Ne & Ano & Ne \\
+            Dostupné zdarma & Ano & Ano & Trial verze \\
+            Placené plány & od \$9.99/měs.\ & od \$12/měs.\ & \$99/jednorázově \\
+            Prototypování & Ano & Ano & Ano \\
+            Komponenty & Ano & Ano (pokročilé) & Ano \\
+            Stylování/knihovny & Ano & Ano (pokročilé) & Ano \\
+            Pluginy & Ano & Ano & Ano \\
+            Komunita a zdroje & Dobrá & Výborná & Výborná \\
+            \bottomrule
+        \end{tabular}
+    %
+    }
+\end{table}
+
+Po rozboru této analýzy byl vybrán jako preferovaný nástroj pro návrh uživatelského rozhraní nástroj \textbf{\foreign{Figma}}.
+Tato volba byla motivována kombinací několika přesvědčivých faktorů, včetně:
+
+\begin{enumerate}
+    \item \textbf{Dostupnost a podpora platformy}: \foreign{Figma} je platformně nezávislá a podporuje různé operační systémy, včetně Windows, macOS a dokonce i Linuxu prostřednictvím webového prohlížeče.
+    Tato široká dostupnost je významnou výhodou oproti \foreign{Sketch}, který je dostupný pouze pro macOS\@.
+    \item \textbf{Cena}: \foreign{Figma} poskytuje robustní bezplatnou verzi, která umožňuje až tři aktivní projekty.
+    Pro tento projekt jsou funkce poskytované v bezplatné verzi dostatečné, což z \foreign{Figma} činí ekonomicky výhodnou volbu.
+    \item \textbf{Pokročilý systém komponent}: Systém komponent \foreign{Figma} je pokročilý a umožňuje hierarchickou organizaci komponent.
+    To zajišťuje konzistenci v designu a zjednodušuje proces, zejména při práci s komplexními designy, jako je interaktivní mapa sedadel.
+    \item \textbf{Schopnosti prototypování}: \foreign{Figma} vyniká, pokud jde o prototypování.
+    Poskytuje řadu interaktivních funkcí a přechodů, které jsou zvláště užitečné při návrhu platformy pro prodej vstupenek na akce, kde je interaktivita zásadní.
+    \item \textbf{Komunita a zdroje}: \foreign{Figma} se pyšní rozsáhlou online komunitou a množstvím zdrojů.
+    To zajišťuje, že řešení potenciálních problémů během návrhového procesu jsou snadno dostupná.
+    \item \textbf{Osobní zkušenost}: Používaje různé nástroje pro návrh, volba \foreign{Figma} byla také motivována osobní zkušeností s tímto nástrojem.
+\end{enumerate}
+
+Tento nástroj kombinuje silnou sadu funkcí s osobní preferencí pro jeho rozhraní a funkčnost, což z něj činí vynikající volbu pro tuto aplikaci.
+
+Nyní je již možné přejít ke konkrétnímu návrhu uživatelského rozhraní rozborem jednotlivých uživatelských příběhů definovaných v přechozí kapitole~\ref{sec:navrh-ui-uzivatelske-pribehy}.
+
+%%% Sekce - Návrh produktu
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\section{Návrh produktu}
+\label{sec:navrh-ui-navrh-produktu}
 \acl{ui} a \acl{ux} jsou oba úzce spjaty s pochopením potřeb uživatele.
 Když je produkt navrhován, není vždy okamžitě jasné, jakým způsobem by mělo být jeho uživatelské rozhraní vypadat.
 Uživatelské příběhy, pokud jsou správně navrženy, usnadňují spojení mezi potřebami uživatele a strukturální kompozicí produktu.
@@ -381,7 +614,10 @@ Pro produkt, jako je aplikace na prodej vstupenek, to znamená zaměřit se na k
 
 Tato kapitola se dále zaměří na proces převodu výše sestrojených uživatelských příběhů do konkrétních \ac{ui} komponent, které budou tvořit výsledný návrh uživatelského rozhraní vyvíjené webové aplikace.
 
-%%% TODO: Podsekce - Vizualizace místa konání
+%%% Podsekce - Vizualizace místa konání
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Vizualizace místa konání}
 \label{subsec:narvh-ui-transformace-uzivatelskych-pribehu-vizualizace-mista-konani}
@@ -409,7 +645,10 @@ Na obrázku~\ref{fig:us1-seating-map} je zobrazen návrh komponenty, která by m
 Součástí této komponenty je i boční ovládací panel, které umožňuje manuální přiblížení či oddálení plánu sedadel.
 U této komponenty se předpokládá, že její následná ovladatelnost bude primárně zajištěna pomocí myši, případně pomocí gest na dotykové obrazovce.
 
-%%% TODO: Podsekce - Výběr sedadel
+%%% Podsekce - Výběr sedadel
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Výběr sedadel}
 \label{subsec:narvh-ui-transformace-uzivatelskych-pribehu-vyber-sedadel}
@@ -432,7 +671,7 @@ Pokud je sedadlo již zarezervováno či z jiného důvodu nedostupné, uživate
     \centering
     \begin{subfigure}{0.775\textwidth}
         \includegraphics[width=\textwidth]{\FIGDIR/ui/us2-seat-selection-desktop-1}
-        \label{fig:us2-seat-selection-desktop-1}
+        \label{fig:us2-seat-selection-desktop-1}x
     \end{subfigure}
     \begin{subfigure}{0.2\textwidth}
         \includegraphics[width=\textwidth]{\FIGDIR/ui/us2-seat-selection-mobile-1}
@@ -475,9 +714,10 @@ Na desktopové verzi se zobrazí jako popover okno umístěné u právě označe
 Na mobilní verzi se toto okno chová jako fixně umístěný list, který se zobrazí v dolní části obrazovky.
 Díky umístění v dolní části obrazovky na mobilních zařízeních se tak zajistí komfortní ovládání a interakce s tímto listem, jelikož se nachází v dosahu palce neboli v tzv. \foreign{thumb zone}.
 
-
-
-%%% TODO: Podsekce - Nákupní košík
+%%% Podsekce - Nákupní košík
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Nákupní košík}
 \label{subsec:narvh-ui-transformace-uzivatelskych-pribehu-nakupni-kosik}
@@ -535,7 +775,10 @@ Na obrázku~\ref{fig:us3-cart-summary-mobile} je návrh komponenty přehledu ná
 Ve výchozím (sbaleném) stavu obsahuje pouze ty nejdůležitější informace, jako celkovou cenu objednávky.
 Po rozbalení detailu nákupního košíku se zobrazí všechny informace o vstupenkách, které jsou v košíku obsaženy, podobně jako je tomu v desktopové verzi.
 
-%%% TODO: Podsekce - Vyřízení a potrvzení objednávky
+%%% Podsekce - Vyřízení a potrvzení objednávky
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
 %%% --------------------------------------------------------------
 \subsection{Vyřízení a potvrzení objednávky}
 \label{subsec:narvh-ui-transformace-uzivatelskych-pribehu-vyrideni-a-potvrzeni-objednavky}
@@ -620,7 +863,7 @@ Tento krok je naznačen v pravém sloupci na obrázku~\ref{fig:us4-order-confirm
 Mobilní rozložení této komponenty je opět pouze mírně upraveno, aby bylo možné všechny prvky zobrazit v jednom sloupci, jak je zobrazeno na obrázku~\ref{fig:us4-order-confirmation-mobile} výše.
 
 Tato kapitola vytvořila pevný základ pro pochopení návrhu uživatelského rozhraní, konkrétně v kontextu webového řešení pro prodej vstupenek s rezervací míst.
-To mj. zahrnovalo vytvoření uživatelských příběhů, jejich překlad do komponent uživatelského rozhraní a aplikaci efektivních principů návrhu uživatelského rozhraní.
+To mj.\ zahrnovalo vytvoření uživatelských příběhů, jejich překlad do komponent uživatelského rozhraní a aplikaci efektivních principů návrhu uživatelského rozhraní.
 Dále bylo vyzdvihnut výběr nástroje Figma pro návrh těchto uživatelského rozhraní.
 
 V následující kapitole se pozornost přesouvá k implementaci těchto návrhů do funkčního online rezervačního systému s výběrem míst.
