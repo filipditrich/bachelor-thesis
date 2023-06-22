@@ -103,7 +103,7 @@ Aktuální pohled na implementovaný košík je zobrazen na následujícím obr�
 \subsection{Integrace API}
 \label{subsec:implementace-kosik-api}
 State košíku je synchronizován s mock API, aby se napodobila situace v reálné aplikaci.
-Kdykoli uživatel provede akci na košíku, je stav košíku aktualizován s malým zpožděním, aby se napodobila síťová latence reálného API.
+Kdykoli uživatel provede akci na košíku, je stav košíku aktualizován s malým zpožděním, aby se napodobila síťová latence reálného API\@.
 Toho je dosaženo voláním asynchronní funkce, která vrací slib, který se vyřeší po nějaké době.
 Funkce se nazývá \texttt{simulatedNetworkDelay} a je zobrazena v následujícím ukázce kódu spolu se všemi potřebnými podfunkcemi:
 

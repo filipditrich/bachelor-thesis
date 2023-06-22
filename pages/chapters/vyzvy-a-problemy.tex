@@ -44,11 +44,11 @@ Nakonec bylo toto vyřešeno získáním hlubšího porozumění chování SVG a
 %%% --------------------------------------------------------------
 \section{Absence API a jeho simulace}
 \label{sec:vyzvy-a-problemy-absence-api}
-Vývoj aplikace probíhal v nepřítomnosti dedikovaného API.
+Vývoj aplikace probíhal v nepřítomnosti dedikovaného API\@.
 To znamenalo, že bylo zapotřebí definovat datové struktury a simulovat API volání v rámci kódu.
 To bylo provedeno implementací asynchronních funkcí s umělým zpožděním, které napodobovaly skutečná API volání.
 
-Tato řešení poskytovala požadovanou funkcionalitu, ale přinášela také výzvu zajištění konzistence dat a správy potenciálních chyb, podobně jako by se očekávalo u skutečných API.
+Tato řešení poskytovala požadovanou funkcionalitu, ale přinášela také výzvu zajištění konzistence dat a správy potenciálních chyb, podobně jako by se očekávalo u skutečných API\@.
 To bylo vyřešeno návrhem robustních datových struktur a implementací komplexních mechanismů pro zpracování chyb, které zajistily realistickou simulaci skutečných API volání.
 
 %%% Sekce – Zachování jednoduchosti v komplexní aplikaci
@@ -67,6 +67,15 @@ Tato strategie zachovala jednoduchost aplikace, aniž by to mělo vliv na její 
 
 Dalším problémem bylo rozhodování, které funkce pro produkční nasazení implementovat, jako je internacionalizace, přístupnost, optimalizace pro vyhledávače, správa relací a tak dále.
 Nakonec bylo rozhodnuto zaměřit se na základní funkčnost aplikace a implementaci těchto funkcí ponechat na možné budoucí iterace.
+
+%%% TODO: Sekce – Deployment aplikace
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\section{Deployment aplikace}
+\label{sec:vyzvy-a-problemy-deployment}
+Produkční nasazení aplikace bylo zajištěno pomocí služby Vercel. Aplikace byla nasazena do cloudu a je dostupná na adrese \url{https://seating-map.vercel.app/}.
 
 %%% Sekce – Shrnutí
 %%%%% Wording: ⏳

@@ -154,8 +154,8 @@ Tento zpracovaný formát je pak ostatním komponentám zpřístupněn pomocí k
 SeatingMap komponenta je zodpovědná za parsování SVG dat a jejich překlad do formátu, který může být použit komponentou VirtualMap.
 
 Tato komponenta přijímá SVG data z API a zpracovává je pomocí knihovny xml-js.
-SVG data z API následují specifickou strukturu, kde "<g>" elementy představují skupiny sedadel, a tyto jsou identifikovány pomocí id atributu "seats:xxx".
-Jednotlivá sedadla v rámci těchto skupin jsou reprezentována "<circle>" elementy, identifikovanými jejich jedinečnými id ve formě "seat:row+place".
+SVG data z API následují specifickou strukturu, kde `<g>` elementy představují skupiny sedadel, a tyto jsou identifikovány pomocí id atributu `seats:xxx`.
+Jednotlivá sedadla v rámci těchto skupin jsou reprezentována `<circle>` elementy, identifikovanými jejich jedinečnými id ve formě `seat:row+place`.
 
 % FIXME: svg comments broken
 \begin{minted}{xml}
@@ -191,7 +191,7 @@ Jednotlivá sedadla v rámci těchto skupin jsou reprezentována "<circle>" elem
 </svg>
 \end{minted}
 
-Jakmile jsou SVG data zparsována, komponenta SeatingMap mapuje data sedadel na parsované SVG elementy, nahrazující každý "<circle>" element odpovídající komponentou <Seat>.
+Jakmile jsou SVG data zparsována, komponenta SeatingMap mapuje data sedadel na parsované SVG elementy, nahrazující každý `<circle>` element odpovídající komponentou <Seat>.
 Každá komponenta <Seat> reprezentuje jedno sedadlo a zahrnuje všechna příslušná data pro toto sedadlo.
 
 %%% Podsekce – Interaktivita s VirtualMap
