@@ -1,0 +1,93 @@
+%%% Sekce – Struktura a architektura projektu
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\section{Struktura a architektura projektu}
+\label{sec:implementace-architektura}
+Zahájení a strukturování nového projektu je klíčovou fází, která položí základy pro celou aplikaci.
+Tato sekce shrnuje proces a úvahy, které jsou zapojeny do počátečního nastavení projektu a definování jeho architektury.
+Cílem bylo vytvořit udržitelnou, škálovatelnou a dobře strukturovanou frontendovou aplikaci, která se řídí osvědčenými postupy moderního frontendového vývoje.
+
+%%% Podesekce – Vytvoření projektu
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsection{Vytvoření projektu}
+\label{sec:implementace-architektura-vytvoreni-projektu}
+Projekt byl vytvoření pomocí příkazu \texttt{create-next-app}, nástroje pro rychlé nastavení nového projektu, který poskytuje Next.js.
+Příznak \texttt{--typescript} byl zahrnut, aby bylo jasné, že se má použít TypeScript místo vanilla JavaScriptu.
+Tento příkaz vytvoří nový adresář s základní strukturou projektu Next.js a sadou přednastavených souborů.
+
+Jakmile bylo počáteční nastavení projektu dokončeno, následovalo odstranění vygenerovaného boilerplate a přidání vybraných knihoven a technologií pro projekt.
+Tento proces zahrnoval odstranění výchozích CSS souborů, protože projekt měl využívat Tailwind CSS pro stylování, a přidání Mantine, komplexní knihovny pro uživatelské rozhraní pro React, a Lodash, knihovny poskytující užitečné funkce pro práci s poli, čísly, objekty, řetězci atd.
+
+Dalším krokem bylo vytvoření zvukové struktury projektu, která vyhovuje potřebám aplikace a podporuje osvědčené postupy.
+Dobře promyšlená a organizovaná struktura projektu je zásadní pro udržení čitelnosti kódu, škálovatelnosti a snadné navigace, zejména když kódová základna roste.
+
+Instalace a nastavení dalších knihoven, jako jsou Prettier, ESLint, axios a react-query, byly také součástí této počáteční fáze nastavení.
+Tyto nástroje a knihovny dále pomáhají zlepšovat kvalitu kódu, formát, udržovatelnost a pomáhají efektivně zpracovávat volání API.
+
+V tomto projektu bylo pro správu balíčků upřednostněno použití \texttt{pnpm}.
+Vyniká svým efektivním zacházením s moduly node, čímž zajišťuje rychlejší a spolehlivější sestavení.
+
+Založení nového projektu vyžaduje pečlivé plánování a zvážení budoucích požadavků a rozšíření projektu.
+S pevným základem položeným, samotná implementace aplikace se stává plynulejším procesem, jak bude ukázáno v následujících sekcích.
+
+%%% Podesekce – Základní architektura
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsection{Základní architektura}
+\label{sec:implementace-architektura-zakladni}
+Dobře definovaná struktura projektu je klíčová pro udržitelnost, škálovatelnost a čitelnost kódu.
+Logická, jasná a konzistentně udržovaná struktura umožňuje vývojářům snadno procházet a porozumět aplikaci, i když se kódová základna časem rozrůstá a vyvíjí.
+
+Tento projekt následuje modulární architekturu, kde je kód organizován do modulů podle jejich funkcionality.
+Tento přístup pomáhá kód učinit čitelnějším a udržovatelnějším tím, že zapouzdřuje související logiku do jednotlivých modulů.
+
+Zde je podrobnější pohled na hlavní adresáře a jejich účely:
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={Struktura projektu},label={lst:project-structure}]
+src/
+|-- lib/
+|   |-- components/
+|   |-- features/
+|   |-- graphics/
+|   |-- hooks/
+|   |-- types/
+|   `-- utils/
+|-- pages/
+`-- styles/
+next.config.js
+package.json
+postcss.config.js
+prettier.config.js
+tsconfig.json
+tailwind.config.js
+\end{lstlisting}
+
+\begin{itemize}
+    \item \textbf{src:} Toto je hlavní adresář obsahující veškerý zdrojový kód aplikace.
+    \item \textbf{src/lib:} Tento adresář obsahuje hlavní funkce projektu, které jsou dále rozděleny do podadresářů:
+    \item \textbf{src/lib/components:} Tento adresář obsahuje znovupoužitelné komponenty, jako jsou \textit{DefinitionItem}, \textit{LoadingOverlay} a \textit{TicketCard}, každá ve svém vlastním adresáři se soubory TypeScript a stylování.
+    \item \textbf{src/lib/features:} Tento adresář se skládá z konkrétních funkcí nebo logických částí aplikace, jako je klient API, správa košíku, mapování sedadel, správa více pohledů a utility funkce.
+    \item \textbf{src/lib/graphics:} Tento adresář uchovává grafické zdroje, jako jsou ikony SVG používané v aplikaci.
+    \item \textbf{src/lib/hooks:} Tato složka obsahuje vlastní React hooks, jako jsou \textit{useApiQuery}, \textit{useContextRequired}, \textit{useDebug}, \textit{useHandler} a \textit{useNow}.
+    \item \textbf{src/lib/types:} Tento adresář uchovává běžné typy TypeScript používané v celé aplikaci.
+    \item \textbf{src/lib/utils:} Tento adresář obsahuje utility funkce používané v aplikaci.
+    \item \textbf{src/pages:} Obsahuje komponenty stránek a API endpointy.
+    \item \textbf{src/styles:} It includes global styles for the application.
+    \item \textbf{src/styles:} Obsahuje globální styly aplikace.
+    \item \textbf{next.config.js:} Konfigurační soubor pro Next.js, který umožňuje přizpůsobení různých aspektů frameworku.
+    \item \textbf{package.json:} Soubor obsahuje metadata projektu a seznam závislostí použitých v projektu.
+    \item \textbf{postcss.config.js, prettier.config.js, tsconfig.json:} Jsou to konfigurační soubory pro PostCSS, Prettier a TypeScript.
+    \item \textbf{tailwind.config.js:} Konfigurační soubor pro Tailwind CSS, knihovnu CSS typu utility-first použitou v projektu.
+\end{itemize}
+
+Každá z těchto složek a souborů hraje v aplikaci klíčovou roli a přispívá ke struktuře a architektuře projektu.
+Použití této konkrétní struktury zajišťuje jasnou oddělenost zájmů, což usnadňuje práci na jednotlivých aspektech projektu, aniž by se ovlivňovaly ostatní.
+
+V dalších sekcích budou podrobněji popsány konkrétní implementační detaily projektu, začínaje interaktivní mapou sedadel.
