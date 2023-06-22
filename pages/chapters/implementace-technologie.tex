@@ -1,0 +1,191 @@
+%%% Sekce – Výběr technologií
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\section{Výběr technologií}
+\label{sec:implementace-techologie}
+V této kapitole je zaměření na technologický stack vybraný pro frontendovou implementaci online platformy pro prodej vstupenek.
+Tento výběr není náhodný; každá technologie byla vybrána z určitého důvodu, ať už je to kvůli konkrétní funkčnosti, kterou poskytuje, její synergie s ostatními technologiemi ve stacku, nebo kvůli její robustnosti a spolehlivosti.
+Následující sekce podrobně popisují každou z těchto technologií.
+
+%%% Podsekce – React.js
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsection{React.js}
+\label{sec:implementace-techologie-react}
+% TODO: open-source footnote explanation
+React.js je open-source JavaScriptová knihovna, vyvíjená a udržovaná společností Facebook, která usnadňuje tvorbu uživatelských rozhraní (UI) pro jednostránkové aplikace tím, že umožňuje vývojářům vytvářet znovupoužitelné komponenty uživatelského rozhraní.
+Výběr React.js pro tento projekt je ovlivněn několika faktory.
+
+Zaprvé, knihovna se vyznačuje svou funkcí virtuálního DOM, která zvyšuje rychlost a efektivitu vykreslování složitých uživatelských rozhraní.
+Virtuální DOM Reactu, na rozdíl od tradičního modelu plného obnovení, umožňuje knihovně minimalizovat přímé manipulace s DOM, což šetří cenný výpočetní čas a zajišťuje plynulejší a výkonnější rozhraní.
+
+Zadruhé, React.js je založen na komponentách, což znamená, že složité uživatelské rozhraní lze rozdělit na menší, znovupoužitelné komponenty.
+Tento přístup zvyšuje spravovatelnost kódu a zjednodušuje ladění a testování.
+To je zvláště užitečné v kontextu platformy pro prodej vstupenek, kde by několik prvků uživatelského rozhraní mohlo být znovu použito v různých částech aplikace.
+
+Finálně, React.js má silnou podporu komunity, s množstvím zdrojů a nástrojů k dispozici.
+Tato podpora je obrovským přínosem při vývoji složitých aplikací a může výrazně snížit čas potřebný k řešení potenciálních problémů.
+
+%%% Podsekce – TypeScript
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsection{TypeScript}
+\label{sec:implementace-techologie-typescript}
+TypeScript je staticky typovaná nadmnožina JavaScriptu, která do jazyka přidává volitelné typy.
+TypeScript, vyvinutý a udržovaný společností Microsoft, nejenže zvyšuje schopnosti JavaScriptu, ale také pomáhá při tvorbě aplikací velkého rozsahu s větší spolehlivostí a menší náchylností k chybám.
+
+Zatímco JavaScript je mocný jazyk, často je kritizován pro svou uvolněnost, zejména pokud jde o jeho dynamický typový systém.
+TypeScript se snaží tento problém vyřešit tím, že představuje statické typování, což snižuje chyby za běhu a umožňuje lepší vývojové nástroje, jako je automatické dokončování, odvozování typů a typová kontrola.
+
+Jazyk TypeScript se v posledních letech rychle rozšířil a stává se standardem pro vývoj velkých JavaScriptových aplikací.
+Pro tento projekt je preferován kvůli jeho větší spolehlivosti a protože dobře spolupracuje s React.js.
+
+%%% Podsekce – Next.js
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsection{Next.js}
+\label{sec:implementace-techologie-nextjs}
+Next.js je open-source React framework, který zjednodušuje proces nastavení a zahrnuje několik užitečných funkcí, jako je server-side rendering a static site generation.
+Framework je navržen tak, aby zvýšil výkon a efektivitu React aplikací a vybavil vývojáře nástroji pro tvorbu aplikací s bohatými funkcemi.
+
+V kontextu platformy pro prodej vstupenek byl Next.js vybrán pro své funkce, které zjednodušují běžné úkoly.
+Například Next.js má vestavěnou podporu pro API routes, které umožňují vývojářům vytvářet backend API ve stejném repozitáři jako frontend, což je ideální pro simulaci backendové funkcionality.
+
+Next.js dále poskytuje funkce jako routování souborového systému, automatické rozdělení kódu a předvykreslování z krabice, což snižuje množství potřebné konfigurace a nastavení a umožňuje vývojářům soustředit se na logiku aplikace.
+
+%%% Podsekce – Mantine UI
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsection{Mantine UI}
+\label{sec:implementace-techologie-mantine}
+Mantine je komplexní knihovna komponent pro React s důrazem na použitelnost, přístupnost a zkušenosti vývojářů.
+Zahrnuje řadu komponent, které lze kombinovat a přizpůsobit k vytvoření složitých a krásných uživatelských rozhraní.
+Tato knihovna nabízí jednodušší způsob tvorby uživatelských rozhraní ve srovnání s vytvářením každého komponentu od základů, což může být časově náročné a náchylné k chybám.
+
+Použitím knihovny komponent, jako je Mantine, se zajistí, že komponenty použité v celé aplikaci jsou konzistentní a snižuje se potřeba opakovaného kódu.
+Dále se díky důrazu Mantine na přístupnost zajišťuje, že aplikace je použitelná co nejširšímu publiku.
+
+Díky vynikající dokumentaci a bohatému výběru komponentů je Mantine preferovanou volbou pro projekt před jinými knihovnami, jako je MaterialUI.
+
+%%% Podsekce – Tailwind CSS
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsection{Tailwind CSS}
+\label{sec:implementace-techologie-tailwind}
+Tailwind CSS je CSS framework založený na utility-first přístupu pro rychlé vytváření vlastních designů.
+Na rozdíl od tradičních CSS frameworků, které poskytují hotové komponenty, umožňuje Tailwind vývojářům vytvářet vlastní designy poskytováním nízkoúrovňových utility tříd, které mohou kombinovat k vytváření jedinečných rozhraní.
+
+V projektu platformy pro prodej vstupenek je Tailwind CSS použit především pro rozložení a rychlé prototypování.
+Jeho utility-first přístup zjednodušuje proces tvorby vlastních stylů a jeho responzivní modifikátory umožňují vytvářet designy, které fungují na všech velikostech obrazovky.
+
+%%% Podsekce – Ostatní technologie
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsection{Ostatní technologie}
+\label{sec:implementace-techologie-ostatni}
+Kromě hlavního technologického stacku diskutovaného výše bylo při tvorbě platformy pro prodej vstupenek klíčových několik dalších nástrojů a knihoven.
+Každý z nich slouží k jedinečnému účelu a zlepšuje vývojový proces v oblastech jako je kvalita kódu, získávání dat, animace, správa formulářů a pomocné funkce.
+Následující sekce popisují každou z těchto kategorií a odpovídající nástroje nebo knihovny použité.
+
+%%% Podpodsekce – Kvalita kódu
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsubsection{Kvalita kódu}
+\label{sec:implementace-techologie-ostatni-kvalita}
+Udržování kvality kódu je klíčové v jakémkoli softwarovém projektu, zejména při práci na komplexních aplikacích.
+Vysoká kvalita kódu usnadňuje čtení, údržbu a ladění.
+Pro zajištění kvality kódu v tomto projektu byly vybrány dva klíčové nástroje: Prettier a ESLint.
+
+\textbf{Prettier}
+Prettier je nástroj pro formátování kódu, který vynucuje konzistentní styl napříč celým kódovým základem tím, že kód analyzuje a znovu jej vytiskne podle svých vlastních pravidel.
+Integrací Prettier jsou efektivně eliminovány obavy z formátování kódu.
+Nástroj automaticky formátuje kód pokaždé, když je uložen, což zajišťuje, že kódová základna je konzistentní ve stylu, bez ohledu na počet přispěvatelů kódu.
+To také pomáhá minimalizovat čas strávený diskutováním a opravováním problémů se stylem.
+
+\textbf{ESLint}
+ESLint na druhou stranu je nástroj pro statickou analýzu kódu, který identifikuje problematické vzory v kódu JavaScriptu a TypeScriptu.
+Zatímco Prettier se stará o problémy s formátováním, ESLint se zaměřuje na hledání potenciálních chyb a problémů s kvalitou kódu.
+Integrací ESLint je možné udržovat kvalitu kódu, čímž se kód stává bezpečnějším a předvídatelnějším.
+
+%%% Podpodsekce – Získávání dat
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsubsection{Získávání dat}
+\label{sec:implementace-techologie-ostatni-ziskavani}
+Získávání dat je kritickým aspektem jakékoliv aplikace, která interaguje se serverem.
+V tomto projektu byly pro správu stavu serveru použity Axios a React Query.
+
+\textbf{Axios}
+Axios je promise-based HTTP klient pro prohlížeč a Node.js, který zjednodušuje odesílání asynchronních HTTP požadavků na REST koncové body.
+S funkcemi jako automatická transformace pro JSON data, ochrana klienta proti XSRF a zpracování požadavků a odpovědí zjednodušuje Axios proces získávání dat v aplikaci.
+
+\textbf{React Query}
+React Query je knihovna pro synchronizaci dat pro React, která usnadňuje získávání, cachování a aktualizaci stavu serveru v aplikacích React.
+Out-of-the-box se stará o cachování, aktualizace na pozadí a zastaralá data bez nutnosti konfigurace.
+Použití s Axios zjednodušuje získávání dat a správu stavu, čímž se snižuje potřeba dalších knihoven pro správu stavu.
+
+%%% Podpodsekce – Animace
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsubsection{Animace}
+\label{sec:implementace-techologie-ostatni-animace}
+Animace přidávají život do aplikací a zlepšují uživatelskou zkušenost.
+Pro animace v tomto projektu byly použity Framer Motion a React Spring.
+
+\textbf{Framer Motion}
+Framer Motion je produkčně připravená knihovna pro animace v Reactu, která poskytuje intuitivní způsob animace prvků.
+Zjednodušuje složité animace a umožňuje vytvářet responzivní animace, které mohou interagovat s gesty uživatele.
+
+\textbf{React Spring}
+React Spring na druhou stranu je knihovna pro animace, která využívá fyzikálních principů pro vytváření plynulých a přirozených animací.
+Pomocí tzv. springs a dampers animace v React Spring těsně napodobují pohyby ve skutečném světě.
+
+%%% Podpodsekce – Formuláře
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsubsection{Formuláře}
+\label{sec:implementace-techologie-ostatni-formulare}
+Pro správu formulářů v aplikaci byly použity React Hook Form a Zod.
+
+\textbf{React Hook Form}
+React Hook Form je knihovna pro správu formulářů v Reactu, která snižuje množství boilerplate kódu potřebného pro vytváření formulářů.
+Využitím vestavěných hooků Reactu zjednodušuje React Hook Form validaci formulářů a zlepšuje výkon tím, že minimalizuje počet re-renderů.
+
+\textbf{Zod}
+Zod je knihovna pro deklaraci a validaci schémat pro TypeScript a JavaScript.
+Použitím s React Hook Form zjednodušuje validaci formulářů a zajišťuje, že data zadaná uživatelem odpovídají definovanému schématu.
+
+%%% Podpodsekce – Pomocné funkce
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\subsubsection{Pomocné funkce}
+\label{sec:implementace-techologie-ostatni-pomocne-funkce}
+Posledně, Lodash, knihovna pro utility funkce v JavaScriptu, byla použita pro své užitečné funkce jako hluboké klonování objektů, slučování objektů, debouncing a throttling.
+To činí kód čistější, čitelnější a udržovatelnější.
+
+Ve shrnutí byly všechny tyto nástroje a knihovny vybrány po pečlivém zvážení jejich funkcí, kompatibility s ostatními částmi technologického stacku a efektivnosti, kterou přinášejí do vývojového procesu.
+Hrály významnou roli při vytváření online platformy pro prodej vstupenek a zajistily plynulý a efektivní vývojový proces.
