@@ -61,6 +61,52 @@
     \end{gray-box}
     #4
 }
+\usepackage[outputdir=dist]{minted}
+\usepackage{xcolor}
+% TODO: Define the colors
+\definecolor{codekeyword}{rgb}{0.0,0.3,0.7}
+\definecolor{codestring}{rgb}{0.4,0.4,0.8}
+\definecolor{codecomment}{rgb}{0.2,0.2,0.2}
+\definecolor{codejsdoc}{rgb}{0.4,0.4,0.4}
+\definecolor{codelinenum}{rgb}{0.8,0.8,0.8}
+% light yellow color for highlighting
+\definecolor{lightyellow}{rgb}{255, 255, 224}
+
+% Set the minted style
+\setminted{
+    frame=none,
+    breaklines=true,
+    fontsize=\footnotesize,
+    tabsize=2,
+    linenos,
+    numbersep=5pt,
+    xleftmargin=0pt,
+    baselinestretch=1.2,
+    style=friendly,
+    highlightcolor=\color{lightyellow},
+    keywordstyle=\color{codekeyword},
+    stringstyle=\color{codestring},
+    commentstyle=\color{codecomment}\itshape,
+    morecomment=[s][\color{codejsdoc}]{/**}{*/},
+    numberstyle=\footnotesize\color{codelinenum}
+}
+
+% TODO
+\usepackage{listings}
+
+% Define formatting for the code block
+\lstset{
+    basicstyle=\ttfamily,
+    columns=fullflexible,
+    frame=single,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    showstringspaces=false,
+    keywordstyle=\bfseries,
+    commentstyle=\itshape\color{gray},
+    captionpos=b
+}
+
 % TODO
 \usepackage{acro}                   %%% balíček pro práci s akronymy
 \DeclareAcronym{ui}{short=UI,       long=User Interface }
@@ -153,7 +199,16 @@
     \include{pages/chapters/uvod}
     \include{pages/chapters/specifikace}
     \include{pages/chapters/navrh-rozhrani}
-    \include{pages/chapters/implementace-frontendu}
+    \include{pages/chapters/implementace}
+    \include{pages/chapters/implementace-uvod}
+    \include{pages/chapters/implementace-technologie}
+    \include{pages/chapters/implementace-architektura}
+    \include{pages/chapters/implementace-seating}
+    \include{pages/chapters/implementace-cart}
+    \include{pages/chapters/implementace-rezervace}
+    \include{pages/chapters/implementace-checkout}
+    \include{pages/chapters/implementace-zaver}
+    \include{pages/chapters/vyzvy-a-problemy}
     \include{pages/chapters/zaver}
 %%% seznam použité literatury
 %%% Reference se hledají v souboru priklady_literatury.bib. Aby se

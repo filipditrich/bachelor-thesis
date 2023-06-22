@@ -6,8 +6,10 @@
       <sumatra-path />
       <pdf-viewer>BUILT-IN-PDF-VIEWER</pdf-viewer>
       <viewer-command />
-      <compiler-arguments />
-      <envs />
+      <compiler-arguments>--shell-escape</compiler-arguments>
+      <envs>
+        <env name="SHELL_ESCAPE" value="true" />
+      </envs>
       <main-file>$PROJECT_DIR$/main.tex</main-file>
       <output-path>$PROJECT_DIR$/dist</output-path>
       <auxil-path>{projectDir}/auxil</auxil-path>
