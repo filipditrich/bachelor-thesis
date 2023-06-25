@@ -121,7 +121,7 @@ Následující sekce popisují každou z těchto kategorií a odpovídající n�
 \label{subsubsec:implementace-technologie-ostatni-kvalita}
 Udržování kvality kódu je klíčové v jakémkoli softwarovém projektu, zejména při práci na komplexních aplikacích.
 Vysoká kvalita kódu usnadňuje čtení, údržbu a ladění.
-Pro zajištění kvality kódu v tomto projektu byly vybrány dva klíčové nástroje: \foreign{Prettier} a \foreign{ESLint}.
+Pro zajištění kvality kódu v tomto projektu byly vybrány dva klíčové nástroje: \foreign{Prettier}\footnote{\url{https://www.npmjs.com/package/prettier}} a \foreign{ESLint}\footnote{\url{https://www.npmjs.com/package/eslint}}.
 
 \textbf{Prettier} je nástroj pro formátování kódu, který vynucuje konzistentní styl napříč celým \foreign{codebase}\footnote{\foreign{Codebase} je označení pro celkový kódový základ aplikace.} tím, že kód analyzuje a formátuje podle vlastních pravidel.
 Nástroj automaticky formátuje kód pokaždé, když je například uložen, což zajišťuje, že kód je konzistentní v nastaveném formátu napříč celým projektem\cite{p__prettier_io}.
@@ -138,7 +138,7 @@ Začleněním ESLint do vývojového procesu může být zachována kvalita kód
 \subsubsection{Získávání dat}
 \label{subsubsec:implementace-technologie-ostatni-ziskavani}
 Získávání dat hraje zásadní roli v jakékoli aplikaci, která spolupracuje se serverem.
-V tomto projektu bylo pro účely správy komunikace se serverem využito knihoven \foreign{Axios} a \foreign{React Query}.
+V tomto projektu bylo pro účely správy komunikace se serverem využito knihoven \foreign{Axios}\footnote{\url{https://www.npmjs.com/package/axios}} a \foreign{React Query}\footnote{\url{https://www.npmjs.com/package/@tanstack/react-query}}.
 
 \textbf{Axios} je \ac{http} klient, který funguje na základě \foreign{Promise}\footnote{Promise je JavaScriptový objekt, který slouží k reprezentaci asynchronních operací.} a je kompatibilní s prohlížečem i prostředím Node.js\footnote{Node.js je open-source, multiplatformní, JavaScriptové prostředí, které umožňuje spouštět JavaScriptový kód mimo webový prohlížeč\cite{n__nodejs_org}.}.
 Jeho primární funkcí je usnadnit odesílání asynchronních \ac{http} požadavků na backend \ac{api} a zároveň poskytuje užitečné funkce, jako je automatická transformace \ac{json} struktur, ochrana na straně klienta proti \ac{xsrf} a zpracování požadavků/odpovědí.
@@ -155,11 +155,36 @@ Při použití ve spojení s Axios zjednodušuje načítání dat, což v koneč
 %%% --------------------------------------------------------------
 \subsubsection{Formuláře}
 \label{subsubsec:implementace-technologie-ostatni-formulare}
-Pro správu formulářů v aplikaci byly použity knihovny \foreign{React Hook Form} a \foreign{Zod}.
+Pro správu formulářů v aplikaci byly použity knihovny \foreign{React Hook Form}\footnote{\url{https://www.npmjs.com/package/react-hook-form}} a \foreign{Zod}\footnote{\url{https://www.npmjs.com/package/zod}}.
 
-\textbf{React Hook Form} je knihovna pro správu formulářů v Reactu, která snižuje množství \foreign{boilerplate}\footnote{\foreign{Boilerplate} je označení pro kód, který je nezbytný, aby bylo možné vykonat určitou akci. V tomto případě se jedná o nezbytný kód pro vytváření formulářů.} kódu potřebného pro vytváření formulářů.
+\textbf{React Hook Form} je knihovna pro správu formulářů v Reactu, která snižuje množství \foreign{boilerplate}\footnote{\foreign{Boilerplate} je označení pro kód, který je nezbytný, aby bylo možné vykonat určitou akci.
+V tomto případě se jedná o nezbytný kód pro vytváření formulářů.} kódu potřebného pro vytváření formulářů.
 Využitím vestavěných hooků\footnote{Hook je označení pro speciální React funkce, které lze využít v rámci životního cyklu komponenty\cite{fos_projects_react}.} Reactu zjednodušuje validaci formulářů a zlepšuje výkon tím, že minimalizuje počet \foreign{re-renderů}\footnote{\foreign{Re-render} je proces znovuvykreslení komponenty, nejčastěj se děje na základě změny stavu komponenty.}.
 
 \textbf{Zod} je knihovna pro deklaraci a validaci schémat pro TypeScript a JavaScript.
 Díky Zod lze deklarovat schémata a validovat je pomocí vestavěných funkcí.
 Použitím s React Hook Form zjednodušuje validaci formulářů a zajišťuje, že data zadaná uživatelem odpovídají definovanému schématu.
+
+%%% Sekce – Správa zdrojového kódu
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%% --------------------------------------------------------------
+\subsection{Správa zdrojového kódu}
+\label{subsec:implementace-sprava-zdrojoveho-kodu}
+Efektivní správa zdrojového kódu je nedílnou součástí vývoje softwaru, zejména v kolaborativních prostředích.
+Git, bezplatný a open-source distribuovaný systém pro správu verzí, je nejrozšířenějším nástrojem pro správu zdrojového kódu.
+Git umožňuje vývojářům efektivně sledovat a spravovat změny v kódu, což usnadňuje plynulý vývojový proces\cite{g__git_scm_com}.
+
+Nicméně Git sám o sobě nenabízí kompletní řešení pro správu projektu.
+\textbf{GitHub} doplňuje Git poskytováním webového rozhraní pro hostování a spolupráci na Git repozitářích.
+Mezi funkce GitHubu patří řízení přístupu, správa úkolů, sledování chyb, požadavků na funkce a další\cite{g_github_com_about}.
+To z něj činí nezbytný nástroj pro správu a sledování průběhu projektů.
+Mimo jiné, GitHub nabízí také prémiový plán pro vzdělávací instituce, který umožňuje studentům a učitelům využívat všechny funkce GitHubu zdarma\cite{e_education_github_com_pack}.
+
+Vyvíjený protoyp byl tedy hostován prostřednictvím GitHub a je dostupný na adrese \url{https://github.com/filipditrich/bachelor-thesis-project}.
+
+Kromě toho, bylo využito konvenčního zápisu \foreign{commit zpráv}\footnote{\foreign{Commit} je označení pro jednotku změny v Gitu. \foreign{Commit zpráva} je zpráva, která popisuje změny provedené v rámci \foreign{commitu}.}, standardizovaného stylu pro commit zprávy, který zvyšuje čitelnost a pomáhá generovat poznámky k vydání, označované jako \foreign{release notes}.
+Tato konvence specifikuje strukturu commit zpráv, včetně typu (feat, fix, chore, docs, atd.), volitelného rozsahu a stručného popisu.
+Například commit zpráva může mít podobu \texttt{feat(lib/feature): add cart feature, implement useCart hook to manage complex shopping cart state}, kde \texttt{feat} označuje novou funkcionalitu, \texttt{lib/feature} označuje oblast změny a \texttt{add cart feature, implement useCart hook to manage complex shopping cart state} je stručný popis změny.
+Tento příklad je z reálného commitu (\texttt{3982b9a}) vytvořeného v rámci vývoje projektu.
