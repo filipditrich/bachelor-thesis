@@ -1,3 +1,4 @@
 # ignore all files inside /out directory except for the pdf file
 dist/*
 !dist/*.pdf
+url-to-bibtex/node_modules/
