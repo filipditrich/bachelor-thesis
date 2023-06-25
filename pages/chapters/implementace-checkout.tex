@@ -1,16 +1,17 @@
 %%% Sekce – Vyřízení a potvrzení objednávky
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \section{Vyřízení a potvrzení objednávky}
 \label{sec:implementace-checkout}
-Proces vyřízení objednávky je posledním hlavním krokem nákupu vstupenek, který je v této práci pokryt.
-Je implementován jako jednoduchý formulář, který je zobrazen uživateli po vyplnění košíku vstupenkami.
-Tento formulář je opět pouze rozšířením logiky košíku.
-S pomocí hooku \texttt{useForm} z knihovny \texttt{react-hook-form} je implementována jádrová logika formuláře s několika řádky kódu.
-Formulář se skládá z několika polí reprezentovaných následujícím validačním schématem pomocí knihovny \texttt{zod}:
+Proces vyřízení objednávky je posledním hlavním krokem nákupu vstupenek, který je touto prací řešen.
+Je implementován jako jednoduchý formulář, který je zobrazen uživateli po naplnění košíku vstupenkami.
+Tento formulář a jeho správa je opět pouze dalším rozšířením logiky košíku.
+S pomocí hooku \texttt{useForm} z knihovny React Hook Form je implementována logika formuláře pomocí pouze několika málo řádků kódu.
+Formulář se skládá z několika polí reprezentovaných validačním schématem pomocí knihovny Zod v ukázce~\ref{lst:checkout-contact-details-schema}.
 
+\begin{listing}[h]
 \begin{minted}{typescript}
 /**
  * Cart contact details validation schema
@@ -25,11 +26,15 @@ export const useCartContactDetailsSchema = z.object({
 	acceptTerms: z.boolean().refine((v) => v === true, { message: 'You must accept terms and conditions' }),
 });
 \end{minted}
+\caption{Validační schéma kontaktních údajů formuláře}
+\label{lst:checkout-contact-details-schema}
+\end{listing}
 
-Formulářová políčka jsou poté vykreslena s pomocí knihovny \texttt{Mantine}, která kromě mnoha dalších komponent poskytuje komponentu \texttt{TextInput}, která je primárně použita pro ovládání těchto polí.
-Jelikož se jedná o komponentu z knihovny třetí strany, je pomocí komponenty \texttt{Controller} z knihovny \texttt{react-hook-form} připojena k formuláři, která řeší problém kontrolovaných komponent.
-V následujícím kódu je komponenta \texttt{TextInput} připojena k poli \texttt{firstName} formuláře:
+Formulářová políčka jsou poté vykreslena s pomocí knihovny Mantine, která kromě mnoha dalších komponent poskytuje komponentu \texttt{TextInput}, která je primárně použita pro ovládání těchto polí.
+Jelikož se jedná o komponentu z knihovny třetí strany, je pomocí komponenty \texttt{Controller} z knihovny \texttt{react-hook-form} připojena k formuláři, která řeší správu stavu formuláře.
+V ukázce kódu~\ref{lst:controlled-text-input} je zobrazeno připojení komponenty \texttt{TextInput} k poli \texttt{firstName} ve formuláři.
 
+\begin{listing}[h]
 \begin{minted}{typescript}
 <Controller<CartTypes.ContactDetails, 'firstName'>
 	name="firstName"
@@ -39,21 +44,25 @@ V následujícím kódu je komponenta \texttt{TextInput} připojena k poli \text
 	)}
 />
 \end{minted}
+\caption{Ukázka kontrolované komponenty \texttt{TextInput}}
+\label{lst:controlled-text-input}
+\end{listing}
 
-Ostatní pole jsou poté vykreslena podobným způsobem.
+Ostatní formulářové prvky jsou poté vykresleny obdobným způsobem.
 
 %%% Podsekce – Metoda platby
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \subsection{Metoda platby}
 \label{subsec:implementace-checkout-payment-method}
-Kromě kontaktních údajů formulář obsahuje také výběr metody platby.
-I když samotný proces platby není součástí této práce, formulář obsahuje jednoduchý výběr falešných platebních metod.
-Tyto metody jsou implementovány jako jednoduchá skupina radio buttonů s pomocí komponenty \texttt{RadioGroup} z knihovny \texttt{Mantine}.
-Jen pro ukázku jsou metody platby implementovány jako jednoduchý číselník:
+Kromě kontaktních údajů formulář obsahuje také výběr platební metody.
+I když samotný proces platby není součástí této práce, obsahuje formulář jednoduchý výběr platebních metod.
+Tyto metody jsou zobrazeny jako jednoduchá skupina radio tlačítek za pomoci komponenty \texttt{RadioGroup} z knihovny Mantine.
+Na ukázce kódu~\ref{lst:checkout-payment-method} je zobrazen jednoduchý číselník podporovaných platebních metod.
 
+\begin{listing}[h]
 \begin{minted}{typescript}
 /**
 * PaymentMethod enumeration
@@ -65,28 +74,30 @@ export enum PAYMENT_METHOD {
 	PAYPAL = 'PAYPAL',
 }
 \end{minted}
+\caption{Číselník podporovaných platebních metod}
+\label{lst:checkout-payment-method}
+\end{listing}
 
 Výběr podporovaných platebních metod byl zvolen na základě metod navržených v sekci~\ref{subsec:narvh-ui-transformace-uzivatelskych-pribehu-vyrideni-a-potvrzeni-objednavky}.
-V reálném světě by byly metody platby implementovány například jako součást integrace platební brány.
+V reálném světě by byly metody platby implementovány například na základě integrace platební brány.
 
-Jako mikro rozšíření košíku obsahuje košík jednoduchý stav aktuálně vybrané platební metody, který by byl dále použit v procesu platby.
+Jako mikro rozšíření obsahuje košík jednoduchý stav aktuálně vybrané platební metody, který by byl dále použit v procesu platby.
 
 %%% Podesekce – Souhrn objednávky
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \subsection{Souhrn objednávky}
 \label{subsec:implementace-checkout-souhrn}
-Jako požadavek na uživatelské rozhraní bylo stanoveno, že formulář musí obsahovat souhrn objednávky.
-Tento souhrn je implementován jako karta zobrazující všechny vstupenky v košíku.
-Také slouží jako místo pro tlačítko pro dokončení objednávky.
-Toto tlačítko je podmíněno platností formuláře, která zahrnuje především akceptaci obchodních podmínek.
-Po odeslání je formulář ověřen a pokud ověření projde, je zavolán callback \texttt{onSubmit}.
-Tento callback je implementován jako jednoduchý \texttt{createOrderHandler} handler, který simuluje API volání a poté uživatele přesměruje na stránku s potvrzením objednávky.
-Handler je implementován následovně:
+Jako požadavek na uživatelské rozhraní bylo stanoveno, že stránka dokončení objednávky musí obsahovat její souhrn.
+Tento souhrn je zobrazen jako karta obsahující seznam všech vstupenek v košíku.
+Mimo jiné slouží také jako místo pro tlačítko k dokončení objednávky, které je podmíněno platností formuláře, které zahrnuje především akceptaci obchodních podmínek.
+Po kliknutí na tlačítko je formulář validován oproti validačnímu schématu zobrazenému v ukázce kódu~\ref{lst:checkout-contact-details-schema}.
+Pokud validací projde, je zavolán handler \texttt{createOrderHandler} řešící vytvoření objednávky, který simuluje volání \ac{api} a poté uživatele přesměruje na stránku s potvrzením objednávky.
+Jeho implementace je zobrazena v ukázce kódu~\ref{lst:create-order-handler}.
 
-\begin{listing}[!h]
+\begin{listing}[H]
 \begin{minted}{typescript}
 /** create order handler */
 const createOrderHandler = useHandler<Types.UseCart.CreateOrderCb>(
@@ -116,8 +127,8 @@ const createOrderHandler = useHandler<Types.UseCart.CreateOrderCb>(
 \label{lst:create-order-handler}
 \end{listing}
 
-Jak je uvedeno v ukázce kódu~\ref{lst:create-order-handler}, tento handler vytvoří objekt nové objednávky za účelem zobrazení dat na stránce s potvrzením objednávky.
-Potvrzení objednávky spolu s již popsanými kontaktními údaji a formulářem pro výběr platební metody je zobrazeno na obrázku~\ref{fig:seating-map-checkout}.
+Jak je uvedeno v ukázce kódu~\ref{lst:create-order-handler}, tento handler vytvoří falšenou novou objednávku za účelem jejího pozdějšího zobrazení na stránce s potvrzením.
+Souhrn objednávky spolu s již popsanými kontaktními údaji a formulářem pro výběr platební metody je zobrazeno na obrázku~\ref{fig:seating-map-checkout}.
 
 \begin{figure}[H]
 	\centering
@@ -127,18 +138,17 @@ Potvrzení objednávky spolu s již popsanými kontaktními údaji a formuláře
 \end{figure}
 
 %%% Podsekce – Potvrzení objednávky
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \subsection{Potvrzení objednávky}
 \label{subsec:implementace-checkout-order-confirmation}
 Jako poslední krok procesu nákupu vstupenek je implementována stránka s potvrzením objednávky.
-I když je tato stránka úzce propojena s procesem platby, který není součástí této práce, je implementována velmi jednoduše.
+I když je tato stránka úzce propojena s procesem platby, který není součástí této práce, je implementována alespoň velmi jednoduše.
 
-Jak je navrženo v návrhu uživatelského rozhraní, stránka s potvrzením objednávky obsahuje jednoduchou kartu s přehledem objednávky a možností stáhnout si vstupenky.
-Tato stránka je jednoduše implementována přístupem k výsledku \texttt{createOrderHandler} s falešným objektem objednávky.
-Implementované zobrazení je zobrazeno na obrázku~\ref{fig:seating-map-order} níže.
+Jak je navrženo v návrhu uživatelského rozhraní, stránka s potvrzením objednávky obsahuje jednoduchou kartu s jejím přehledem a možností stáhnout si vstupenky.
+V rámci metody \texttt{createOrderHandler} je vytvořena nová objednávka, která je následně zobrazena na této stránce přístupem k výsledku volání handleru \texttt{createOrderHandler}.
 
 \begin{figure}[H]
 	\centering
@@ -147,4 +157,4 @@ Implementované zobrazení je zobrazeno na obrázku~\ref{fig:seating-map-order} 
 	\label{fig:seating-map-order}
 \end{figure}
 
-Tato finální stránka je také posledním krokem celého procesu nákupu vstupenek, který je v této práci pokryt.
+Tato finální stránka, zobrazena na obrázku~\ref{fig:seating-map-order}, je také posledním krokem celého procesu implementace nákupu vstupenek, který je v této práci pokryt.
