@@ -135,12 +135,13 @@
 \DeclareAcronym{ws}{short=WS,       long=Websockets }
 
 % TODO
-%\usepackage{indentfirst}            %%% zaveď odsazení 1. odstavce
+\usepackage{indentfirst}            %%% zaveď odsazení 1. odstavce
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.75\baselineskip}
 \usepackage[nottoc]{tocbibind}      %%% zajistí přidání seznamu literatury, obrázků a tabulek do obsahu
 \usepackage[unicode]{hyperref}      %%% zajištuje generování hyperodkazů, bookmarků atp.
 \usepackage{pdfpages}               %%% umožňuje vkládat PDF soubory do dokumentu
+% TODO make fancy headers work
 \usepackage{fancyhdr}               %%% umožňuje nastavit vlastní hlavičky a patičky stránky
 
 % TODO
@@ -172,7 +173,7 @@
 %\titlespacing*{\chapter}{0pt}{-10mm}{5mm}
 \titleformat{\chapter}{\normalfont\huge\bfseries}{\thechapter}{1em}{}
 
-%%%%% Zkratky
+%%%%% Obrázky
 %%%%% ---------------------------------------------------------------
 \newcommand{\FIGDIR}{./figures}    %%% cesta do adresáře s obrázky
 
@@ -182,13 +183,6 @@
 %\bibliographystyle{plainnat}     %% Autor (rok) s anglickými spojkami
 \bibliographystyle{unsrt}        %% [číslo]
 \renewcommand{\bibname}{Seznam použité literatury}
-
-
-%%%%% Použití fancyvrb (fancy verbatim) při definici prostředí pro
-%%%%% sazbu kódu, resp. výstupů z počítačových programů
-%%%%% ------------------------------------------------------------
-\DefineVerbatimEnvironment{PCinout}{Verbatim}{fontsize=\small, frame=single}
-
 
 %%%%% Hlavní část dokumentu
 %%%%% ------------------------------------------------------------

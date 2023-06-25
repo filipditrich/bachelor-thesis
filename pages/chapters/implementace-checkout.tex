@@ -94,7 +94,7 @@ Jako požadavek na uživatelské rozhraní bylo stanoveno, že stránka dokonče
 Tento souhrn je zobrazen jako karta obsahující seznam všech vstupenek v košíku.
 Mimo jiné slouží také jako místo pro tlačítko k dokončení objednávky, které je podmíněno platností formuláře, které zahrnuje především akceptaci obchodních podmínek.
 Po kliknutí na tlačítko je formulář validován oproti validačnímu schématu zobrazenému v ukázce kódu~\ref{lst:checkout-contact-details-schema}.
-Pokud validací projde, je zavolán handler \texttt{createOrderHandler} řešící vytvoření objednávky, který simuluje volání \ac{api} a poté uživatele přesměruje na stránku s potvrzením objednávky.
+Pokud validací projde, je zavolán handler \texttt{createOrderHandler()} řešící vytvoření objednávky, který simuluje volání \ac{api} a poté uživatele přesměruje na stránku s potvrzením objednávky.
 Jeho implementace je zobrazena v ukázce kódu~\ref{lst:create-order-handler}.
 
 \begin{listing}[H]
@@ -127,7 +127,7 @@ const createOrderHandler = useHandler<Types.UseCart.CreateOrderCb>(
 \label{lst:create-order-handler}
 \end{listing}
 
-Jak je uvedeno v ukázce kódu~\ref{lst:create-order-handler}, tento handler vytvoří falšenou novou objednávku za účelem jejího pozdějšího zobrazení na stránce s potvrzením.
+Jak je uvedeno v ukázce kódu~\ref{lst:create-order-handler}, tento handler vytvoří falešnou novou objednávku za účelem jejího pozdějšího zobrazení na stránce s potvrzením.
 Souhrn objednávky spolu s již popsanými kontaktními údaji a formulářem pro výběr platební metody je zobrazeno na obrázku~\ref{fig:seating-map-checkout}.
 
 \begin{figure}[H]
@@ -148,7 +148,7 @@ Jako poslední krok procesu nákupu vstupenek je implementována stránka s potv
 I když je tato stránka úzce propojena s procesem platby, který není součástí této práce, je implementována alespoň velmi jednoduše.
 
 Jak je navrženo v návrhu uživatelského rozhraní, stránka s potvrzením objednávky obsahuje jednoduchou kartu s jejím přehledem a možností stáhnout si vstupenky.
-V rámci metody \texttt{createOrderHandler} je vytvořena nová objednávka, která je následně zobrazena na této stránce přístupem k výsledku volání handleru \texttt{createOrderHandler}.
+V rámci metody \texttt{createOrderHandler()} je vytvořena nová objednávka, která je následně zobrazena na této stránce přístupem k výsledku volání handleru \texttt{createOrderHandler}.
 
 \begin{figure}[H]
 	\centering
@@ -157,4 +157,4 @@ V rámci metody \texttt{createOrderHandler} je vytvořena nová objednávka, kte
 	\label{fig:seating-map-order}
 \end{figure}
 
-Tato finální stránka, zobrazena na obrázku~\ref{fig:seating-map-order}, je také posledním krokem celého procesu implementace nákupu vstupenek, který je v této práci pokryt.
+Tato finální stránka, zobrazena na obrázku~\ref{fig:seating-map-order}, je také posledním krokem implementační části vyvíjené aplikace.
