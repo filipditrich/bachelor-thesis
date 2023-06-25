@@ -1,0 +1,44 @@
+%%% Sekce – Nasazení aplikace
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
+%%% --------------------------------------------------------------
+\section{Nasazení aplikace}
+\label{sec:implementace-deployment}
+Poslední krok vývoje tohoto prototypu je nasazení aplikace do cloudového prostředí pomocí vybrané hostingové služby.
+Tomuto procesu se také říká \foreign{deployment} a je to důležitý krok, který umožňuje uživatelům z celého světa přistupovat a interagovat s aplikací.
+Vzhledem k tomu, že aplikace byla vyvinuta pomocí Next.js, byla jako hostingová služba vybrána \textbf{Vercel} – renomovaná platforma uznávaná pro svou výjimečnou podporu Next.js aplikací\cite{vd_vercel_com_docs}.
+
+%%% Podsekce – Proces nasazení
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
+%%% --------------------------------------------------------------
+\subsection{Proces nasazení}
+\label{subsec:implementace-proces-nasazeni}
+Proces nasazení této aplikace začíná propojením Git repozitáře s novým projektem v rámci platformy Vercel, pro kterou bylo nutné vytvořit účet.
+Jak je v dnešní době již standardem, registrace byla rychlá a bezproblémová pomocí propojení s účtem třetí strany – v tomto případě byl použit účet GitHub.
+Jakmile je repozitář propojen, Vercel automaticky nastaví nasazování pro každý \foreign{push}\footnote{\foreign{Push} je git příkaz, který nahraje lokální změny do vzdáleného repozitáře\cite{g_docs_git_push}.} do zvolené produkční větve – často \texttt{main} nebo \texttt{master} větve.
+
+V případě tohoto projektu byl nasazovací proces následující:
+\begin{enumerate}
+    \item Vytvoření nového projektu na Vercel.
+    \item Propojení Git repozitáře obsahujícího kód aplikace.
+    \item Nastavení \foreign{build procesu}\footnote{\foreign{Build proces} je proces, který převede zdrojový kód aplikace do spustitelné podoby.} aplikace, který je v tomto případě založen na příkazu \mintinline{bash}{pnpm build}.
+\end{enumerate}
+
+Po dokončení těchto kroků Vercel automaticky spustí build process a nasadí aplikaci vždy, když jsou do produkční větve nahrané nové změny, čímž se efektivně vytvoří \ac{cd} proces – proces nasazování, který je automatický a nevyžaduje žádnou lidskou interakci.
+
+%%% Podsekce – Výsledek nasazení
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
+%%% --------------------------------------------------------------
+\subsection{Výsledek nasazení}
+\label{subsec:implementace-vysledek-nasazeni}
+Po úspěšném nasazení je aplikace hostována na \acs{url}, kterou poskytuje Vercel a je strukturována jako \texttt{project-name.vercel.app}.
+
+Vyvinutá aplikace v rámci této práce je tedy nasazena a přístupná uživatelům po celém světě, hostována na \ac{url} \url{https://seating-map.vercel.app} skrze platformu Vercel.
+
+Robustní funkce a integrace plateformy Vercel poskytly bezproblémový přechod od vývoje k nasazení.
+Dodala živou, globálně přístupnou aplikaci, která je připravena k interakci uživatelů, čímž byl dosažen konečný cíl vývojového procesu.
