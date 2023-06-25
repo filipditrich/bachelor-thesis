@@ -5,14 +5,13 @@
 %%% --------------------------------------------------------------
 \section{Interaktivní mapa sedadel}
 \label{sec:implementace-seating}
-Vývoj webové aplikace zahrnuje několik klíčových prvků, z nichž každý představuje jedinečné výzvy a příležitosti k učení.
-Tyto prvky jsou základem funkčnosti aplikace a každý z nich hraje klíčovou roli při zlepšování uživatelské zkušenosti.
-Vývoj těchto prvků vyžadoval pevné porozumění frontendovým technologiím, jejich možnostem, omezením a osvědčeným postupům.
+Vývoj této webové aplikace zahrnoval několik klíčových prvků, z nichž každý představoval jedinečné výzvy a příležitosti.
+Tyto prvky jsou základem funkčnosti aplikace a každý z nich hraje klíčovou roli v celkovém uživatelském zážitku.
 
-Jedním z těchto klíčových prvků je interaktivní mapa sedadel.
-Tato funkce umožňuje uživateli vizuálně procházet uspořádáním sedadel v místnosti a vybrat si své preferované místo.
-Mapa sedadel uživatelům poskytuje přehled o všech dostupných sedadlech, jejich kategoriích a stavech, čímž usnadňuje proces rozhodování.
-Tato funkce výrazně zlepšuje uživatelskou zkušenost tím, že poskytuje intuitivní a interaktivní rozhraní pro výběr sedadel.
+Prvním z těchto klíčových prvků je interaktivní mapa sedadel.
+Tento prvek umožňuje uživateli vizuálně procházet virtuální mapu sedadel v místnosti a vybrat si své preferované místo.
+Mapa sedadel uživatelům poskytuje přehled o všech dostupných sedadlech, jejich kategoriích a stavech, čímž usnadňuje proces výběru sedadla.
+Tato mapa je také zodpovědná za zobrazení informací o vstupenkách, které jsou přidruženy k vybraným sedadlům.
 
 %%% Podsekce – Struktura
 %%%%% Wording: ⏳
@@ -21,29 +20,32 @@ Tato funkce výrazně zlepšuje uživatelskou zkušenost tím, že poskytuje int
 %%% --------------------------------------------------------------
 \subsection{Struktura}
 \label{subsec:implementace-seating-struktura}
-Struktura této funkce je postavena na několika komponentech, které spolu harmonicky spolupracují.
+Struktura tohoto prvku je postavena na několika komponentách, které spolu harmonicky spolupracují.
 Primárními komponentami jsou:
 
 \begin{itemize}
-	\item SeatingMapProvider
-	\item SeatingMap
-	\item VirtualMap
-	\item Seat
-	\item SeatSheet
+    \item \texttt{SeatingMapProvider}
+    \item \texttt{SeatingMap}
+    \item \texttt{VirtualMap}
+    \item \texttt{Seat}
+    \item \texttt{SeatSheet}
 \end{itemize}
 
-\textbf{SeatingMapProvider} je nadřazená komponenta, která získává data z API a zpřístupňuje je ostatním komponentám.
-Tato data zahrnují podrobnosti o místnosti, sedadlech, jejich stavech a přidružených vstupenkách.
+\textbf{SeatingMapProvider} je nadřazená komponenta, která získává data z \ac{api} a zpřístupňuje je svým ostatním potomkům.
+Tato data zahrnují podrobnosti o místu konání, sedadlech, jejich stavech a vstupenkách.
+Více o získávání dat a jejich struktuře je popsáno v sekci~\ref{subsec:implementace-seating-data}.
 
-\textbf{SeatingMap} je komponenta, která zpracovává SVG data.
-Přebírá SVG data z API a překládá je do formátu, který může být použit komponentou VirtualMap.
+\textbf{SeatingMap} je komponenta, která zpracovává vstupní \ac{svg} data reprezentující mapu místa konání.
+Přebírá \ac{svg} data z \ac{api} a překládá je do formátu, který může být použit komponentou \texttt{VirtualMap}.
 
-\textbf{VirtualMap} je zodpovědná za přidání interaktivity do SeatingMap.
-Umožňuje funkce, jako je posouvání, přibližování a oddalování mapy, čímž poskytuje dynamický uživatelský zážitek.
+\textbf{VirtualMap} je zodpovědná za přidání interaktivity do komponenty \texttt{SeatingMap}.
+Umožňuje funkce ovládání, jako je posouvání, přibližování a oddalování mapy, čímž poskytuje dynamický uživatelský zážitek.
 
-\textbf{Seat} a \textbf{SeatSheet} komponenty představují jednotlivá sedadla na mapě a podrobnosti zobrazené při výběru sedadla.
+\textbf{Seat} a \textbf{SeatSheet} komponenty představují jednotlivá sedadla na mapě a podrobnosti zobrazené při jejich výběru.
 
-\begin{minted}[breaklines]{jsx}
+Souhra a struktura těchto komponent je znázorněna v zjednodušené ukázce kódu níže:
+
+\begin{minted}[breaklines]{html}
 <SeatingMapProvider venue={venue}>
 	{/* seating map */}
 	<SeatingMap width={width} height={height}>
@@ -60,7 +62,7 @@ Umožňuje funkce, jako je posouvání, přibližování a oddalování mapy, č
 		<Sheet>
 			<Sheet.Header />
 			<Sheet.Body>
-				<SeatSheetDetail />
+				<SeatSheet />
 			</Sheet.Body>
 		</Sheet>
 	</SeatingMap>
@@ -74,8 +76,13 @@ Umožňuje funkce, jako je posouvání, přibližování a oddalování mapy, č
 %%% --------------------------------------------------------------
 \subsection{Získávání a správa dat}
 \label{subsec:implementace-seating-data}
-Proces získávání a správy dat začíná komponentou SeatingMapProvider.
-Tato komponenta vytvoří požadavek na API, aby získala data týkající se uspořádání sedadel v místnosti.
+Proces získávání a správy dat začíná komponentou \texttt{SeatingMapProvider}.
+Tato komponenta vytvoří požadavek na \ac{api}, aby získala data týkající se uspořádání sedadel daného místa konání.
+
+Odpověď API zahrnuje podrobnou \ac{svg} reprezentaci uspořádání sedadel a jejich jednotlivá data.
+Každé sedadlo obsahuje informace o jeho řadě, místě, plném názvu, dostupné kapacitě a přidružených vstupenkách a kategoriích.
+Každá vstupenka obsahuje informace o jejím id, názvu, volitelném popisu, ceně a kategoriích.
+Podrobná struktura dat je znázorněna v ukázce kódu níže:
 
 \begin{minted}[breaklines]{typescript}
 /**
@@ -135,14 +142,10 @@ export const venueApiSchema = z.object({
 });
 \end{minted}
 
-Odpověď API zahrnuje podrobnou SVG reprezentaci uspořádání sedadel v místnosti, jednotlivá data sedadel a přidružené vstupenky.
-Každé sedadlo obsahuje informace o jeho řádku, místě, plném názvu, dostupné kapacitě a přidružených vstupenkách a kategoriích.
-Každá vstupenka obsahuje informace o jejím id, názvu, volitelném popisu, ceně a kategoriích.
-
-Po získání dat komponenta SeatingMapProvider zpracuje data do použitelnějšího formátu.
+Po získání těchto dat komponenta \texttt{SeatingMapProvider} tato data zpracuje do použitelnějšího formátu.
 Toto zpracování zahrnuje oddělení sedadel, vstupenek a kategorií do vlastních struktur, vytvářející hierarchii, která zjednodušuje přístup k datům pro následující komponenty.
 
-Tento zpracovaný formát je pak ostatním komponentám zpřístupněn pomocí kontextu, což poskytuje pohodlný způsob, jak k nim přistupovat.
+Tento zpracovaný formát je pak ostatním komponentám zpřístupněn pomocí kontextu, což poskytuje pohodlný způsob, jak k nim přistupovat nezávisle na jejich umístění ve stromu komponent.
 
 %%% Podsekce – Parsování SVG a mapování sedadel
 %%%%% Wording: ⏳
@@ -151,13 +154,12 @@ Tento zpracovaný formát je pak ostatním komponentám zpřístupněn pomocí k
 %%% --------------------------------------------------------------
 \subsection{Parsování SVG a mapování sedadel}
 \label{subsec:implementace-seating-svg}
-SeatingMap komponenta je zodpovědná za parsování SVG dat a jejich překlad do formátu, který může být použit komponentou VirtualMap.
+\texttt{SeatingMap} komponenta je zodpovědná za parsování příchozích \ac{svg} dat a jejich překlad do formátu, který může být použit komponentou \texttt{VirtualMap}.
 
-Tato komponenta přijímá SVG data z API a zpracovává je pomocí knihovny xml-js.
-SVG data z API následují specifickou strukturu, kde `<g>` elementy představují skupiny sedadel, a tyto jsou identifikovány pomocí id atributu `seats:xxx`.
-Jednotlivá sedadla v rámci těchto skupin jsou reprezentována `<circle>` elementy, identifikovanými jejich jedinečnými id ve formě `seat:row+place`.
+Příchozí \ac{svg} data mají specifickou strukturu, kde \mintinline{html}{<g>} elementy představují skupiny sedadel, a jsou identifikovány pomocí id atributu ve formátu \texttt{"seats:xxx"}, kde \texttt{xxx} je identifikátor konkrétní skupiny sedadel.
+Jednotlivá sedadla v rámci těchto skupin jsou reprezentována \mintinline{html}{<circle>} či \mintinline{html}{<rect>} elementy, identifikovanými jejich jedinečnými id ve formě \texttt{"seat:row+place"}, kde \texttt{row} je řada sedadla a \texttt{place} je číslo místa v rámci řady.
+Zjednodušené znázornění této struktury je vidět v následující ukázce kódu:
 
-% FIXME: svg comments broken
 \begin{minted}{xml}
 <svg width="1287" height="1115" viewBox="0 0 1287 1115" fill="#F2F4F7" xmlns="http://www.w3.org/2000/svg">
     <!-- seats -->
@@ -166,33 +168,26 @@ Jednotlivá sedadla v rámci těchto skupin jsou reprezentována `<circle>` elem
         <circle id="seat:H+1" cx="48" cy="785" r="50" fill="#D0D5DD"/>
         <!-- seat I+1 -->
         <circle id="seat:I+1" cx="48" cy="805" r="50" fill="#D0D5DD"/>
-        <!-- ...
--->
+        <!-- ... -->
     </g>
     <g id="seats:right">
-        <!-- ...
--->
+        <!-- ... -->
     </g>
     <g id="seats:left">
-        <!-- ...
--->
+        <!-- ... -->
     </g>
     <g id="seats:center">
-        <!-- ...
--->
+        <!-- ... -->
     </g>
     <!-- details -->
     <g id="details:patio">
-        <!-- ...
--->
+        <!-- ... -->
     </g>
-    <!-- ...
--->
+    <!-- ... -->
 </svg>
 \end{minted}
 
-Jakmile jsou SVG data zparsována, komponenta SeatingMap mapuje data sedadel na parsované SVG elementy, nahrazující každý `<circle>` element odpovídající komponentou <Seat>.
-Každá komponenta <Seat> reprezentuje jedno sedadlo a zahrnuje všechna příslušná data pro toto sedadlo.
+Parsování těchto probíhá za pomoci knihovny \texttt{svg-parser} a výsledkem je upravená struktura, kde je každé sedadlo (reprezentované \mintinline{html}{<circle>} či \mintinline{html}{<rect>} elementem) nahrazeno dedikovanou komponentou \mintinline{html}{<Seat />}, jejíž funkčnost je dále rozepsána v sekci~\ref{subsec:implementace-seating-seat}.
 
 %%% Podsekce – Interaktivita s VirtualMap
 %%%%% Wording: ⏳
@@ -201,15 +196,14 @@ Každá komponenta <Seat> reprezentuje jedno sedadlo a zahrnuje všechna přísl
 %%% --------------------------------------------------------------
 \subsection{Interaktivita s VirtualMap}
 \label{subsec:implementace-seating-virtualmap}
-Komponenta VirtualMap přidává interaktivitu do mapy sedadel.
-Tato komponenta obaluje komponentu SeatingMap, přebírající parsované a namapované SVG elementy jako své potomky, a zajišťuje všechny interakce s mapou sedadel.
+Komponenta \texttt{VirtualMap} přidává interaktivitu do mapy sedadel.
+Tato komponenta obaluje komponentu \texttt{SeatingMap}, přebírající parsované a namapované \ac{svg} elementy jako své potomky, a zajišťuje všechny interakce s mapou sedadel.
 
+Tato komponenta využívá knihovny \texttt{react-spring} a \texttt{use-gesture} k zajištění plynulé a responzivní animace pro gesta \foreign{pan}\footnote{\foreign{Pan} je gesto, které umožňuje uživateli posunout obsah v rámci omezeného prostoru.} a \foreign{pinch}\footnote{\foreign{Pinch} je gesto, které umožňuje uživateli přiblížit nebo oddálit obsah.
+}, poskytující dynamický a plynulý uživatelský zážitek.
 
-Tato komponenta využívá knihovny react-spring a use-gesture k implementaci interakcí s mapou sedadel.
-Tyto knihovny umožňují plynulé a responzivní animace pro gesta panningu, zoomování a pinching, poskytující dynamický a plynulý uživatelský zážitek.
-
-Komponenta VirtualMap také zajišťuje správu stavu mapy sedadel, sledováním změn, jako je úroveň zoomu, posunutí pan, a aktuálně vybrané sedadlo.
-Tato správa stavu zajišťuje konzistentní uživatelský zážitek, i když je mapa sedadel manipulována uživatelem.
+Komponenta \texttt{VirtualMap} také zajišťuje správu stavu mapy, sledováním změn, jako je úroveň \foreign{zoom}\footnote{\foreign{Zoom} je úroveň přiblížení nebo oddálení obsahu.} a posunutí.
+Tato správa stavu zajišťuje především konzistentní uživatelský zážitek při manipulaci mapy uživatelem.
 
 %%% Podsekce – Výběr sedadla a správa vstupenek
 %%%%% Wording: ⏳
@@ -218,36 +212,35 @@ Tato správa stavu zajišťuje konzistentní uživatelský zážitek, i když je
 %%% --------------------------------------------------------------
 \subsection{Výběr sedadla a správa vstupenek}
 \label{subsec:implementace-seating-seat}
-Komponenta Seat a SeatSheet jsou zodpovědné za výběr sedadla a správu vstupenek.
+Komponenty \texttt{Seat} a \texttt{SeatSheet} jsou zodpovědné za výběr sedadla a správu komunikace s nákupním košíkem.
 
-Komponenta Seat reprezentuje jednotlivá sedadla na mapě.
-Každá komponenta Seat zahrnuje všechna příslušná data sedadla, jako je jeho dostupnost a aktuální stav.
-Kliknutím na dostupné sedadlo můžou uživatelé zobrazit jeho detaily, včetně příslušných vstupenek.
-Tato interakce spouští otevření komponenty SeatSheet, která poskytuje uživatelsky přívětivé rozhraní pro výběr vstupenky.
-
-% TODO: screenshot of the Seat component
-\begin{verbatim}
-// TODO: screenshot of the SeatSheet component
-\end{verbatim}
-
-Komponenta SeatSheet zobrazuje detaily vybraného sedadla, včetně jeho kategorie, řádku, místa a dostupných vstupenek.
-Vstupenky jsou vázány na kategorii sedadla a kategorie může mít několik příslušných vstupenek.
-Cena vstupenky je definována kombinací její kategorie a vybraného sedadla.
-
-Uživatel může přidat vybranou vstupenku do svého košíku přímo z rozhraní SeatSheet.
-Pokud je v košíku již vstupenka pro vybrané sedadlo, může uživatel vybrat, zda chce vstupenku vyměnit nebo ji z košíku odebrat.
-Všechny tyto změny se okamžitě promítají do komponenty SeatSheet, poskytující uživateli zpětnou vazbu v reálném čase.
-
-Ve shrnutí je komponenta Interactive Seating Map kombinací načítání a správy dat, parsování SVG a mapování sedadel, interaktivity s VirtualMap a výběru sedadla a správy vstupenek.
-Tyto komponenty spolupracují na vytvoření dynamické, interaktivní a uživatelsky přívětivé volby sedadel.
-Výsledkem je vysoce flexibilní a intuitivní systém, který zjednodušuje proces výběru vstupenek a správu košíku.
+Komponenta \texttt{Seat} reprezentuje jednotlivá sedadla na mapě a spravuje všechna jeho příslušná data, jako je jeho dostupnost a aktuální stav.
+Kliknutím na jakékoliv sedadlo se vyvolá akce zvolení sedadla, která spustí otevření komponenty \texttt{SeatSheet}, která poskytuje uživatelsky přívětivé rozhraní pro zobrazení informací o daném sedadle a výběr z možných vstupenek.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{\FIGDIR/seating-map-seat}
-	\caption{Snímek obrazovky interaktivní mapy sedadel}
-	\label{fig:seating-map-seat}
+	\includegraphics[width=0.75\textwidth]{\FIGDIR/seating-map-seat-sheet}
+	\caption{Snímek obrazovky komponenty \texttt{SeatSheet}}
+	\label{fig:seating-map-seats-sheet}
+\end{figure}
+
+Na obráuku~\ref{fig:seating-map-seats-sheet} je zobrazena komponenta \texttt{SeatingSheet} s detaily vybraného sedadla, včetně jeho kategorie, řady, místa a dostupných vstupenek.
+
+Vstupenky jsou vázány na kategorii sedadla a kategorie může mít několik příslušných vstupenek.
+Cena vstupenky je definována kombinací její kategorie a vybraného sedadla.
+
+Uživatel může přidat vybranou vstupenku do svého košíku přímo z rozhraní komponenty \texttt{SeatSheet}.
+Pokud je v košíku již vstupenka pro vybrané sedadlo, může uživatel vybrat, zda chce vstupenku vyměnit nebo ji z košíku odebrat.
+Všechny tyto změny se okamžitě promítají v uživatelském rozhraní a poskytují tak uživateli zpětnou vazbu v reálném čase.
+
+Ve shrnutí je tento prvek interaktivní mapy sedadel kombinací načítání a správy dat, parsování \ac{svg} a mapování sedadel, interaktivity mapy a výběru sedadla se správou vstupenek.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{\FIGDIR/seating-map-seat}
+    \caption{Snímek obrazovky interaktivní mapy sedadel}
+    \label{fig:seating-map-seat}
 \end{figure}
 
 Obrázek~\ref{fig:seating-map-seat} zobrazuje výsledný produkt, ilustrující uživatelsky přívětivé rozhraní a dynamickou mapu sedadel.
-Kombinace výše uvedených komponent umožňuje snadnou navigaci sedadel místa, okamžitý přístup k informacím o vstupenkách a přehlednou správu vstupenek, což vede k efektivnímu a příjemnému uživatelskému zážitku.
+Kombinace výše uvedených komponent umožňuje snadnou navigaci sedadel místa, okamžitý přístup k informacím o vstupenkách a přehlednou správu vstupenek zajišťující efektivní nákup vstupenek.
