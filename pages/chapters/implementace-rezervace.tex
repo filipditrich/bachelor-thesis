@@ -1,7 +1,7 @@
 %%% Sekce – Rezervační systém
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \section{Rezervační systém}
 \label{sec:implementace-rezervace}
@@ -9,7 +9,7 @@ Rezervační systém je klíčovou součástí aplikace, jelikož se stará o re
 Rezervační systém je pouze jakousi integrací, nebo spíše rozšířením jádra logiky košíku.
 Košík ve své podstatě pouze uchovává referenci na rezervaci ve svém stavu reprezentovanou velmi jednoduchým objektem ve tvaru rozhraní zobrazeného v ukázce kódu~\ref{lst:reservation}.
 
-\begin{listing}[!h]
+\begin{listing}[H]
 \begin{minted}{typescript}
 /**
  * Reservation type
@@ -25,7 +25,7 @@ export type Reservation = {
 
 Rezervace je vytvořena v momentě, kdy je do košíku přidána první vstupenka pomocí metody \texttt{addToCartHandler()}, která je zobrazena v ukázce kódu kódu~\ref{lst:add-to-cart-handler}.
 
-\begin{listing}[!h]
+\begin{listing}[H]
 \begin{minted}[highlightlines={4-12}]{typescript}
 /** add to cart handler */
 const addToCartHandler = useHandler<Types.UseCart.AddToCartCb>(
@@ -62,17 +62,17 @@ const addToCartHandler = useHandler<Types.UseCart.AddToCartCb>(
 Obdobně je rezervace vymazána, když je z košíku odebrána poslední vstupenka v metodě \texttt{removeFromCartHandler()}.
 
 %%% Podsekce – Expirace a vymazání rezervace
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \subsection{Expirace a vymazání rezervace}
 \label{subsec:implementace-rezervace-expirace}
 Více zajímavý je proces vypršení a vymazání rezervace.
-To je provedeno pomocí vlastního hooku \texttt{useWaitUntil()}, který bere jako argumenty datum a \foreign{callback funkcí}\footnote{\foreign{Callback funkce} je funkce, která je předána jako argument jiné funkci a je zavolána v rámci této funkce.}.
-Jednoduše čeká, dokud není dosaženo datumu, a pak zavolá tuto callback funkci, která je znázorněna v ukázce kódu~\ref{lst:clear-reservation-handler}.
+Toho je docíleno pomocí vlastního hooku \texttt{useWaitUntil()}, který bere jako argumenty datum a \foreign{callback funkcí}\footnote{\foreign{Callback funkce} je funkce, která je předána jako argument jiné funkci a je zavolána v rámci této funkce.}.
+Jednoduše čeká, dokud není dosaženo datumu, a poté zavolá tuto callback funkci, která je znázorněna v ukázce kódu~\ref{lst:clear-reservation-handler}.
 
-\begin{listing}[!h]
+\begin{listing}[H]
 \begin{minted}[highlightlines={2-5}]{typescript}
 /** handle expired reservation */
 useWaitUntil(reservation?.reservedUntil, async () => {
@@ -101,16 +101,15 @@ const clearReservationHandler = useHandler<Types.UseCart.ClearReservationCb>(
 Hlavní částí tohoto mechanismu je handler \texttt{clearReservationHandler()}, který opět jednoduše simuluje volání \ac{api} a poté vymaže jak rezervaci, tak obsah košík, čímž efektivně vrací košík do výchozího stavu.
 
 %%% Podsekce – Vizualizace rezervace
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \subsection{Vizualizace rezervace}
 \label{subsec:implementace-rezervace-vizualizace}
-Rezervace je vizualizována v košíku pomocí jednoduchého odpočtu, které je uživateli zobrazeno.
-Tento časovač je implementován s pomocí knihovny \texttt{react-countdown}, která poskytuje komponentu \texttt{Countdown}, která umožňuje vlastní vykreslování odpočtu.
-Komponenta přijímá datum z rezervace košíku a vykresluje upozornění na rezervaci.
-Toto upozornění informuje uživatele o vypršení rezervace a zbývajícím čase.
+Rezervace je vizualizována v košíku pomocí jednoduchého odpočtu, který je uživateli zobrazen.
+Tento odpočet je implementován s pomocí knihovny \texttt{react-countdown}\footnote{\url{https://www.npmjs.com/package/react-countdown}}, která poskytuje komponentu \texttt{Countdown}, která umožňuje vlastní vykreslování odpočtu.
+Komponenta přijímá datum z rezervace košíku a vykresluje upozornění na rezervaci, jenž informuje uživatele o vypršení rezervace a zbývajícím čase.
 Jak je znázorněno na obrázku~\ref{fig:seating-map-reservation}, upozornění je zobrazeno v hlavičce košíku a liší se podle zbývajícího času do vypršení rezervace.
 
 \begin{figure}[H]
