@@ -43,9 +43,15 @@ Logická, jasná a konzistentně udržovaná struktura umožňuje vývojářům 
 Tento projekt využívá modulární architekturu, kde je kód kategoricky organizován do odlišných modulů na základě jejich specifických funkcí.
 Tato metodologie slouží ke zlepšení čitelnosti a udržovatelnosti kódové základny zapouzdřením souvisejících logických komponent do samostatných modulů\cite{p_article_react_folder_structure}.
 
-Níže je podrobnější pohled na složky a soubory hlavní struktury projektu a jejich účely:
+Podrobnější pohled na složky a soubory hlavní struktury projektu a jejich účely je zobrazen na ukázce kódu~\ref{lst:implementace-architektura-struktura}.
 
-\begin{lstlisting}[language={[LaTeX]TeX},caption={Struktura projektu},label={lst:project-structure}]
+\begin{listing}[!h]
+\begin{minted}[
+    frame=single,
+    rulecolor=\color{black},
+    framesep=15pt,
+    linenos=false
+]{text}
 src/
 |-- lib/
 |   |-- components/
@@ -62,7 +68,10 @@ package.json
 prettier.config.js
 tsconfig.json
 tailwind.config.js
-\end{lstlisting}
+\end{minted}
+\caption{Vizualizace struktury projektu}
+\label{lst:implementace-architektura-struktura}
+\end{listing}
 
 \begin{itemize}
     \item \textbf{src:} Toto je hlavní adresář obsahující veškerý zdrojový kód aplikace.

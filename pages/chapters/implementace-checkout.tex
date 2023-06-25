@@ -86,6 +86,7 @@ Po odeslání je formulář ověřen a pokud ověření projde, je zavolán call
 Tento callback je implementován jako jednoduchý \texttt{createOrderHandler} handler, který simuluje API volání a poté uživatele přesměruje na stránku s potvrzením objednávky.
 Handler je implementován následovně:
 
+\begin{listing}[!h]
 \begin{minted}{typescript}
 /** create order handler */
 const createOrderHandler = useHandler<Types.UseCart.CreateOrderCb>(
@@ -111,8 +112,11 @@ const createOrderHandler = useHandler<Types.UseCart.CreateOrderCb>(
 	},
 );
 \end{minted}
+\caption{Implementace handleru pro vytvoření objednávky}
+\label{lst:create-order-handler}
+\end{listing}
 
-Jak je uvedeno v ukázce kódu výše, tento handler vytvoří objekt nové objednávky za účelem zobrazení dat na stránce s potvrzením objednávky.
+Jak je uvedeno v ukázce kódu~\ref{lst:create-order-handler}, tento handler vytvoří objekt nové objednávky za účelem zobrazení dat na stránce s potvrzením objednávky.
 Potvrzení objednávky spolu s již popsanými kontaktními údaji a formulářem pro výběr platební metody je zobrazeno na obrázku~\ref{fig:seating-map-checkout}.
 
 \begin{figure}[H]

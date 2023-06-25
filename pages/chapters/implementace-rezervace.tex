@@ -5,12 +5,11 @@
 %%% --------------------------------------------------------------
 \section{Rezervační systém}
 \label{sec:implementace-rezervace}
-Rezervační systém je klíčovou součástí aplikace, protože se stará o rezervaci sedadel a vstupenek.
-Také je zodpovědný za vypršení rezervace a její vymazání.
-Rezervační systém je pouze integrací, nebo spíše rozšířením jádra logiky košíku.
-Košík uchovává referenci na rezervaci ve svém stavu.
-Tato rezervace je reprezentována velmi jednoduchým objektem ve tvaru následujícího rozhraní:
+Rezervační systém je klíčovou součástí aplikace, jelikož se stará o rezervaci sedadel a vstupenek a také je zodpovědný za vypršení rezervace a jejího vymazání.
+Rezervační systém je pouze jakousi integrací, nebo spíše rozšířením jádra logiky košíku.
+Košík ve své podstatě pouze uchovává referenci na rezervaci ve svém stavu reprezentovanou velmi jednoduchým objektem ve tvaru rozhraní zobrazeného v ukázce kódu~\ref{lst:reservation}.
 
+\begin{listing}[!h]
 \begin{minted}{typescript}
 /**
  * Reservation type
@@ -20,9 +19,13 @@ export type Reservation = {
 	reservedUntil: Date;
 };
 \end{minted}
+\caption{Rozhraní \texttt{Reservation}}
+\label{lst:reservation}
+\end{listing}
 
-Rezervace je vytvořena v momentě, kdy je do košíku přidána první vstupenka v metodě \texttt{addToCartHandler}, která je zobrazena v následujícím kódu:
+Rezervace je vytvořena v momentě, kdy je do košíku přidána první vstupenka pomocí metody \texttt{addToCartHandler()}, která je zobrazena v ukázce kódu kódu~\ref{lst:add-to-cart-handler}.
 
+\begin{listing}[!h]
 \begin{minted}[highlightlines={4-12}]{typescript}
 /** add to cart handler */
 const addToCartHandler = useHandler<Types.UseCart.AddToCartCb>(
@@ -52,9 +55,11 @@ const addToCartHandler = useHandler<Types.UseCart.AddToCartCb>(
 	},
 );
 \end{minted}
+\caption{Metoda \texttt{addToCartHandler()}}
+\label{lst:add-to-cart-handler}
+\end{listing}
 
-Obdobně je rezervace vymazána, když je z košíku odebrána poslední vstupenka v metodě \texttt{removeFromCartHandler}, která je zobrazena v následujícím kódu:
-State rezervace by také měl být synchronizován při přepínání mezi vstupenkami na obrazovce výběru sedadel.
+Obdobně je rezervace vymazána, když je z košíku odebrána poslední vstupenka v metodě \texttt{removeFromCartHandler()}.
 
 %%% Podsekce – Expirace a vymazání rezervace
 %%%%% Wording: ⏳
@@ -63,12 +68,12 @@ State rezervace by také měl být synchronizován při přepínání mezi vstup
 %%% --------------------------------------------------------------
 \subsection{Expirace a vymazání rezervace}
 \label{subsec:implementace-rezervace-expirace}
-Více zajímavé je vypršení a vymazání rezervace.
-To je provedeno pomocí vlastního hooku \texttt{useWaitUntil}, který bere jako argumenty datum a zpětné volání.
-Jednoduše čeká, dokud není datum dosaženo, a pak zavolá zpětné volání.
-V rámci košíku je tento mechanismus vymazání rezervace implementován následujícím způsobem:
+Více zajímavý je proces vypršení a vymazání rezervace.
+To je provedeno pomocí vlastního hooku \texttt{useWaitUntil()}, který bere jako argumenty datum a \foreign{callback funkcí}\footnote{\foreign{Callback funkce} je funkce, která je předána jako argument jiné funkci a je zavolána v rámci této funkce.}.
+Jednoduše čeká, dokud není dosaženo datumu, a pak zavolá tuto callback funkci, která je znázorněna v ukázce kódu~\ref{lst:clear-reservation-handler}.
 
-\begin{minted}[highlightlines={1-6}]{typescript}
+\begin{listing}[!h]
+\begin{minted}[highlightlines={2-5}]{typescript}
 /** handle expired reservation */
 useWaitUntil(reservation?.reservedUntil, async () => {
 	window.alert('Reservation expired, clearing cart...');
@@ -89,8 +94,11 @@ const clearReservationHandler = useHandler<Types.UseCart.ClearReservationCb>(
 	},
 );
 \end{minted}
+\caption{Proces expirace rezervace s metodou \texttt{clearReservationHandler()}}
+\label{lst:clear-reservation-handler}
+\end{listing}
 
-Callback funkce vypršení rezervace definovaná pomocí handleru \texttt{clearReservationHandler} opět jednoduše simuluje volání API a poté vymaže jak rezervaci, tak košík.
+Hlavní částí tohoto mechanismu je handler \texttt{clearReservationHandler()}, který opět jednoduše simuluje volání \ac{api} a poté vymaže jak rezervaci, tak obsah košík, čímž efektivně vrací košík do výchozího stavu.
 
 %%% Podsekce – Vizualizace rezervace
 %%%%% Wording: ⏳
@@ -99,8 +107,8 @@ Callback funkce vypršení rezervace definovaná pomocí handleru \texttt{clearR
 %%% --------------------------------------------------------------
 \subsection{Vizualizace rezervace}
 \label{subsec:implementace-rezervace-vizualizace}
-Rezervace je vizualizována v košíku pomocí jednoduchého odpočítávání, které je uživateli zobrazeno.
-Tento časovač je implementován s pomocí knihovny \texttt{react-countdown}, která poskytuje komponentu \texttt{Countdown}, která umožňuje vlastní vykreslování odpočítávání.
+Rezervace je vizualizována v košíku pomocí jednoduchého odpočtu, které je uživateli zobrazeno.
+Tento časovač je implementován s pomocí knihovny \texttt{react-countdown}, která poskytuje komponentu \texttt{Countdown}, která umožňuje vlastní vykreslování odpočtu.
 Komponenta přijímá datum z rezervace košíku a vykresluje upozornění na rezervaci.
 Toto upozornění informuje uživatele o vypršení rezervace a zbývajícím čase.
 Jak je znázorněno na obrázku~\ref{fig:seating-map-reservation}, upozornění je zobrazeno v hlavičce košíku a liší se podle zbývajícího času do vypršení rezervace.
@@ -109,24 +117,24 @@ Jak je znázorněno na obrázku~\ref{fig:seating-map-reservation}, upozornění 
 	\centering
 	\begin{subfigure}{0.3\textwidth}
 		\includegraphics[width=\textwidth]{\FIGDIR/seating-map-reservation-normal}
-		\caption{\> 1 min}
+		\caption{\geq 1 min}
 		\label{fig:seating-map-reservation-normal}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.3\textwidth}
 		\includegraphics[width=\textwidth]{\FIGDIR/seating-map-reservation-warning}
-		\caption{\< 1 min}
+		\caption{\textless 1 min}
 		\label{fig:seating-map-reservation-warning}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.3\textwidth}
 		\includegraphics[width=\textwidth]{\FIGDIR/seating-map-reservation-danger}
-		\caption{\< 30 s}
+		\caption{\leq 30 s}
 		\label{fig:seating-map-reservation-danger}
 	\end{subfigure}
 	\caption{Upozornění na rezervaci v hlavičce košíku}
 	\label{fig:seating-map-reservation}
 \end{figure}
 
-Po implementaci rezervačního systému je košík plně funkční.
-Další důležitou částí celé implementace je proces objednávky, který je popsán v následující sekci.
+Po implementaci rezervačního systému je již košík plně funkční v rámci dané specifikace.
+Další důležitou částí celé implementace je proces dokončení objednávky, který je popsán v navazující sekci~\ref{sec:implementace-checkout}.

@@ -5,9 +5,9 @@
 %%% --------------------------------------------------------------
 \section{Správa košíku}
 \label{sec:implementace-kosik}
-Druhou hlavní funkcí naší aplikace je správa košíku.
-Tato komponenta umožňuje uživatelům přidávat, odebírat nebo vyměňovat vstupenky, které si vybrali z mapy sedadel, a slouží jako most mezi interaktivní mapou sedadel a procesem rezervace a platby.
-Správa košíku je pro aplikaci klíčová, protože ovládá tok dat od výběru sedadel po proces rezervace a platby.
+Druhým hlavním prvkem této aplikace je správa nákupního košíku.
+Tento prvek umožňuje uživatelům přidávat, odebírat nebo vyměňovat vstupenky, které si vybrali z mapy sedadel.
+Správa košíku je pro aplikaci klíčová, jelikož slouží jako most mezi interaktivní mapou sedadel a procesem rezervace a platby.
 
 %%% Podsekce – Kontext košíku
 %%%%% Wording: ⏳
@@ -16,10 +16,9 @@ Správa košíku je pro aplikaci klíčová, protože ovládá tok dat od výbě
 %%% --------------------------------------------------------------
 \subsection{Kontext košíku}
 \label{subsec:implementace-kosik-kontext}
-State košíku je spravován globálně v celé aplikaci pomocí React kontextu.
-Definovali jsme \texttt{CartContext}, který obaluje celou aplikaci a poskytuje kontext pro přístup a manipulaci se stavem košíku.
-CartContext je ve skutečnosti pouze poskytovatelem komponent, který obaluje aplikaci a poskytuje stav a akce košíku zbytku aplikace.
-Hlavní logika se odehrává v použití hooku košíku, který vytváří instanci nákupního košíku, která zajišťuje stav a akce košíku.
+\foreign{State}, neboli počeštěně stav, košíku je spravován globálně v celé aplikaci pomocí kontextu.
+Toto zajišťuje \texttt{CartContext} komponenta, která obaluje celou aplikaci a poskytuje kontext pro přístup a manipulaci se stavem košíku.
+Hlavní logika se odehrává v \texttt{useCart} hooku košíku, který vytváří instanci nákupního košíku, která obashuje stav a nabízí dostupné akce, kterými lze stav košíku měnit.
 
 %%% Podsekce – State a funkce košíku
 %%%%% Wording: ⏳
@@ -29,8 +28,9 @@ Hlavní logika se odehrává v použití hooku košíku, který vytváří insta
 \subsection{State a funkce košíku}
 \label{subsec:implementace-kosik-state}
 Z pohledu vstupenek a sedadel košík uchovává hlavně vstupenky, které jsou přidány do košíku.
-Tento stav je reprezentován polem objektů ve tvaru následujícího rozhraní:
+Tento stav je reprezentován polem objektů ve tvaru rozhraní zobrazeného v ukázce kódu~\ref{lst:carted-ticket}.
 
+\begin{listing}[!h]
 \begin{minted}{typescript}
 /**
  * CartedTicket type
@@ -52,12 +52,16 @@ export type CartedTicket = {
 	>;
 };
 \end{minted}
+\caption{Rozhraní \texttt{CartedTicket}}
+\label{lst:carted-ticket}
+\end{listing}
 
-Košík, jak již bylo zmíněno, zpracovává různé akce, které lze na košíku provést.
-Tyto akce, reprezentované jako handlery, zahrnují \texttt{addToCartHandler}, \texttt{removeFromCartHandler} a \texttt{replaceCartedTicketHandler}.
-Také poskytuje metodu \texttt{getCartedTicketPrice}, která vrací cenu vstupenky v košíku na základě sedadla a kategorie vstupenky, protože cena vstupenky je definována kombinací její kategorie a vybraného sedadla.
-Implementace metody \texttt{getCartedTicketPrice} je uvedena v následujícím ukázce kódu:
+Košík, jak již bylo zmíněno, nabízí akce, kterými lze stav košíku měnit.
+Tyto akce, reprezentované tzv. \foreign{handlery}, zahrnují \texttt{addToCartHandler()}, \texttt{removeFromCartHandler()} a \texttt{replaceCartedTicketHandler()}.
+Také poskytuje metodu \texttt{getCartedTicketPrice()}, která vrací cenu konkrétní vstupenky v košíku na základě sedadla a kategorie vstupenky, jelikož cena vstupenky je definována kombinací její kategorie a vybraného sedadla.
+Implementace metody \texttt{getCartedTicketPrice()} je pro ilustraci uvedena v ukázce kódu~\ref{lst:get-carted-ticket-price}.
 
+\begin{listing}[!h]
 \begin{minted}{typescript}
 /** returns carted ticket price */
 const getCartedTicketPrice = (cartedTicket: Types.CartedTicket) => {
@@ -72,8 +76,11 @@ const getCartedTicketPrice = (cartedTicket: Types.CartedTicket) => {
 	return ticketCategory.price;
 };
 \end{minted}
+\caption{Implementace metody \texttt{getCartedTicketPrice()}}
+\label{lst:get-carted-ticket-price}
+\end{listing}
 
-Posledně košík uchovává memoizovanou hodnotu celkové ceny všech vstupenek v košíku, která je implementována jednoduše redukcí pole vstupenek v košíku a sečtením cen všech vstupenek prostřednictvím metody \texttt{getCartedTicketPrice} zmíněné výše.
+V poslední řadě košík uchovává \foreign{memoizovanou}\footnote{\foreign{Memoizace} je optimalizacační technika, která ukládá výsledky volání funkce a při jejím opakovaném volání s týmiž parametry vrací uložený výsledek místo opětovného výpočtu.} hodnotu celkové ceny všech vstupenek v košíku, která je implementována jednoduše redukcí pole vstupenek v košíku sečtením cen všech vstupenek prostřednictvím metody \texttt{getCartedTicketPrice} zmíněné výše.
 
 %%% Podsekce – Vizualizace košíku
 %%%%% Wording: ⏳
@@ -82,11 +89,11 @@ Posledně košík uchovává memoizovanou hodnotu celkové ceny všech vstupenek
 %%% --------------------------------------------------------------
 \subsection{Vizualizace košíku}
 \label{subsec:implementace-kosik-vizualizace}
-Košík je nyní funkční, ale ještě není vizualizován.
-To je provedeno komponentou \texttt{Cart}, která zobrazuje stav košíku a poskytuje způsob interakce s ním.
-Protože prvním krokem procesu je výběr sedadla, není košík viditelný, dokud není vybráno sedadlo a vstupenka není přidána do košíku.
-Košík je pak zobrazen jako plovoucí prvek na pravé straně obrazovky na stolním počítači a jako spodní list na mobilním zařízení, jak je navrženo v drátěných modelech v~\ref{subsec:narvh-ui-transformace-uzivatelskych-pribehu-nakupni-kosik}.
-Aktuální pohled na implementovaný košík je zobrazen na následujícím obrázku:
+Košík je tímto již funkční, ale stále není zobrazen uživateli.
+Jeho zobrazení je zajištěno komponentou \texttt{Cart}, která zobrazuje stav košíku a poskytuje způsob interakce s ním.
+Jelikož prvním krokem celého nákupního procesu je výběr sedadla, není košík viditelný, dokud není vybráno sedadlo a vstupenka není přidána do košíku.
+Košík je pak zobrazen jako plovoucí prvek na pravé straně obrazovky v případě desktopového zobrazení a jako spodní list na mobilním zařízení, jak je navrženo v~\ref{subsec:narvh-ui-transformace-uzivatelskych-pribehu-nakupni-kosik}.
+Aktuální pohled na implementovaný košík je zobrazen na obrázku~\ref{fig:seating-map-cart}.
 
 \begin{figure}[h]
 	\centering
@@ -102,11 +109,12 @@ Aktuální pohled na implementovaný košík je zobrazen na následujícím obr�
 %%% --------------------------------------------------------------
 \subsection{Integrace API}
 \label{subsec:implementace-kosik-api}
-State košíku je synchronizován s mock API, aby se napodobila situace v reálné aplikaci.
-Kdykoli uživatel provede akci na košíku, je stav košíku aktualizován s malým zpožděním, aby se napodobila síťová latence reálného API\@.
-Toho je dosaženo voláním asynchronní funkce, která vrací slib, který se vyřeší po nějaké době.
-Funkce se nazývá \texttt{simulatedNetworkDelay} a je zobrazena v následujícím ukázce kódu spolu se všemi potřebnými podfunkcemi:
+Jelikož součástí této práce není implementace backendového systému, je stav košíku synchronizován s mock API, aby se napodobila situace v reálné aplikaci.
+Kdykoli uživatel provede nějakou akci v košíku, je jeho stav aktualizován s malým zpožděním, aby se napodobila síťová latence reálného \ac{api}.
+Toho je dosaženo voláním asynchronní funkce, která vrací \foreign{promise}, který se vyřeší po nějaké době.
+V tomto případě se jedná o vlastní funkci \texttt{simulatedNetworkDelay()}, která je zobrazena v ukázce kódu~\ref{lst:simulated-network-delay} spolu se všemi ostatními použitými funkcemi.
 
+\begin{listing}[!h]
 \begin{minted}{typescript}
 /**
  * Simulates network delay
@@ -145,9 +153,13 @@ export const fakePromise = (delay: number, resolver?: () => any, value?: any) =>
  */
 export const randomIntBetween = (min: number, max: number): number => Math.floor(randomNumBetween(min, max));
 \end{minted}
+\caption{Implementace funkce \texttt{simulatedNetworkDelay() a její pomocné funkce}}
+\label{lst:simulated-network-delay}
+\end{listing}
 
-Užití funkce \texttt{simulatedNetworkDelay} je zobrazeno v následujícím ukázce kódu, která implementuje metodu \texttt{removeFromCartHandler}:
+Užití funkce \texttt{simulatedNetworkDelay()} je pak zobrazeno v ukázce kódu~\ref{lst:remove-from-cart-handler}, která implementuje metodu \texttt{removeFromCartHandler}.
 
+\begin{listing}[!h]
 \begin{minted}[highlightlines={9-10}]{typescript}
 /** remove from cart handler */
 const removeFromCartHandler = useHandler<Types.UseCart.RemoveFromCartCb>(
@@ -170,8 +182,11 @@ const removeFromCartHandler = useHandler<Types.UseCart.RemoveFromCartCb>(
 	},
 );
 \end{minted}
+\caption{Ukázka kódu implementující metodu \texttt{removeFromCartHandler()}}
+\label{lst:remove-from-cart-handler}
+\end{listing}
 
 Detaily zmíněné výše jsou jádrem logiky košíku.
 Jak se může zdát, logika košíku je poměrně jednoduchá, ale je zásadní pro funkčnost aplikace.
-V kódu výše na řádku 9 je podmíněné volání \texttt{clearReservationHandler}, který je obslužným programem, který v případě odebrání poslední vstupenky z košíku vymaže rezervaci.
-Více o rezervaci a jejím řízení je popsáno v následující sekci.
+V kódu výše na řádku 9 je podmíněné volání \texttt{clearReservationHandler()}, což je první náznak integrace rezervačního mechanismu do jádra košíku.
+Více o rezervaci a jejím mechanismu je popsáno v následující sekci.

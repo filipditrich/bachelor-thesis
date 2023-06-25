@@ -43,8 +43,9 @@ Umožňuje funkce ovládání, jako je posouvání, přibližování a oddalová
 
 \textbf{Seat} a \textbf{SeatSheet} komponenty představují jednotlivá sedadla na mapě a podrobnosti zobrazené při jejich výběru.
 
-Souhra a struktura těchto komponent je znázorněna v zjednodušené ukázce kódu níže:
+Souhra a struktura těchto komponent je znázorněna v zjednodušené ukázce kódu~\ref{listing:seating-map-structure}.
 
+\begin{listing}[!h]
 \begin{minted}[breaklines]{html}
 <SeatingMapProvider venue={venue}>
 	{/* seating map */}
@@ -68,6 +69,9 @@ Souhra a struktura těchto komponent je znázorněna v zjednodušené ukázce k�
 	</SeatingMap>
 </SeatingMapProvider>
 \end{minted}
+\caption{Struktura komponent mapy sedadel}
+\label{listing:seating-map-structure}
+\end{listing}
 
 %%% Podsekce – Získávání a správa dat
 %%%%% Wording: ⏳
@@ -82,8 +86,9 @@ Tato komponenta vytvoří požadavek na \ac{api}, aby získala data týkající 
 Odpověď API zahrnuje podrobnou \ac{svg} reprezentaci uspořádání sedadel a jejich jednotlivá data.
 Každé sedadlo obsahuje informace o jeho řadě, místě, plném názvu, dostupné kapacitě a přidružených vstupenkách a kategoriích.
 Každá vstupenka obsahuje informace o jejím id, názvu, volitelném popisu, ceně a kategoriích.
-Podrobná struktura dat je znázorněna v ukázce kódu níže:
+Podrobná struktura dat je znázorněna v ukázce kódu~\ref{listing:venue-api-schema}.
 
+\begin{listing}[!h]
 \begin{minted}[breaklines]{typescript}
 /**
  * Venue API response schema
@@ -141,6 +146,9 @@ export const venueApiSchema = z.object({
 	),
 });
 \end{minted}
+\caption{Struktura odpovědi \ac{api} obsahující data o uspořádání sedadel}
+\label{listing:venue-api-schema}
+\end{listing}
 
 Po získání těchto dat komponenta \texttt{SeatingMapProvider} tato data zpracuje do použitelnějšího formátu.
 Toto zpracování zahrnuje oddělení sedadel, vstupenek a kategorií do vlastních struktur, vytvářející hierarchii, která zjednodušuje přístup k datům pro následující komponenty.
@@ -158,8 +166,9 @@ Tento zpracovaný formát je pak ostatním komponentám zpřístupněn pomocí k
 
 Příchozí \ac{svg} data mají specifickou strukturu, kde \mintinline{html}{<g>} elementy představují skupiny sedadel, a jsou identifikovány pomocí id atributu ve formátu \texttt{"seats:xxx"}, kde \texttt{xxx} je identifikátor konkrétní skupiny sedadel.
 Jednotlivá sedadla v rámci těchto skupin jsou reprezentována \mintinline{html}{<circle>} či \mintinline{html}{<rect>} elementy, identifikovanými jejich jedinečnými id ve formě \texttt{"seat:row+place"}, kde \texttt{row} je řada sedadla a \texttt{place} je číslo místa v rámci řady.
-Zjednodušené znázornění této struktury je vidět v následující ukázce kódu:
+Zjednodušené znázornění této struktury je vidět v ukázce kódu~\ref{listing:seating-svg-structure}.
 
+\begin{listing}[!h]
 \begin{minted}{xml}
 <svg width="1287" height="1115" viewBox="0 0 1287 1115" fill="#F2F4F7" xmlns="http://www.w3.org/2000/svg">
     <!-- seats -->
@@ -186,6 +195,9 @@ Zjednodušené znázornění této struktury je vidět v následující ukázce 
     <!-- ... -->
 </svg>
 \end{minted}
+\caption{Ukázka struktury \ac{svg} dat}
+\label{listing:seating-svg-structure}
+\end{listing}
 
 Parsování těchto probíhá za pomoci knihovny \texttt{svg-parser} a výsledkem je upravená struktura, kde je každé sedadlo (reprezentované \mintinline{html}{<circle>} či \mintinline{html}{<rect>} elementem) nahrazeno dedikovanou komponentou \mintinline{html}{<Seat />}, jejíž funkčnost je dále rozepsána v sekci~\ref{subsec:implementace-seating-seat}.
 
