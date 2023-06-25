@@ -1,22 +1,22 @@
 %%% Sekce – Interaktivní mapa sedadel
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \section{Interaktivní mapa sedadel}
 \label{sec:implementace-seating}
 Vývoj této webové aplikace zahrnoval několik klíčových prvků, z nichž každý představoval jedinečné výzvy a příležitosti.
-Tyto prvky jsou základem funkčnosti aplikace a každý z nich hraje klíčovou roli v celkovém uživatelském zážitku.
+Tyto prvky jsou základem funkčnosti aplikace a každý z nich hraje důlěžitou roli v celkovém uživatelském zážitku.
 
-Prvním z těchto klíčových prvků je interaktivní mapa sedadel.
+Prvním z těchto nepostradatelných prvků je interaktivní mapa sedadel.
 Tento prvek umožňuje uživateli vizuálně procházet virtuální mapu sedadel v místnosti a vybrat si své preferované místo.
-Mapa sedadel uživatelům poskytuje přehled o všech dostupných sedadlech, jejich kategoriích a stavech, čímž usnadňuje proces výběru sedadla.
+Mapa sedadel uživatelům poskytuje přehled o všech dostupných sedadlech, jejich kategoriích a stavech, čímž usnadňuje proces výběru sedadla a nákupu vstupenky.
 Tato mapa je také zodpovědná za zobrazení informací o vstupenkách, které jsou přidruženy k vybraným sedadlům.
 
 %%% Podsekce – Struktura
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \subsection{Struktura}
 \label{subsec:implementace-seating-struktura}
@@ -39,13 +39,13 @@ Více o získávání dat a jejich struktuře je popsáno v sekci~\ref{subsec:im
 Přebírá \ac{svg} data z \ac{api} a překládá je do formátu, který může být použit komponentou \texttt{VirtualMap}.
 
 \textbf{VirtualMap} je zodpovědná za přidání interaktivity do komponenty \texttt{SeatingMap}.
-Umožňuje funkce ovládání, jako je posouvání, přibližování a oddalování mapy, čímž poskytuje dynamický uživatelský zážitek.
+Přidává ovládací funkce mapy, jako je posouvání, přibližování a oddalování, čímž poskytuje dynamický uživatelský zážitek.
 
 \textbf{Seat} a \textbf{SeatSheet} komponenty představují jednotlivá sedadla na mapě a podrobnosti zobrazené při jejich výběru.
 
 Souhra a struktura těchto komponent je znázorněna v zjednodušené ukázce kódu~\ref{listing:seating-map-structure}.
 
-\begin{listing}[!h]
+\begin{listing}[H]
 \begin{minted}[breaklines]{html}
 <SeatingMapProvider venue={venue}>
 	{/* seating map */}
@@ -74,21 +74,21 @@ Souhra a struktura těchto komponent je znázorněna v zjednodušené ukázce k�
 \end{listing}
 
 %%% Podsekce – Získávání a správa dat
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \subsection{Získávání a správa dat}
 \label{subsec:implementace-seating-data}
 Proces získávání a správy dat začíná komponentou \texttt{SeatingMapProvider}.
 Tato komponenta vytvoří požadavek na \ac{api}, aby získala data týkající se uspořádání sedadel daného místa konání.
 
-Odpověď API zahrnuje podrobnou \ac{svg} reprezentaci uspořádání sedadel a jejich jednotlivá data.
+Odpověď \ac{api} zahrnuje podrobnou \ac{svg} reprezentaci uspořádání sedadel a jejich jednotlivá data.
 Každé sedadlo obsahuje informace o jeho řadě, místě, plném názvu, dostupné kapacitě a přidružených vstupenkách a kategoriích.
 Každá vstupenka obsahuje informace o jejím id, názvu, volitelném popisu, ceně a kategoriích.
 Podrobná struktura dat je znázorněna v ukázce kódu~\ref{listing:venue-api-schema}.
 
-\begin{listing}[!h]
+\begin{listing}[H]
 \begin{minted}[breaklines]{typescript}
 /**
  * Venue API response schema
@@ -153,12 +153,12 @@ export const venueApiSchema = z.object({
 Po získání těchto dat komponenta \texttt{SeatingMapProvider} tato data zpracuje do použitelnějšího formátu.
 Toto zpracování zahrnuje oddělení sedadel, vstupenek a kategorií do vlastních struktur, vytvářející hierarchii, která zjednodušuje přístup k datům pro následující komponenty.
 
-Tento zpracovaný formát je pak ostatním komponentám zpřístupněn pomocí kontextu, což poskytuje pohodlný způsob, jak k nim přistupovat nezávisle na jejich umístění ve stromu komponent.
+Tento zpracovaný formát je pak ostatním komponentám zpřístupněn pomocí \foreign{Context API}\footnote{\url{https://react.dev/learn/passing-data-deeply-with-context}}, což poskytuje pohodlný způsob, jak k nim přistupovat nezávisle na jejich umístění ve stromu komponent.
 
 %%% Podsekce – Parsování SVG a mapování sedadel
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \subsection{Parsování SVG a mapování sedadel}
 \label{subsec:implementace-seating-svg}
@@ -166,9 +166,9 @@ Tento zpracovaný formát je pak ostatním komponentám zpřístupněn pomocí k
 
 Příchozí \ac{svg} data mají specifickou strukturu, kde \mintinline{html}{<g>} elementy představují skupiny sedadel, a jsou identifikovány pomocí id atributu ve formátu \texttt{"seats:xxx"}, kde \texttt{xxx} je identifikátor konkrétní skupiny sedadel.
 Jednotlivá sedadla v rámci těchto skupin jsou reprezentována \mintinline{html}{<circle>} či \mintinline{html}{<rect>} elementy, identifikovanými jejich jedinečnými id ve formě \texttt{"seat:row+place"}, kde \texttt{row} je řada sedadla a \texttt{place} je číslo místa v rámci řady.
-Zjednodušené znázornění této struktury je vidět v ukázce kódu~\ref{listing:seating-svg-structure}.
+Zjednodušené znázornění této struktury je vyobrazeno v ukázce kódu~\ref{listing:seating-svg-structure}.
 
-\begin{listing}[!h]
+\begin{listing}[H]
 \begin{minted}{xml}
 <svg width="1287" height="1115" viewBox="0 0 1287 1115" fill="#F2F4F7" xmlns="http://www.w3.org/2000/svg">
     <!-- seats -->
@@ -199,28 +199,28 @@ Zjednodušené znázornění této struktury je vidět v ukázce kódu~\ref{list
 \label{listing:seating-svg-structure}
 \end{listing}
 
-Parsování těchto probíhá za pomoci knihovny \texttt{svg-parser} a výsledkem je upravená struktura, kde je každé sedadlo (reprezentované \mintinline{html}{<circle>} či \mintinline{html}{<rect>} elementem) nahrazeno dedikovanou komponentou \mintinline{html}{<Seat />}, jejíž funkčnost je dále rozepsána v sekci~\ref{subsec:implementace-seating-seat}.
+Parsování těchto dat probíhá za pomoci knihovny \texttt{svg-parser}\footnote{\url{https://www.npmjs.com/package/svg-parser}} a výsledkem je upravená struktura, kde je každé sedadlo (reprezentované \mintinline{html}{<circle>} či \mintinline{html}{<rect>} elementem) nahrazeno dedikovanou komponentou \mintinline{html}{<Seat />}, jejíž funkčnost je dále rozepsána v sekci~\ref{subsec:implementace-seating-seat}.
 
 %%% Podsekce – Interaktivita s VirtualMap
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \subsection{Interaktivita s VirtualMap}
 \label{subsec:implementace-seating-virtualmap}
 Komponenta \texttt{VirtualMap} přidává interaktivitu do mapy sedadel.
 Tato komponenta obaluje komponentu \texttt{SeatingMap}, přebírající parsované a namapované \ac{svg} elementy jako své potomky, a zajišťuje všechny interakce s mapou sedadel.
 
-Tato komponenta využívá knihovny \texttt{react-spring} a \texttt{use-gesture} k zajištění plynulé a responzivní animace pro gesta \foreign{pan}\footnote{\foreign{Pan} je gesto, které umožňuje uživateli posunout obsah v rámci omezeného prostoru.} a \foreign{pinch}\footnote{\foreign{Pinch} je gesto, které umožňuje uživateli přiblížit nebo oddálit obsah.
+Tato komponenta využívá knihovny \texttt{react-spring}\footnote{\url{https://www.npmjs.com/package/react-spring}} a \texttt{use-gesture}\footnote{\url{https://www.npmjs.com/package/@use-gesture/react}} k zajištění plynulé a responzivní animace pro gesta \foreign{pan}\footnote{\foreign{Pan} je gesto, které umožňuje uživateli posunout obsah v rámci omezeného prostoru.} a \foreign{pinch}\footnote{\foreign{Pinch} je gesto, které umožňuje uživateli přiblížit nebo oddálit obsah.
 }, poskytující dynamický a plynulý uživatelský zážitek.
 
 Komponenta \texttt{VirtualMap} také zajišťuje správu stavu mapy, sledováním změn, jako je úroveň \foreign{zoom}\footnote{\foreign{Zoom} je úroveň přiblížení nebo oddálení obsahu.} a posunutí.
 Tato správa stavu zajišťuje především konzistentní uživatelský zážitek při manipulaci mapy uživatelem.
 
 %%% Podsekce – Výběr sedadla a správa vstupenek
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \subsection{Výběr sedadla a správa vstupenek}
 \label{subsec:implementace-seating-seat}
@@ -239,13 +239,11 @@ Kliknutím na jakékoliv sedadlo se vyvolá akce zvolení sedadla, která spust�
 Na obráuku~\ref{fig:seating-map-seats-sheet} je zobrazena komponenta \texttt{SeatingSheet} s detaily vybraného sedadla, včetně jeho kategorie, řady, místa a dostupných vstupenek.
 
 Vstupenky jsou vázány na kategorii sedadla a kategorie může mít několik příslušných vstupenek.
-Cena vstupenky je definována kombinací její kategorie a vybraného sedadla.
+Cena vstupenky je poté definována kombinací její kategorie a vybraného sedadla.
 
 Uživatel může přidat vybranou vstupenku do svého košíku přímo z rozhraní komponenty \texttt{SeatSheet}.
 Pokud je v košíku již vstupenka pro vybrané sedadlo, může uživatel vybrat, zda chce vstupenku vyměnit nebo ji z košíku odebrat.
 Všechny tyto změny se okamžitě promítají v uživatelském rozhraní a poskytují tak uživateli zpětnou vazbu v reálném čase.
-
-Ve shrnutí je tento prvek interaktivní mapy sedadel kombinací načítání a správy dat, parsování \ac{svg} a mapování sedadel, interaktivity mapy a výběru sedadla se správou vstupenek.
 
 \begin{figure}[h]
     \centering
@@ -255,4 +253,4 @@ Ve shrnutí je tento prvek interaktivní mapy sedadel kombinací načítání a 
 \end{figure}
 
 Obrázek~\ref{fig:seating-map-seat} zobrazuje výsledný produkt, ilustrující uživatelsky přívětivé rozhraní a dynamickou mapu sedadel.
-Kombinace výše uvedených komponent umožňuje snadnou navigaci sedadel místa, okamžitý přístup k informacím o vstupenkách a přehlednou správu vstupenek zajišťující efektivní nákup vstupenek.
+Kombinace výše uvedených komponent umožňuje snadnou navigaci sedadel místa konání, okamžitý přístup k informacím o vstupenkách a přehlednou správu vstupenek zajišťující efektivní nákupí proces.
