@@ -1,89 +1,78 @@
 %%% Kapitola – Výzvy a problémy
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \chapter{Výzvy a problémy}
 \label{ch:vyzvy-a-problemy}
-Tato kapitola se zabývá hlavními výzvami, které se vyskytly během vývoje aplikace rezervačního systému.
+Tato kapitola se zabývá zajímavými výzvami, které se vyskytly během vývoje aplikace a stojí za to je zmínit.
 Každá sekce popisuje konkrétní problém, který byl řešen, různé alternativy, které byly zvažovány, a konečná řešení, která byla implementována.
-Sdílením těchto zkušeností lze dosáhnout hlubšího porozumění vývojového procesu a složitého rozhodování, které je zapotřebí.
+Sdílením těchto zkušeností lze dosáhnout hlubšího porozumění vývojového procesu a složitého rozhodování, které je zapotřebí při vývoji komplexních aplikací.
 
 %%% Sekce – Vykreslování interaktivního plánu sezení pomocí SVG
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \section{Vykreslování interaktivního plánu sezení pomocí SVG}
 \label{sec:vyzvy-a-problemy-rendering-sedadel}
-Vykreslování interaktivního plánu sezení představovalo počáteční výzvu.
-To bylo způsobeno složitostí a dynamickou povahou mapy.
-Byly zvažovány různé technologie, jako je inline SVG, Canvas API a Three.js.
+Vykreslování interaktivního plánu sezení představovalo počáteční výzvu, což bylo především způsobeno složitostí a dynamickou povahou virtuálních map.
+Byly zvažovány různé technologie, jako je inline \ac{svg}, \foreign{Canvas API}\footnote{\foreign{Canvas API} je \ac{api} pro vykreslování 2D grafiky a animací pomocí JavaScriptu a je součástí HTML5 specifikace\cite{mdn_api_canvas_api}.} a \foreign{Three.js}\footnote{\foreign{Three.js} je knihovna pro JavaScript, která umožňuje vytvářet a vykreslovat 3D grafiku v prohlížeči\cite{mdn_games_techniques_3d_on_the_web_building_up_a_basic_demo_with_three_js}.}.
 
-Po důkladném zvážení byl vybrán inline SVG, protože bylo zjištěno, že je nejjednodušší a nejpohodlnější možností, i když to nemusí být nejvýkonnější možností.
-Tato metoda umožnila jednoduché a přímočaré interakce s DOM, což usnadnilo vývoj interaktivní mapy sezení.
+Po důkladném zvážení byla vybrána technologie inline \ac{svg}, jelikož poskytovala největší flexibilitu, nezávislost na externích knihovnách a nejjednodušší implementaci\cite{s_blog_seating_plan_rendering}.
+Tato metoda umožnila jednoduché a přímočaré interakce s \ac{dom}, což usnadnilo vývoj interaktivní mapy sedadel.
 
-Nicméně animace a transformace SVG představovaly další problém.
-SVG prvky a HTML prvky se chovají odlišně, pokud jde o jejich počáteční body, jak je znázorněno na obrázku ~\ref{fig:css-tricks-svg-transforms} níže.
+Nicméně animace a transformace \ac{svg} představovaly další problém.
+\ac{svg} a \ac{html} prvky se chovají odlišně, pokud jde o jejich počáteční body, neboli tzv. \foreign{origin points}, jak je znázorněno na obrázku~\ref{fig:css-tricks-svg-transforms} níže.
 
+% FIXME: image overflows
 \begin{figure}[H]
     \centering
     \includegraphics[0.8\textwidth]{\FIGDIR/css-tricks-svg-transforms}
-    % TODO: add a reference to the image
-    \caption{Počáteční body SVG a HTML}
+    \caption{Počáteční body SVG a HTML\cite{ct_css_tricks_com_transforms_on_svg_elements}}
     \label{fig:css-tricks-svg-transforms}
 \end{figure}
 
-To způsobilo neočekávané chování při implementaci určitých funkcionalit.
-Nakonec bylo toto vyřešeno získáním hlubšího porozumění chování SVG a manipulací s prvky na základě tohoto chování.
+To způsobilo neočekávané chování při implementaci určitých funkcionalit transformace prvků na mapě.
+Tento problém byl nakonec vyřešení hlubším porozuměním transformacím \ac{svg} a jejich vztahu k \ac{html} prvkům.
 
 %%% Sekce – Absence API a jeho simulace
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \section{Absence API a jeho simulace}
 \label{sec:vyzvy-a-problemy-absence-api}
-Vývoj aplikace probíhal v nepřítomnosti dedikovaného API\@.
-To znamenalo, že bylo zapotřebí definovat datové struktury a simulovat API volání v rámci kódu.
-To bylo provedeno implementací asynchronních funkcí s umělým zpožděním, které napodobovaly skutečná API volání.
+Vývoj aplikace probíhal v nepřítomnosti dedikovaného \ac{api}.
+To znamenalo, že bylo zapotřebí definovat datové struktury a simulovat různá \ac{api} volání v rámci kódu.
+To bylo provedeno implementací asynchronních funkcí s umělým zpožděním, které napodobovaly skutečná \ac{api} volání.
 
-Tato řešení poskytovala požadovanou funkcionalitu, ale přinášela také výzvu zajištění konzistence dat a správy potenciálních chyb, podobně jako by se očekávalo u skutečných API\@.
-To bylo vyřešeno návrhem robustních datových struktur a implementací komplexních mechanismů pro zpracování chyb, které zajistily realistickou simulaci skutečných API volání.
+Tato řešení poskytovala požadovanou funkcionalitu, ale přinášela také výzvu zajištění konzistence dat a správy potenciálních chyb, podobně jako by se očekávalo u skutečných \ac{api} volání.
+Tato výzva byla vyřešena jednak vytvořením vlastního mock \ac{api} endpointu díky Next.js \ac{api} routingu\cite{n_basics_api_routes} a jednak vytvořením vlastního \ac{api} klienta, který poskytoval konzistentní rozhraní pro komunikaci s \ac{api}.
 
 %%% Sekce – Zachování jednoduchosti v komplexní aplikaci
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \section{Zachování jednoduchosti v komplexní aplikaci}
 \label{sec:vyzvy-a-problemy-zachovani-jednoduchosti}
-Jednou z opakujících se výzev během vývoje byl vnitřní konflikt při konstrukci komplexní aplikace produkční kvality, zatímco se snaží udržet jednoduchost.
-Implementace komplexních funkcí, jako je složité směrování, by nevyhnutelně zvýšila složitost celkové správy stavu a celkové aplikace.
+Jednou z opakujících se výzev během vývoje byl vnitřní osobní konflikt při konstrukci komplexní aplikace produkční kvality, která by zároveň zachovávala jednoduchost a přímočarost.
+Například implementace komplexního routingu a správy stavu byla zvažována, ale nakonec byla zavrhnuta ve prospěch jednoduchého řešení, které bylo dostatečné pro potřeby aplikace.
 
-Tento problém byl vyřešen vytvořením vlastního komponentu MultiView.
-Tento komponent podmíněně vykresluje zadané pohledy na základě aktivního pohledu, čímž se obešla potřeba složitého směrování a zjednodušilo se celkové řízení stavu.
+K tomuto řešení byla implementována vlastního komponentu \texttt{MultiView}, která podmíněně vykresluje zadané pohledy na základě aktivního pohledu, čímž se obešla potřeba složitého routování.
 Tato strategie zachovala jednoduchost aplikace, aniž by to mělo vliv na její funkčnost.
 
-Dalším problémem bylo rozhodování, které funkce pro produkční nasazení implementovat, jako je internacionalizace, přístupnost, optimalizace pro vyhledávače, správa relací a tak dále.
+Dalším problémem bylo rozhodování, které funkce pro produkční nasazení implementovat, jako je internacionalizace, přístupnost, optimalizace pro vyhledávače - \ac{seo}, správa uživatelských relací či aktualizace dat v reálném čase pomocí \ac{ws}\cite{mdn_api_websockets_api}.
 Nakonec bylo rozhodnuto zaměřit se na základní funkčnost aplikace a implementaci těchto funkcí ponechat na možné budoucí iterace.
 
-%%% TODO: Sekce – Deployment aplikace
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
-%%% --------------------------------------------------------------
-\section{Deployment aplikace}
-\label{sec:vyzvy-a-problemy-deployment}
-Produkční nasazení aplikace bylo zajištěno pomocí služby Vercel. Aplikace byla nasazena do cloudu a je dostupná na adrese \url{https://seating-map.vercel.app/}.
-
 %%% Sekce – Shrnutí
-%%%%% Wording: ⏳
-%%%%% Styling: ⏳
-%%%%% References: ⏳
+%%%%% Wording: ✅
+%%%%% Styling: ✅
+%%%%% References: ✅
 %%% --------------------------------------------------------------
 \section{Shrnutí}
 \label{sec:vyzvy-a-problemy-shrnuti}
-Tato kapitola zkoumala některé z kritických výzev, které se objevily během vývoje aplikace pro prodej vstupenek.
-Od vykreslování interaktivní mapy SVG, simulace API volání, až po správu jednoduchosti aplikace uprostřed rostoucí složitosti.
-Každá výzva přinesla své jedinečné problémy, učící příležitosti a inovativní řešení, které ukázaly složitý a nuancovaný proces vývoje aplikací.
+Tato kapitola zkoumala některé z kritických výzev, které se objevily během vývoje aplikace.
+Od vykreslování interaktivní mapy pomocí \ac{svg}, simulace \ac{api} volání, až po zachování jednoduchosti v komplexní a rostoucí aplikaci.
+Každá výzva přinesla své jedinečné problémy, učící příležitosti a zajímavá řešení, které ukázaly složitý proces vývoje aplikací v praxi.

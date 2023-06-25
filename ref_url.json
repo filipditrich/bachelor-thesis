@@ -5,6 +5,9 @@
   "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web",
   "https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Introduction",
   "https://developer.mozilla.org/en-US/docs/Web/SVG",
+  "https://css-tricks.com/transforms-on-svg-elements",
+  "https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API",
+  "https://developer.mozilla.org/en-US/docs/Games/Techniques/3D_on_the_web/Building_up_a_basic_demo_with_Three.js",
   "https://www.browserstack.com/guide/top-css-frameworks",
   "https://opensource.com/resources/what-open-source",
   "https://www.redhat.com/en/topics/open-source/what-is-open-source",
@@ -22,5 +25,13 @@
   "https://mui.com",
   "https://nodejs.org",
   "https://pnpm.io",
-  "https://profy.dev/article/react-folder-structure"
+  "https://profy.dev/article/react-folder-structure",
+  "https://git-scm.com",
+  "https://git-scm.com/docs/git-push",
+  "https://github.com/about",
+  "https://education.github.com/pack",
+  "https://vercel.com/docs",
+  "https://nextjs.org/learn/basics/api-routes",
+  "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API",
+  "https://seatmap.pro/blog/seating-plan-rendering"
 ]

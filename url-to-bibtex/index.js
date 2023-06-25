@@ -18,6 +18,10 @@ const AUTHORS = {
     "tailwindcss.com": "Tailwind CSS",
     "prettier.io": "Prettier",
     "eslint.org": "ESLint",
+    "https://pnpm.io": "pnpm",
+    "git-scm.com": "Git",
+    "github.com": "GitHub",
+    "vercel.com": "Vercel",
 }
 
 const getMdnCitation = async (url) => {
