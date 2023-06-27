@@ -62,6 +62,7 @@
     #4
 }
 \usepackage[outputdir=dist]{minted}
+\usepackage{fvextra}
 \usepackage{xcolor}
 % TODO: Define the colors
 \definecolor{codekeyword}{rgb}{0.0,0.3,0.7}
@@ -70,7 +71,7 @@
 \definecolor{codejsdoc}{rgb}{0.4,0.4,0.4}
 \definecolor{codelinenum}{rgb}{0.8,0.8,0.8}
 % light yellow color for highlighting
-\definecolor{lightyellow}{rgb}{255, 255, 224}
+%\definecolor{lightyellow}{rgb}{255, 255, 224}
 
 % Set the minted style
 \setminted{
@@ -84,7 +85,7 @@
     baselinestretch=1.2,
     style=friendly,
 %   TODO: highlihgting not working
-    highlightcolor=\color{lightyellow},
+%    highlightcolor=\color{lightyellow},
     keywordstyle=\color{codekeyword},
     stringstyle=\color{codestring},
     commentstyle=\color{codecomment}\itshape,
@@ -204,10 +205,19 @@
     \newpage
     \pagestyle{plain}
     \tableofcontents
-%%% TODO: jednotlivé kapitoly
+%%% jednotlivé kapitoly
+    % TODO: kapitola - úvod
     \include{pages/chapters/uvod}
+    % TODO: kapitola - specifikace
     \include{pages/chapters/specifikace}
+    % kapitola - návrh rozhraní
     \include{pages/chapters/navrh-rozhrani}
+    \include{pages/chapters/navrh-rozhrani-principy}
+    \include{pages/chapters/navrh-rozhrani-psychologie}
+    \include{pages/chapters/navrh-rozhrani-user-stories}
+    \include{pages/chapters/navrh-rozhrani-nastroje}
+    \include{pages/chapters/navrh-rozhrani-produkt}
+    % kapitola - implementace
     \include{pages/chapters/implementace}
     \include{pages/chapters/implementace-uvod}
     \include{pages/chapters/implementace-technologie}
@@ -218,7 +228,9 @@
     \include{pages/chapters/implementace-checkout}
     \include{pages/chapters/implementace-deployment}
     \include{pages/chapters/implementace-zaver}
+    % kapitola - výzvy a problémy
     \include{pages/chapters/vyzvy-a-problemy}
+    % kapitola - závěr
     \include{pages/chapters/zaver}
 %%% seznam použité literatury
 %%% Reference se hledají v souboru priklady_literatury.bib. Aby se
