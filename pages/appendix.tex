@@ -1,6 +1,15 @@
-%%% TODO: přidat přílohy (zdroják, figma)
 %%% Přílohy k bakalářské práci, existují-li (různé dodatky jako výpisy programů,
 %%% diagramy apod.). Každá příloha musí být alespoň jednou odkazována z vlastního
 %%% textu práce. Přílohy se číslují.
-\chapter*{Přílohy}
-\addcontentsline{toc}{chapter}{Přílohy}
+\chapter*{Seznam příloh}
+\addcontentsline{toc}{chapter}{Seznam příloh}
+\renewcommand{\thesection}{Příloha \Alph{section}}
+
+\section{Návrh uživatelského rozhraní}
+\markboth{Přílohy}{Návrh uživatelského rozhraní}
+Návrh uživatelského rozhraní v~prostředí Figma je k nalezení v~přiloženém CD v~souboru \texttt{seating-map-figma.zip}.
+
+\newpage
+\section{Zdrojový kód aplikace}
+\markboth{Přílohy}{Zdrojový kód aplikace}
+Zdrojový kód aplikace je k~nalezení v~přiloženém CD v~souboru \texttt{seating-map-source.zip}.
