@@ -1,0 +1,19 @@
+@startuml
+class "useCart" {
+  -cartedTickets: CartedTicket[]
+  -reservation: Reservation | null
+  -paymentMethod: PAYMENT_METHOD
+  -form: useForm<Types.ContactDetails>
+  -cartTotal: number
+  -multiViewProvider: MultiViewProvider
+  --
+  +getCartedTicketPrice(cartedTicket: CartedTicket): number
+  +clearReservationHandler: Promise<void>
+  +addToCartHandler: Promise<void>
+  +removeFromCartHandler: Promise<void>
+  +replaceCartedTicketHandler: Promise<void>
+  +createOrderHandler: Promise<void>
+  --
+  +canCheckout: boolean
+}
+@enduml
