@@ -22,10 +22,20 @@ const AUTHORS = {
     "git-scm.com": "Git",
     "github.com": "GitHub",
     "vercel.com": "Vercel",
+    "www.ticketmaster.com": "Ticketmaster",
+    "www.ticketportal.cz": "Ticketportal",
+    "goout.net": "GoOut",
+    "dev.tickets.nfctron.com": "NFCtron Tickets",
+    "www.globalpayments.cz": "Global Payments",
 }
 
 const getMdnCitation = async (url) => {
-    const metadata = await urlMetadata(url);
+    let metadata;
+    try {
+        metadata = await urlMetadata(url);
+    } catch (e) {
+        metadata = {};
+    }
     const urlObj = new URL(url);
     const authorFromJsonld = metadata.jsonld?.name;
     const author = authorFromJsonld || AUTHORS[urlObj.hostname] || urlObj.hostname;

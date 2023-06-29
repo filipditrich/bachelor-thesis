@@ -190,17 +190,20 @@
 %% - [] dopsat závěr
 %% - [] přepsat úvod logicky
 %% - [] napsat abstrakt
+%% - [] dopsat kapitolu architektura řešení
+%% - [] přidat diagramy a lepší strukturu/dokumentaci komponent
 %% - [] přidat přílohy
-%% - [] sehnat a přidat správnou kopii zadání
 %% - [] upravit poděkování
 %% - [] zkontrolovat gramatiku, finální vzhled
-%% - [] sepsat dokument extended summary
 %% - [] fixme: obrázek SVG origin je broken
+%% - [x] sehnat a přidat správnou kopii zadání
+%% - [] sepsat dokument extended summary
 
 %%%%% Hlavní část dokumentu
 %%%%% ------------------------------------------------------------
 \begin{document}
 %%% titulní strana
+%    \include{pages/title} % FIXME: remove
     \include{pages/cover}
 %%% kopie zadání
     \includepdf[pages={1}]{\FIGDIR/zadani-zp.pdf}
@@ -220,8 +223,11 @@
 %%% jednotlivé kapitoly
     % TODO: kapitola - úvod
     \include{pages/chapters/uvod}
-    % TODO: kapitola - specifikace
-    \include{pages/chapters/specifikace}
+    % TODO: kapitola - identifikace klíčových částí
+    \include{pages/chapters/identifikace}
+    \include{pages/chapters/identifikace-mapa}
+    \include{pages/chapters/identifikace-kosik}
+    \include{pages/chapters/identifikace-objednavka}
     % kapitola - návrh rozhraní
     \include{pages/chapters/navrh-rozhrani}
     \include{pages/chapters/navrh-rozhrani-principy}
