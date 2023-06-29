@@ -1,0 +1,48 @@
+@startuml
+
+' frontend package
+package "Frontend" as ftd {
+    ' shopping cart
+    folder "Nákupní košík" as cart_frame {
+        [Správa nákupního košíku] as shopping_cart
+        [Správa objednávky] as order_checkout
+        [Rezervační mechanismus] as reservation
+    }
+
+    ' seating map
+    folder "Interaktivní mapa" as seating_map_frame {
+        [Správa mapy sedadel] as seating_provider
+        [Virtuální mapa] as seating_map
+    }
+
+    ' api client
+    node "API Klient" as api_client
+    note left of api_client
+        Jednotná komunikaci s API
+    end note
+
+    ' relations
+    seating_provider ----> api_client : 1. získání dat mapy sedadel
+    seating_provider -> seating_map : 2. zobrazení mapy sedadel
+    seating_map --> shopping_cart : 3. přidání sedadla do košíku
+    reservation <.> shopping_cart : 4. synchronizace rezervace a košíku
+    reservation -> api_client : 5. vytvoření/aktualizace rezervace
+    shopping_cart --> order_checkout : 6. vytvoření objednávky
+    order_checkout -> api_client : 7. odeslání objednávky
+}
+
+' backend cloud
+cloud "Simulovaný backend" as mock_backend {
+    database "Databáze" as db
+    node "API" as api
+
+    api <.-> db
+}
+
+' user
+actor "Zákazník" as user
+
+api_client --> mock_backend : simulace volání API
+user --> seating_map_frame
+
+@enduml

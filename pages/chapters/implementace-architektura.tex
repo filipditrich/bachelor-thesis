@@ -31,13 +31,13 @@ Cílem bylo vyvinout frontendovou aplikaci, která bude udržitelná, škálovat
     Dobře promyšlená a organizovaná struktura projektu je zásadní pro udržení čitelnosti kódu, škálovatelnosti a snadné navigace, zejména když \foreign{codebase} roste.
 \end{subsection}
 
-%%% Podesekce – Základní architektura
+%%% Podesekce – Základní struktura
 %%%%% Wording: ✅
 %%%%% Styling: ✅
 %%%%% References: ✅
 %%% --------------------------------------------------------------
-\begin{subsection}{Základní architektura}
-    \label{subsec:implementace-architektura-zakladni}
+\begin{subsection}{Základní struktura}
+    \label{subsec:implementace-architektura-struktura}
     Efektivně definovaná struktura projektu hraje klíčovou roli při zajišťování udržovatelnosti, škálovatelnosti a čitelnosti kódu.
     Logická, jasná a konzistentně udržovaná struktura umožňuje vývojářům snadno procházet a porozumět aplikaci, i když se \foreign{codebase} časem rozrůstá a vyvíjí.
 
@@ -83,7 +83,7 @@ tailwind.config.js
         \item \textbf{src/lib/hooks:} Tato složka obsahuje vlastní pomocné React hooky.
         \item \textbf{src/lib/types:} Tento adresář uchovává běžné typy TypeScript používané v celé aplikaci.
         \item \textbf{src/lib/utils:} Tento adresář obsahuje různé pomocné funkce používané v aplikaci.
-        \item \textbf{src/pages:} Obsahuje komponenty stránek a \ac{API} endpointy.
+        \item \textbf{src/pages:} Obsahuje komponenty stránek a \ac{api} endpointy.
         \item \textbf{src/styles:} Obsahuje globální styly aplikace.
         \item \textbf{next.config.js:} Konfigurační soubor pro Next.js, který umožňuje přizpůsobení různých aspektů frameworku.
         \item \textbf{package.json:} Soubor obsahuje metadata a seznam použitých knihoven v projektu.
@@ -91,6 +91,43 @@ tailwind.config.js
         \item \textbf{tailwind.config.js:} Je konfigurační soubor pro Tailwind CSS\@.
     \end{itemize}
 
-    Každá z těchto složek a souborů hraje v aplikaci klíčovou roli a přispívá ke struktuře a architektuře projektu.
-    V dalších sekcích budou podrobněji popsány konkrétní implementační detaily projektu, počínaje interaktivní mapou sedadel.
+    Každá z těchto složek a souborů hraje v aplikaci klíčovou roli a přispívá ke struktuře projektu a architektuře celého řešení, která je více rozebrána v následující sekci.
+\end{subsection}
+
+%%% TODO: Podesekce – High-level architektura
+%%%%% Wording: ⏳
+%%%%% Styling: ⏳
+%%%%% References: ⏳
+%%% --------------------------------------------------------------
+\newpage
+\begin{subsection}{High-level architektura}
+    \label{subsec:implementace-architektura-high-level}
+    Tato podsekce se zaměřuje na jednoduchou high-level architekturu frontendu aplikace.
+    Backendová infrastruktura není součástí této práce, proto byla aplikace vyvíjena se simulovaným \ac{api}, které pouze napodobuje komunikaci se serverem.
+
+    Architektura se tedy zaměřuje především na frontendový návrh a je vizualizována v diagramu~\ref{fig:implementace-architektura-high-level}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{\FIGDIR/diagrams/architecture}
+        \caption{High-level architektura aplikace}
+        \label{fig:implementace-architektura-high-level}
+    \end{figure}
+
+    Aplikace se skládá ze tří primárních oblastí, a to interaktivní mapy, nákupního košíku a \ac{api} klienta.
+
+    \textbf{Interaktivní mapa} slouží jako ústřední bod aplikace a poskytuje vizuální znázornění uspořádání sedadel.
+    Tato oblast zahrnuje správu mapy sedadel, kde se zpracovávají data získaná z \ac{api}, a také virtuální mapu, která vizuálně prezentuje rozvržení sedadel a umožňuje uživatelům vybrat si požadovaná sedadla.
+    Po výběru sedadla systém naváže komunikaci s modulem košíku pro přidání vstupenky se zvoleným sedadlem do nákupního košíku zákazníka.
+
+    \textbf{Nákupní košík} je komplexní prostředí se třemi odlišnými sekcemi.
+    \textit{Správa košíku} zahrnuje prezentaci a manipulaci s obsahem košíku, včetně informací o výběru sedadla získaných z virtuální mapy.
+    Po kontrole obsahu košíku mají zákazníci možnost vytvořit svou objednávku prostřednictvím \textit{správy objednávek}.
+    \textit{Rezervační modul} zajišťuje vytvoření či úpravu rezervace a její harmonizaci s obsahem košíku.
+
+    \textbf{\ac{api} klient} slouží jako univerzální komunikační bod mezi frontendovou aplikací a potenciálním backendem, který by mohl být v budoucnu implementován.
+    Zodpovídá za získávání dat mapy sedadel, správu rezervací či vytvoření objednávky.
+    Díky tomu, že \ac{api} klient poskytuje pouze jednotné rozhraní pro komunikaci s backendem, je možné v budoucnu snadno implementovat vlastní \ac{api} klient pro komunikaci s jiným backendem.
+
+    V následujících částech budou implemetnačně rozebrány jednotlivé klíčové oblasti aplikace jako jsou interaktivní mapa sedadel, správa nákupního košíku, rezervační systém a proces vyřízení objednávky.
 \end{subsection}
