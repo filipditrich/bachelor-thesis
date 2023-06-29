@@ -43,7 +43,7 @@ Tato mapa je také zodpovědná za zobrazení informací o vstupenkách, které 
 
     \textbf{Seat} a \textbf{SeatSheet} komponenty představují jednotlivá sedadla na mapě a podrobnosti zobrazené při jejich výběru.
 
-    Souhra a struktura těchto komponent je znázorněna v zjednodušené ukázce kódu~\ref{listing:seating-map-structure}.
+    Souhra a struktura těchto komponent je znázorněna v zjednodušené ukázce kódu~\ref{listing:seating-map-structure} a na diagramu~\ref{fig:seating-map-structure}.
 
     \begin{listing}[H]
         \begin{minted}[breaklines]{html}
@@ -72,6 +72,13 @@ Tato mapa je také zodpovědná za zobrazení informací o vstupenkách, které 
         \caption{Struktura komponent mapy sedadel}
         \label{listing:seating-map-structure}
     \end{listing}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{\FIGDIR/diagrams/seating-map}
+        \caption{Diagram komponent mapy sedadel}
+        \label{fig:seat-map-structure}
+    \end{figure}
 \end{subsection}
 
 %%% Podsekce – Získávání a správa dat
@@ -96,24 +103,17 @@ Tato mapa je také zodpovědná za zobrazení informací o vstupenkách, které 
  * @export
  */
 export const venueApiSchema = z.object({
-	/** venue id */
 	venueId: z.string().uuid(),
-	/** venue name */
 	name: z.string(),
 	/** seating drawing (SVG) */
 	drawing: z.string(),
 	/** venue seat data */
 	seats: z.array(
 		z.object({
-			/** seat id */
 			seatId: z.string().uuid(),
-			/** seat row display label */
 			row: z.string(),
-			/** seat place number */
 			place: z.number(),
-			/** seat full display name label */
 			fullName: z.string(),
-			/** seat available capacity left */
 			capacityLeft: z.number(),
 			tickets: z.array(z.string().uuid()),
 			categoryId: z.string().uuid(),
@@ -122,7 +122,6 @@ export const venueApiSchema = z.object({
 	/** venue ticket data */
 	tickets: z.array(
 		z.object({
-			/** ticket id */
 			ticketId: z.string().uuid(),
 			name: z.string(),
 			description: z.string().optional(),
@@ -138,7 +137,6 @@ export const venueApiSchema = z.object({
 	/** venue ticket categories */
 	categories: z.array(
 		z.object({
-			/** category id */
 			categoryId: z.string().uuid(),
 			name: z.string(),
 			description: z.string().optional(),
@@ -240,7 +238,7 @@ export const venueApiSchema = z.object({
         \label{fig:seating-map-seats-sheet}
     \end{figure}
 
-    Na obráuku~\ref{fig:seating-map-seats-sheet} je zobrazena komponenta \texttt{SeatingSheet} s detaily vybraného sedadla, včetně jeho kategorie, řady, místa a dostupných vstupenek.
+    Na obrázku~\ref{fig:seating-map-seats-sheet} je zobrazena komponenta \texttt{SeatingSheet} s detaily vybraného sedadla, včetně jeho kategorie, řady, místa a dostupných vstupenek.
 
     Vstupenky jsou vázány na kategorii sedadla a kategorie může mít několik příslušných vstupenek.
     Cena vstupenky je poté definována kombinací její kategorie a vybraného sedadla.
