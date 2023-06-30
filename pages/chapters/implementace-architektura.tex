@@ -2,6 +2,7 @@
 %%%%% Wording: ✅
 %%%%% Styling: ✅
 %%%%% References: ✅
+%%%%% Grammar: ✅
 %%% --------------------------------------------------------------
 \section{Struktura a architektura projektu}
 \label{sec:implementace-architektura}
@@ -13,6 +14,7 @@ Cílem bylo vyvinout frontendovou aplikaci, která bude udržitelná, škálovat
 %%%%% Wording: ✅
 %%%%% Styling: ✅
 %%%%% References: ✅
+%%%%% Grammar: ✅
 %%% --------------------------------------------------------------
 \begin{subsection}{Vytvoření projektu}
     \label{subsec:implementace-architektura-vytvoreni-projektu}
@@ -25,7 +27,7 @@ Cílem bylo vyvinout frontendovou aplikaci, která bude udržitelná, škálovat
     Přidání ostatních technologií a knihoven zmíněných v sekci~\ref{sec:implementace-technologie}, jako jsou Prettier, ESLint, axios a react-query, byly také součástí této počáteční fáze nastavení.
 
     V tomto projektu bylo pro správu balíčků upřednostněno použití \mintinline{bash}{pnpm}.
-    Vyniká svým efektivním zacházením s Node.js moduly, čímž zajišťuje rychlejší a spolehlivější \foreign{build proces}\footnote{\foreign{Build proces} je proces, kdy se zdrojový kód překládá, neboli transpiluje, do spustitelného formátu, který může být spuštěn na cílovém zařízení.}\cite{p__pnpm_io}.
+    Vyniká svým efektivním zacházením s Node.js moduly, čímž zajišťuje rychlejší a spolehlivější \foreign{build proces}\footnote{\foreign{Build proces} je proces, kdy se zdrojový kód překládá neboli transpiluje, do spustitelného formátu, který může být spuštěn na cílovém zařízení.}\cite{p__pnpm_io}.
 
     Dalším krokem bylo vytvoření celkové struktury projektu, která vyhovuje potřebám aplikace a podporuje osvědčené postupy.
     Dobře promyšlená a organizovaná struktura projektu je zásadní pro udržení čitelnosti kódu, škálovatelnosti a snadné navigace, zejména když \foreign{codebase} roste.
@@ -35,6 +37,7 @@ Cílem bylo vyvinout frontendovou aplikaci, která bude udržitelná, škálovat
 %%%%% Wording: ✅
 %%%%% Styling: ✅
 %%%%% References: ✅
+%%%%% Grammar: ✅
 %%% --------------------------------------------------------------
 \begin{subsection}{Základní struktura}
     \label{subsec:implementace-architektura-struktura}
@@ -98,6 +101,7 @@ tailwind.config.js
 %%%%% Wording: ✅
 %%%%% Styling: ✅
 %%%%% References: ✅
+%%%%% Grammar: ✅
 %%% --------------------------------------------------------------
 \newpage
 \begin{subsection}{High-level architektura}
@@ -129,5 +133,5 @@ tailwind.config.js
     Zodpovídá za získávání dat mapy sedadel, správu rezervací či vytvoření objednávky.
     Díky tomu, že \ac{api} klient poskytuje pouze jednotné rozhraní pro komunikaci s backendem, je možné v budoucnu snadno implementovat vlastní \ac{api} klient pro komunikaci s jiným backendem.
 
-    V následujících částech budou implemetnačně rozebrány jednotlivé klíčové oblasti aplikace jako jsou interaktivní mapa sedadel, správa nákupního košíku, rezervační systém a proces vyřízení objednávky.
+    V následujících částech budou implementačně rozebrány jednotlivé klíčové oblasti aplikace jako jsou interaktivní mapa sedadel, správa nákupního košíku, rezervační systém a proces vyřízení objednávky.
 \end{subsection}

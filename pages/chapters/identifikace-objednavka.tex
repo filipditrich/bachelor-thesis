@@ -2,20 +2,22 @@
 %%%%% Wording: ✅
 %%%%% Styling: ✅
 %%%%% References: ✅
+%%%%% Grammar: ✅
 %%% --------------------------------------------------------------
 \section{Dokončení objednávky}
 \label{sec:identifikace-dokonceni-objednavky}
-Jakmile si zákazník vybere požadované vstupenky a rezervovaná místa, je jeho posledním úkolem dokončit a tím tak vytvořit objednávku, kteoru následně zaplatí.
+Jakmile si zákazník vybere požadované vstupenky a rezervovaná místa, je jeho posledním úkolem dokončit a tím tak vytvořit objednávku, kterou následně zaplatí.
 Tento proces je většinou rozdělen do několika kroků, které zákazníka postupně provedou celým procesem dokončení objednávky.
 
 Tato podkapitola se bude těmito kroky zabývat a bude se snažit popsat jejich jednotlivé části a funkčnosti, které by měly být v takovémto systému implementovány.
 
-Avšak je nutné nejprve uvést, že následující funkčnosti jsou v práci uvedené pouze z důvodu kompletnosti představení celého procesu nákupu vstupenek s rezervací míst a záměrně nebudou v rámci praktické části plně implementovány nýbrž pouze orientačně využity – a to z důvodu toho, že se jedná již převážně o funkčnosti a procesy na straně backednového systému a ne frontendového, který je předmětem této práce.
+Avšak je nutné nejprve uvést, že následující funkčnosti jsou v práci uvedené pouze z důvodu kompletnosti představení celého procesu nákupu vstupenek s rezervací míst a záměrně nebudou v rámci praktické části plně implementovány nýbrž pouze orientačně využity – a to z důvodu toho, že se jedná, již převážně o funkčnosti a procesy na straně backendového systému a ne frontendového, který je předmětem této práce.
 
 %%% Podsekce - Osobní informace
 %%%%% Wording: ✅
 %%%%% Styling: ✅
 %%%%% References: ✅
+%%%%% Grammar: ✅
 %%% --------------------------------------------------------------
 \begin{subsection}{Osobní informace}
     \label{subsec:identifikace-dokonceni-objednavky-osobni-informace}
@@ -41,6 +43,7 @@ Avšak je nutné nejprve uvést, že následující funkčnosti jsou v práci uv
 %%%%% Wording: ✅
 %%%%% Styling: ✅
 %%%%% References: ✅
+%%%%% Grammar: ✅
 %%% --------------------------------------------------------------
 \begin{subsection}{Výběr platební metody}
     \label{subsec:identifikace-dokonceni-objednavky-vyber-platebni-metody}
@@ -59,7 +62,7 @@ Avšak je nutné nejprve uvést, že následující funkčnosti jsou v práci uv
     \begin{figure}[H]
         \includegraphics[width=\linewidth]{\FIGDIR/goout-payment-methods}
         \centering
-        \caption{Vyběr platební metody na GoOut.net\cite{g__goout_net}}
+        \caption{Výběr platební metody na GoOut.net\cite{g__goout_net}}
         \label{fig:goout-payment-methods}
     \end{figure}
 
@@ -94,12 +97,12 @@ Avšak je nutné nejprve uvést, že následující funkčnosti jsou v práci uv
     \end{figure}
 
     Některé e-shopy však nabízí i vlastní platební bránu, nicméně tato možnost je spíše výjimkou.
-    Stát se provozovatelem vlastní platební brány je totiž velmi náročné na vývoj, udržbu a provoz a je k němu nutné mít i licenci platební instituce (PI)\cite{schejbal_platebni_instituce}, kterou vydává Česká národní banka (ČNB)\cite{cnb_dohled_platebni_instituce}.
+    Stát se provozovatelem vlastní platební brány je totiž velmi náročné na vývoj, údržbu a provoz a je k němu nutné mít i licenci platební instituce (PI)\cite{schejbal_platebni_instituce}, kterou vydává Česká národní banka (ČNB)\cite{cnb_dohled_platebni_instituce}.
 
     Platby přes bankovní převod mohou být pro poskytovatele řešení prodeje vstupenek velmi výhodné, jelikož se jedná o levnější způsob převodu peněz, než je tomu u plateb kartou.
-    Platební brány si totiž účtují poplatky za zpracování každé z plateb a to nejčastěji v režimu pevného sazebníku či MIF++ modelu\footnote{někdy také označován jako Interchange++}, který rozděluje poplatky mezi vydavatelskou bankou, karetním schématem (např.\ Visa, MasterCard) a platební bránou\cite{gp_podpora_mif}.
+    Platební brány si totiž účtují poplatky za zpracování každé z plateb, a to nejčastěji v režimu pevného sazebníku či MIF++ modelu\footnote{někdy také označován jako Interchange++}, který rozděluje poplatky mezi vydavatelskou bankou, karetním schématem (např.\ Visa, MasterCard) a platební bránou\cite{gp_podpora_mif}.
 
-    Do nedávna mohla být platba bankovním převodem pro zákazníky stále méně oblíbená, jelikož bylo nutné počkat na připsání peněz na účet poskytovatele, což mohlu trvat i několik dní.
+    Do nedávna mohla být platba bankovním převodem pro zákazníky stále méně oblíbená, jelikož bylo nutné počkat na připsání peněz na účet poskytovatele, což mohlo trvat i několik dní.
     V dnešní době je však možné využít tzv.
     instantní platby, které jsou schopny převést peníze mezi účty různých bank během několika sekund.
     V České republice aktuálně podporuje instantní platby již několik bank, jako například Komerční banka, a.s., MONETA Money Bank, a.s.\ či Fio banka, a.s.\ a další\footnote{kompletní seznam účastníků okamžitých plateb dle ČNB dostupný z: \url{https://www.cnb.cz/export/sites/cnb/cs/platebni-styk/.galleries/certis/download/seznam_okamzite_platby.pdf}}.
@@ -109,6 +112,7 @@ Avšak je nutné nejprve uvést, že následující funkčnosti jsou v práci uv
 %%%%% Wording: ✅
 %%%%% Styling: ✅
 %%%%% References: ✅
+%%%%% Grammar: ✅
 %%% --------------------------------------------------------------
 \begin{subsection}{Souhrn objednávky}
     \label{subsec:identifikace-dokonceni-objednavky-souhrn-objednavky}
@@ -117,18 +121,19 @@ Avšak je nutné nejprve uvést, že následující funkčnosti jsou v práci uv
     Pokud zákazník zjistí, že je něco špatně, měl by mít možnost vrátit se zpět a údaje opravit.
     Pokud je vše v pořádku, měl by mít možnost objednávku potvrdit a přejít k platebnímu procesu.
 
-    Součástí potrvzení objednávky také často bývá zaškrtnutí souhlasu se zpracováním osobních údajů a obchodních podmínek či i případně dalších informací, jako například zasílání novinek a reklamních nabídek na e-mailovou adresu zákazníka.
+    Součástí potvrzení objednávky také často bývá zaškrtnutí souhlasu se zpracováním osobních údajů a obchodních podmínek či i případně dalších informací, jako například zasílání novinek a reklamních nabídek na e-mailovou adresu zákazníka.
 \end{subsection}
 
 %%% Podsekce - Vytvoření objednávky a potvrzení
 %%%%% Wording: ✅
 %%%%% Styling: ✅
 %%%%% References: ✅
+%%%%% Grammar: ✅
 %%% --------------------------------------------------------------
 \begin{subsection}{Vytvoření objednávky a potvrzení}
     \label{subsec:identifikace-dokonceni-objednavky-vytvoreni-objednavky-a-potvrzeni}
     Po potvrzení objednávky by měla být vytvořena objednávka v databázi a zákazníkovi by mělo být zobrazeno potvrzení o jejím vytvoření.
-    Na základě vybrané platbní metody by měl být dále přesměrován k jejímu zaplacení a posléze zpět na detail objednávky s potrvzením o zaplacení.
+    Na základě vybrané platební metody by měl být dále přesměrován k jejímu zaplacení a posléze zpět na detail objednávky s potvrzením o zaplacení.
     Při úspěšné platbě by zákazníkovi měl systém doručit zakoupené vstupenky v elektronické podobě, například v podobě PDF souboru, který bude obsahovat vstupenky ve formátu QR kódu.
     Tato funkčnost je opět úzce spjata s backendovým systémem, který ale aktuální rozsah práce nepokrývá.
 \end{subsection}

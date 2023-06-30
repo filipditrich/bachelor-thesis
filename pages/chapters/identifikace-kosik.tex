@@ -2,12 +2,13 @@
 %%%%% Wording: ✅
 %%%%% Styling: ✅
 %%%%% References: ✅
+%%%%% Grammar: ✅
 %%% --------------------------------------------------------------
 \section{Nákupní košík}
 \label{sec:identifikace-nakupni-kosik}
 Velmi důležitou součástí fungování celého systému je efektivní správa a vizualizace nákupního košíku.
 Ta například zákazníkovi poskytuje přehledný souhrn položek, které si objednává, a umožňuje mu je případně upravit či odebrat, jak je znázorněno na obrázku~\ref{fig:ticketportal-cart}.
-Jedním z nejzásadnějších aspektů nákupního košíku jsou jaká data jsou v něm uchovány a jakým způsobem jsou zpracována.
+Jedním z nejzásadnějších aspektů nákupního košíku jsou jaká data jsou v něm uchována a jakým způsobem jsou zpracována.
 
 Tato sekce se zabývá popisem hlavních funkčností a požadavků na nákupní košík, které jsou nezbytné pro jeho efektivní fungování v rámci webového řešení s využitím rezervace sedadel.
 
@@ -22,20 +23,22 @@ Tato sekce se zabývá popisem hlavních funkčností a požadavků na nákupní
 %%%%% Wording: ✅
 %%%%% Styling: ✅
 %%%%% References: ✅
+%%%%% Grammar: ✅
 %%% --------------------------------------------------------------
 \begin{subsection}{Správa dat}
     \label{subsec:identifikace-nakupni-kosik-sprava}
     Nákupní košík by z datové perspektivy měl být implementován jako objekt, který uchovává informace o všech vybraných sedačkách a vstupenkách.
     Datová struktura a uchovávaná data uvnitř daného objektu o stavu nákupního košíku by měla být jasně definovaná a dostupná ve formátu vyhovujícímu užití aplikace.
-    Díky těmto datům by mělo být vždy možné zrekonstruovat stav nákupního košíku a to i v případě, že uživatel opustí stránku nebo zavře prohlížeč.
+    Díky těmto datům by mělo být vždy možné zrekonstruovat stav nákupního košíku, a to i v případě, že uživatel opustí stránku nebo zavře prohlížeč.
 
-    Touto problematikou se bude primárně zabývat kapitola~\ref{sec:implementace-kosik}, ve které bude podrobně popsána datavá struktura a finální funkčnost nákupního košíku.
+    Touto problematikou se bude primárně zabývat kapitola~\ref{sec:implementace-kosik}, ve které bude podrobně popsána datová struktura a finální funkčnost nákupního košíku.
 \end{subsection}
 
 %%% Podsekce - Přehled obsahu košíku
 %%%%% Wording: ✅
 %%%%% Styling: ✅
 %%%%% References: ✅
+%%%%% Grammar: ✅
 %%% --------------------------------------------------------------
 \begin{subsection}{Přehled obsahu košíku}
     \label{subsec:identifikace-nakupni-kosik-prehled}
@@ -53,7 +56,7 @@ Tato sekce se zabývá popisem hlavních funkčností a požadavků na nákupní
         \label{fig:ticketmaster-cart-overview}
     \end{figure}
 
-    Nákupní košík by zároveň měl zobrazit přehled cen jednotlivých položek a celkovou cenu objednávky včetně všech daní a dalších případních poplatků.
+    Nákupní košík by zároveň měl zobrazit přehled cen jednotlivých položek a celkovou cenu objednávky včetně všech daní a dalších případných poplatků.
     Tato funkcionalita zákazníkovi zajišťuje naprostou transparentnost v nabízených službách a umožňuje mu předem zkontrolovat celkovou cenu objednávky.
     V dalším kroku objednávkového procesu v síti Ticketmaster.com je zákazníkovi zobrazen souhrn objednávky, který obsahuje všechny výše zmíněné informace.
     Tento souhrn je znázorněn na obrázku~\ref{fig:ticketmaster-cart-summary}.
@@ -70,20 +73,21 @@ Tato sekce se zabývá popisem hlavních funkčností a požadavků na nákupní
 %%%%% Wording: ✅
 %%%%% Styling: ✅
 %%%%% References: ✅
+%%%%% Grammar: ✅
 %%% --------------------------------------------------------------
 \begin{subsection}{Rezervace míst}
     \label{subsec:identifikace-nakupni-kosik-rezervace}
-    V rámci nákupního procesu si zákazník vybírá místa, které jsou dostupná a při jejich výběru se zákaznikovi přidají do nákupního košíku.
+    V rámci nákupního procesu si zákazník vybírá místa, které jsou dostupná a při jejich výběru se zákazníkovi přidají do nákupního košíku.
     Tato vybraná místa zákazníkem by se měla rezervovat, aby se předešlo nepříjemným situacím při dokončení objednávky, kdy zákazník zjistí, že jeho vybrané místo je již obsazené.
 
     V případně aplikace, která se primárně zaměřuje na rezervací míst při prodeji vstupenek je tato funkcionalita naprosto esenciální.
-    Zákazník by měl mít možnost vybrat si místa, která jsou v danou chvíli dostupná a při jejich výběru by se měla pomocí rezervačnícho mechanismu v rámci vytvářené objednávky zákazníkovi zarezervovat a garantovat mu v případně dokonení objednávky jejich dostupnost.
+    Zákazník by měl mít možnost vybrat si místa, která jsou v danou chvíli dostupná a při jejich výběru by se měla pomocí rezervačního mechanismu v rámci vytvářené objednávky zákazníkovi zarezervovat a garantovat mu v případně dokončení objednávky jejich dostupnost.
 
     Tento rezervační systém by měl dále implementovat funkčnost časového omezení rezervace, která zajistí uvolnění rezervovaných míst po uplynutí určitého časového limitu.
     Tato funkčnost je velmi důležitá pro zajištění dostupnosti míst pro všechny zákazníky a zabraňuje zarezervování sedadel, která by nebyla zakoupena například z důvodu opuštění nákupního procesu zákazníkem.
 
-    V rámci tohoto rezervačního mechanismu by také mělo být zákazníkovi jasně zobrazeno, že má určitý časový limit, ve rámci kterého musí svou objednávku dokončit, jinak se jeho rezervace uvolní a bude si muset místa vybrat znovu.
-    Názořným příkladem takového rezervačního systému může být služba NFCtron Tickets, která je znázorněna na obrázku~\ref{fig:nfctron-tickets-reservation}.
+    V rámci tohoto rezervačního mechanismu by také mělo být zákazníkovi jasně zobrazeno, že má určitý časový limit, v rámci, kterého musí svou objednávku dokončit, jinak se jeho rezervace uvolní a bude si muset místa vybrat znovu.
+    Názorným příkladem takového rezervačního systému může být služba NFCtron Tickets, která je znázorněna na obrázku~\ref{fig:nfctron-tickets-reservation}.
 
     \begin{figure}[H]
         \centering
