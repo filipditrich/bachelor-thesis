@@ -1,15 +1,41 @@
 %%% Přílohy k bakalářské práci, existují-li (různé dodatky jako výpisy programů,
 %%% diagramy apod.). Každá příloha musí být alespoň jednou odkazována z vlastního
 %%% textu práce. Přílohy se číslují.
+\appendix
+\addtocontents{toc}{\protect\setlength{\cftsecnumwidth}{22mm}}
 \chapter*{Seznam příloh}
 \addcontentsline{toc}{chapter}{Seznam příloh}
 \renewcommand{\thesection}{Příloha \Alph{section}}
 
-\section{Návrh uživatelského rozhraní}
-\markboth{Přílohy}{Návrh uživatelského rozhraní}
-Návrh uživatelského rozhraní v~prostředí Figma je k nalezení v~přiloženém CD v~souboru \texttt{seating-map-figma.zip}.
-
+%%% Příloha - Návrh uživatelského rozhraní
+%%%%% File preparation: ⏳
+%%%%% Instructions: ✅
+%%% --------------------------------------------------------------
+\begin{section}{Návrh uživatelského rozhraní}
+    Návrh uživatelského rozhraní v~prostředí Figma je k nalezení v~přiloženém CD v~souboru \texttt{seating-map-figma.zip}.
+    Archiv obsahuje soubor \texttt{seating-map.fig} a~jeho jednotlivé obrazovky exportované ve formátu PDF ve složce \texttt{/export}.
+\end{section}
 \newpage
-\section{Zdrojový kód aplikace}
-\markboth{Přílohy}{Zdrojový kód aplikace}
-Zdrojový kód aplikace je k~nalezení v~přiloženém CD v~souboru \texttt{seating-map-source.zip}.
+
+%%% Příloha - Zdrojový kód aplikace
+%%%%% File preparation: ⏳
+%%%%% Instructions: ✅
+%%% --------------------------------------------------------------
+\begin{section}{Zdrojový kód aplikace}
+    Zdrojový kód aplikace je k~nalezení v~přiloženém CD v~archivu \texttt{seating-map-source.zip}.
+    Pro spuštění aplikace je nutné mít nainstalované prostředí Node.js\footnote{\url{https://nodejs.org/en}} a nástroj pnpm\footnote{\url{https://pnpm.io/installation}}.
+
+    Postup pro spuštění aplikace:
+
+    \begin{enumerate}
+        \item Rozbalte archiv \texttt{seating-map-source.zip}.
+        \subitem \texttt{unzip seating-map-source.zip}
+        \item Otevřete složku \texttt{seating-map-source} v~terminálu.
+        \subitem \texttt{cd seating-map-source}
+        \item Spusťte aplikaci příkazem \texttt{pnpm demo}\footnote{Příkaz nainstaluje potřebné balíčky, vytvoří potřebný \texttt{.env} soubor, sestaví aplikaci a sputí ji lokálně na portu \texttt{3008}}.
+        \subitem \texttt{pnpm demo}
+        \item Aplikace bude dostupná na adrese \url{http://localhost:3008}
+    \end{enumerate}
+
+    Aplikaci je také možné navštívit online na adrese \url{https://seating-map.vercel.app}.
+\end{section}
