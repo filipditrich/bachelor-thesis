@@ -1,3 +1,3 @@
-[submodule "project"]
-	path = project
+[submodule "seating-map-source"]
+	path = seating-map-source
 	url = https://github.com/filipditrich/bachelor-thesis-project.git

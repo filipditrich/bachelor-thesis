@@ -2,3 +2,4 @@
 dist/*
 !dist/*.pdf
 url-to-bibtex/node_modules/
+rc/*
