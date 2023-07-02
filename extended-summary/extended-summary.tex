@@ -1,0 +1,33 @@
+%%%%% Default settings for one-side (simplex) printing
+%%%%% Frame: left 40mm, right 25mm, top a bottom 25mm
+%%%%% ---------------------------------------------------------------
+\documentclass[11pt, a5paper]{report}
+\usepackage{geometry}
+%\setlength\textwidth{100mm}
+\setlength\textheight{165mm}
+%\setlength\oddsidemargin{5mm}
+%\setlength\evensidemargin{5mm}
+\setlength\topmargin{0mm}
+\setlength\headsep{0mm}
+\setlength\headheight{0mm}
+\newcommand{\openright}{\clearpage}
+
+%%%%% Preamble with custom settings and commands
+%%%%% ---------------------------------------------------------------
+\include{../preamble}
+
+%%%%% Titles styling
+%%%%% ------------------------------------------------------------
+\titlespacing*{\chapter}{0pt}{-10mm}{5mm}
+\titleformat{\chapter}{\normalfont\Large\bfseries}{\thechapter}{1em}{}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+
+%%%%% Main document part
+%%%%% ------------------------------------------------------------
+\begin{document}
+%%% title page
+    \include{pages/cover}
+%%% main content
+    \pagenumbering{gobble}
+    \input{pages/extended-summary}
+\end{document}
