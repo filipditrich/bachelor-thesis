@@ -121,6 +121,9 @@
 \usepackage{epigraph}               %%% umožňuje vkládat citáty
 \newcommand\foreign[1]{\emph{#1}}   %%% zvýraznění cizích slov
 \usepackage{pdfpages}               %%% umožňuje vkládat PDF soubory do dokumentu
+\usepackage{nameref}                %%% umožňuje používat jmenné odkazy na kapitoly, sekce, ...
+% vytvoří odkaz na kapitolu, sekci, ... včetně čísla a tučně
+\renewcommand{\fullref}[1]{\textbf{\nameref{#1}}}
 
 %%%%% Nastavení zkratek
 %%%%% ---------------------------------------------------------------
