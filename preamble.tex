@@ -1,0 +1,148 @@
+%%%%% Nastavení kódování vstupních souborů: UTF-8
+%%%%% ---------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+
+%%%%% Nastavení češtiny
+%%%%% ---------------------------------------------------------------
+\usepackage[czech]{babel}
+\ifx\uv\undefined\newcommand{\uv}[1]{,,#1``}\fi
+
+%%%%% Nastavení textu
+%%%%% ---------------------------------------------------------------
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.75\baselineskip}
+
+%%%%% Nastavení barevných boxů/rámečku
+%%%%% ---------------------------------------------------------------
+\usepackage{tcolorbox}              %%% umožňuje vkládat rámečky
+% gray box preset
+\newtcolorbox{gray-box}[1]{colback=gray!5!white,colframe=gray!50!black,title=#1}
+% user story box preset
+\newcommand{\userstory}[4]{
+    \begin{gray-box}{Uživatelský příběh #1 – #2}
+        \textit{``#3``}
+    \end{gray-box}
+    #4
+}
+
+%%%%% Nastavení barev a syntaxe kódu
+%%%%% ---------------------------------------------------------------
+% TODO: Define the colors
+\usepackage{fvextra}
+\usepackage{xcolor}
+\definecolor{codekeyword}{rgb}{0.0,0.3,0.7}
+\definecolor{codestring}{rgb}{0.4,0.4,0.8}
+\definecolor{codecomment}{rgb}{0.2,0.2,0.2}
+\definecolor{codejsdoc}{rgb}{0.4,0.4,0.4}
+\definecolor{codelinenum}{rgb}{0.8,0.8,0.8}
+\definecolor{lightyellow}{rgb}{255, 255, 224}
+
+% nastavení minted balíčku
+\usepackage[outputdir=dist]{minted}
+\setminted{
+    frame=none,
+    breaklines=true,
+    fontsize=\footnotesize,
+    tabsize=2,
+    linenos,
+    numbersep=5pt,
+    xleftmargin=0pt,
+    baselinestretch=1.2,
+    style=friendly,
+%   TODO: highlihgting not working
+    highlightcolor=\color{lightyellow},
+    keywordstyle=\color{codekeyword},
+    stringstyle=\color{codestring},
+    commentstyle=\color{codecomment}\itshape,
+    morecomment=[s][\color{codejsdoc}]{/**}{*/},
+    numberstyle=\footnotesize\color{codelinenum}
+}
+
+% nastavení listings balíčku
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily,
+    columns=fullflexible,
+    frame=single,
+    breaklines=true,
+    showstringspaces=false,
+    keywordstyle=\bfseries,
+    commentstyle=\itshape\color{gray},
+    captionpos=b
+}
+
+%%%%% Další užitečné balíčky
+%%%%% ----------------------------------------------------------------
+\usepackage{amsmath}                %%% rozšíření pro sazbu matematiky
+\usepackage{amsfonts}               %%% matematické fonty
+\usepackage{amsthm}                 %%% sazba vět, definic apod.
+\usepackage{bm}                     %%% tučné symboly (příkaz \bm)
+\usepackage{graphicx}               %%% vkládání obrázků
+\usepackage{psfrag}                 %%% dodatečná úprava popisků v postscriptových obrázcích
+\usepackage{fancyvrb}               %%% vylepšené prostředí pro strojové písmo
+\usepackage{natbib}                 %%% zajištuje možnost odkazovat na reference stylem AUTOR (ROK), resp. AUTOR [ČÍSLO]
+\usepackage{tikz}                   %%% vkládání vektorových obrázků
+\usepackage{bbding}                 %%% balíček s nejrůznějšími symboly
+\usepackage{icomma}                 %%% inteligetní čárka v matematickém módu
+\usepackage{dcolumn}                %%% lepší zarovnání sloupců v tabulkách
+\usepackage{booktabs}               %%% lepší vodorovné linky v tabulkách
+\usepackage{paralist}               %%% lepší enumerate a itemize
+\usepackage{float}                  %%% lepší práce s float objekty (obrázky, tabulky, ...)
+\usepackage{subcaption}             %%% umožňuje vkládat podnadpisy k obrázkům a tabulkám
+\usepackage{epigraph}               %%% umožňuje vkládat citáty
+\newcommand\foreign[1]{\emph{#1}}   %%% zvýraznění cizích slov
+\usepackage{pdfpages}               %%% umožňuje vkládat PDF soubory do dokumentu
+\usepackage{nameref}                %%% umožňuje používat jmenné odkazy na kapitoly, sekce, ...
+% vytvoří odkaz na kapitolu, sekci, ... včetně čísla a tučně
+\renewcommand{\fullref}[1]{\textbf{\nameref{#1}}}
+
+%%%%% Nastavení zkratek
+%%%%% ---------------------------------------------------------------
+\usepackage{acro}                   %%% balíček pro práci s akronymy
+\DeclareAcronym{ui}{short=UI,       long=User Interface }
+\DeclareAcronym{ux}{short=UX,       long=User Experience }
+\DeclareAcronym{api}{short=API,     long=Application Programming Interface }
+\DeclareAcronym{svg}{short=SVG,     long=Scalable Vector Graphics }
+\DeclareAcronym{css}{short=CSS,     long=Cascading Style Sheets }
+\DeclareAcronym{html}{short=HTML,   long=Hypertext Markup Language }
+\DeclareAcronym{js}{short=JS,       long=JavaScript }
+\DeclareAcronym{ts}{short=TS,       long=TypeScript }
+\DeclareAcronym{json}{short=JSON,   long=JavaScript Object Notation }
+\DeclareAcronym{spa}{short=SPA,     long=Single Page Application }
+\DeclareAcronym{dom}{short=DOM,     long=Document Object Model }
+\DeclareAcronym{mpa}{short=MPA,     long=Multi Page Application }
+\DeclareAcronym{ssr}{short=SSR,     long=Server Side Rendering }
+\DeclareAcronym{ssg}{short=SSG,     long=Static Site Generation }
+\DeclareAcronym{seo}{short=SEO,     long=Search Engine Optimization }
+\DeclareAcronym{http}{short=HTTP,   long=Hypertext Transfer Protocol }
+\DeclareAcronym{url}{short=URL,     long=Uniform Resource Locator }
+\DeclareAcronym{xsrf}{short=XSRF,   long=Cross-Site Request Forgery }
+\DeclareAcronym{cd}{short=CD,       long=Continuous Development }
+\DeclareAcronym{ws}{short=WS,       long=Websockets }
+
+%%%%% Nastavení hyperodkazů
+%%%%% ------------------------------------------------------------
+\usepackage[unicode]{hyperref}      %%% zajištuje generování hyperodkazů, bookmarků atp.
+\hypersetup{pdftitle=Webové řešení na prodej vstupenek s~rezervací míst,
+    pdfauthor=Filip Ditrich
+    ps2pdf,
+    colorlinks=false,               %% hyperlinky budou označeny červenými rámečky, které se nebudou tisknout
+    urlcolor=blue,
+    pdfstartview=FitH,
+    pdfpagemode=UseOutlines,
+    pdfnewwindow,
+    breaklinks                      %% zajistí, aby se dlouhé hyperodkazy mohly lámat přes více řádků
+}
+
+%%%%% Nastavení nadpisů
+%%%%% ------------------------------------------------------------
+\usepackage{titlesec}
+%\titlespacing*{\chapter}{0pt}{-10mm}{5mm}
+\titleformat{\chapter}{\normalfont\huge\bfseries}{\thechapter}{1em}{}
+
+%%%%% Obrázky
+%%%%% ---------------------------------------------------------------
+\newcommand{\FIGDIR}{./figures}    %%% cesta do adresáře s obrázky
