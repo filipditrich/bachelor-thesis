@@ -33,6 +33,73 @@
 \usepackage[czech]{babel}
 \ifx\uv\undefined\newcommand{\uv}[1]{,,#1``}\fi
 
+%%%%% Nastavení textu
+%%%%% ---------------------------------------------------------------
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.75\baselineskip}
+
+%%%%% Nastavení barevných boxů/rámečku
+%%%%% ---------------------------------------------------------------
+\usepackage{tcolorbox}              %%% umožňuje vkládat rámečky
+% gray box preset
+\newtcolorbox{gray-box}[1]{colback=gray!5!white,colframe=gray!50!black,title=#1}
+% user story box preset
+\newcommand{\userstory}[4]{
+    \begin{gray-box}{Uživatelský příběh #1 – #2}
+        \textit{``#3``}
+    \end{gray-box}
+    #4
+}
+
+%%%%% Nastavení barev a syntaxe kódu
+%%%%% ---------------------------------------------------------------
+% TODO: Define the colors
+\usepackage{fvextra}
+\usepackage{xcolor}
+\definecolor{codekeyword}{rgb}{0.0,0.3,0.7}
+\definecolor{codestring}{rgb}{0.4,0.4,0.8}
+\definecolor{codecomment}{rgb}{0.2,0.2,0.2}
+\definecolor{codejsdoc}{rgb}{0.4,0.4,0.4}
+\definecolor{codelinenum}{rgb}{0.8,0.8,0.8}
+\definecolor{lightyellow}{rgb}{255, 255, 224}
+
+% nastavení minted balíčku
+\usepackage[outputdir=dist]{minted}
+\setminted{
+    frame=none,
+    breaklines=true,
+    fontsize=\footnotesize,
+    tabsize=2,
+    linenos,
+    numbersep=5pt,
+    xleftmargin=0pt,
+    baselinestretch=1.2,
+    style=friendly,
+%   TODO: highlihgting not working
+    highlightcolor=\color{lightyellow},
+    keywordstyle=\color{codekeyword},
+    stringstyle=\color{codestring},
+    commentstyle=\color{codecomment}\itshape,
+    morecomment=[s][\color{codejsdoc}]{/**}{*/},
+    numberstyle=\footnotesize\color{codelinenum}
+}
+
+% nastavení listings balíčku
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily,
+    columns=fullflexible,
+    frame=single,
+    breaklines=true,
+    showstringspaces=false,
+    keywordstyle=\bfseries,
+    commentstyle=\itshape\color{gray},
+    captionpos=b
+}
+
 %%%%% Další užitečné balíčky
 %%%%% ----------------------------------------------------------------
 \usepackage{amsmath}                %%% rozšíření pro sazbu matematiky
@@ -52,67 +119,11 @@
 \usepackage{float}                  %%% lepší práce s float objekty (obrázky, tabulky, ...)
 \usepackage{subcaption}             %%% umožňuje vkládat podnadpisy k obrázkům a tabulkám
 \usepackage{epigraph}               %%% umožňuje vkládat citáty
-\usepackage{tcolorbox}              %%% umožňuje vkládat rámečky
-% TODO: color box presets
-\newtcolorbox{gray-box}[1]{colback=gray!5!white,colframe=gray!50!black,title=#1}
-\newcommand{\userstory}[4]{
-    \begin{gray-box}{Uživatelský příběh #1 – #2}
-        \textit{``#3``}
-    \end{gray-box}
-    #4
-}
-\usepackage[outputdir=dist]{minted}
-\usepackage{fvextra}
-\usepackage{xcolor}
-% TODO: Define the colors
-\definecolor{codekeyword}{rgb}{0.0,0.3,0.7}
-\definecolor{codestring}{rgb}{0.4,0.4,0.8}
-\definecolor{codecomment}{rgb}{0.2,0.2,0.2}
-\definecolor{codejsdoc}{rgb}{0.4,0.4,0.4}
-\definecolor{codelinenum}{rgb}{0.8,0.8,0.8}
-% light yellow color for highlighting
-%\definecolor{lightyellow}{rgb}{255, 255, 224}
+\newcommand\foreign[1]{\emph{#1}}   %%% zvýraznění cizích slov
+\usepackage{pdfpages}               %%% umožňuje vkládat PDF soubory do dokumentu
 
-% Set the minted style
-\setminted{
-    frame=none,
-    breaklines=true,
-    fontsize=\footnotesize,
-    tabsize=2,
-    linenos,
-    numbersep=5pt,
-    xleftmargin=0pt,
-    baselinestretch=1.2,
-    style=friendly,
-%   TODO: highlihgting not working
-%    highlightcolor=\color{lightyellow},
-    keywordstyle=\color{codekeyword},
-    stringstyle=\color{codestring},
-    commentstyle=\color{codecomment}\itshape,
-    morecomment=[s][\color{codejsdoc}]{/**}{*/},
-    numberstyle=\footnotesize\color{codelinenum}
-}
-
-\renewcommand{\listingscaption}{Zdrojový kód}
-\renewcommand{\listoflistingscaption}{Seznam zdrojových kódů}
-
-% TODO
-\usepackage{listings}
-
-% Define formatting for the code block
-\lstset{
-    basicstyle=\ttfamily,
-    columns=fullflexible,
-    frame=single,
-    breaklines=true,
-    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
-    showstringspaces=false,
-    keywordstyle=\bfseries,
-    commentstyle=\itshape\color{gray},
-    captionpos=b
-}
-
-% TODO
+%%%%% Nastavení zkratek
+%%%%% ---------------------------------------------------------------
 \usepackage{acro}                   %%% balíček pro práci s akronymy
 \DeclareAcronym{ui}{short=UI,       long=User Interface }
 \DeclareAcronym{ux}{short=UX,       long=User Experience }
@@ -135,32 +146,13 @@
 \DeclareAcronym{cd}{short=CD,       long=Continuous Development }
 \DeclareAcronym{ws}{short=WS,       long=Websockets }
 
-% TODO
-\usepackage{indentfirst}            %%% zaveď odsazení 1. odstavce
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.75\baselineskip}
-\usepackage[nottoc]{tocbibind}      %%% zajistí přidání seznamu literatury, obrázků a tabulek do obsahu
-\usepackage[unicode]{hyperref}      %%% zajištuje generování hyperodkazů, bookmarků atp.
-\usepackage{pdfpages}               %%% umožňuje vkládat PDF soubory do dokumentu
-% TODO make fancy headers work
-\usepackage{fancyhdr}               %%% umožňuje nastavit vlastní hlavičky a patičky stránky
-
-% TODO
-% Load the setspace package
-\usepackage{setspace}
-% Using \doublespacing in the preamble
-% changes text to double line spacing
-\onehalfspacing
-
-
-\newcommand\foreign[1]{\emph{#1}}  %%% zvýraznění cizích slov
-
 %%%%% Nastavení hyperodkazů
 %%%%% ------------------------------------------------------------
+\usepackage[unicode]{hyperref}      %%% zajištuje generování hyperodkazů, bookmarků atp.
 \hypersetup{pdftitle=Webové řešení na prodej vstupenek s~rezervací míst,
     pdfauthor=Filip Ditrich
     ps2pdf,
-    colorlinks=false,               %% hyperlinky budou označeny červenými rámečky, které budou neviditelné při tisku na papír
+    colorlinks=false,               %% hyperlinky budou označeny červenými rámečky, které se nebudou tisknout
     urlcolor=blue,
     pdfstartview=FitH,
     pdfpagemode=UseOutlines,
@@ -180,14 +172,27 @@
 
 %%%%% Seznam použité literatury
 %%%%% ---------------------------------------------------------------
-%\bibliographystyle{/Users/filipditrich/University/BC_THESIS/thesis/czplainnat}    %% Autor (rok) s českými spojkami
-%\bibliographystyle{plainnat}     %% Autor (rok) s anglickými spojkami
 \bibliographystyle{unsrt}        %% [číslo]
 \renewcommand{\bibname}{Seznam použité literatury}
+
+%%%%% Nastavení obsahu (TOC)
+%%%%% ---------------------------------------------------------------
+\usepackage[nottoc]{tocbibind}      %%% zajistí přidání seznamu literatury, obrázků a tabulek do obsahu
+\renewcommand{\listingscaption}{Zdrojový kód}
+\renewcommand{\listoflistingscaption}{Seznam zdrojových kódů}
+\usepackage[titles]{tocloft}
+\renewcommand\cftchapafterpnum{\vskip8pt}
+\renewcommand\cftsecafterpnum{\vskip2pt}
+\usepackage[toc,page]{appendix}
+\renewcommand{\appendixtocname}{Seznam příloh}
+\renewcommand{\appendixpagename}{Seznam příloh}
 
 %%%%% TODO:
 %% - [] sepsat dokument extended summary
 %% - [] finální vzhled, vizuální úpravy
+%% - [x] začistit preambuli
+%% - [x] číslování příloh is fucked
+%% - [x] separe sekce jsou na nových stránkách
 %% - [x] zkontrolovat gramatiku
 %% - [x] obrázek SVG origin je broken
 %% - [x] zrevidovat zdroje (datumy)
@@ -224,34 +229,34 @@
     \tableofcontents
 %%% jednotlivé kapitoly
     % kapitola - úvod
-    \include{pages/chapters/uvod}
+    \input{pages/chapters/uvod}
     % kapitola - identifikace klíčových částí
-    \include{pages/chapters/identifikace}
-    \include{pages/chapters/identifikace-mapa}
-    \include{pages/chapters/identifikace-kosik}
-    \include{pages/chapters/identifikace-objednavka}
+    \input{pages/chapters/identifikace}
+    \input{pages/chapters/identifikace-mapa}
+    \input{pages/chapters/identifikace-kosik}
+    \input{pages/chapters/identifikace-objednavka}
     % kapitola - návrh rozhraní
-    \include{pages/chapters/navrh-rozhrani}
-    \include{pages/chapters/navrh-rozhrani-principy}
-    \include{pages/chapters/navrh-rozhrani-psychologie}
-    \include{pages/chapters/navrh-rozhrani-user-stories}
-    \include{pages/chapters/navrh-rozhrani-nastroje}
-    \include{pages/chapters/navrh-rozhrani-produkt}
+    \input{pages/chapters/navrh-rozhrani}
+    \input{pages/chapters/navrh-rozhrani-principy}
+    \input{pages/chapters/navrh-rozhrani-psychologie}
+    \input{pages/chapters/navrh-rozhrani-user-stories}
+    \input{pages/chapters/navrh-rozhrani-nastroje}
+    \input{pages/chapters/navrh-rozhrani-produkt}
     % kapitola - implementace
-    \include{pages/chapters/implementace}
-    \include{pages/chapters/implementace-uvod}
-    \include{pages/chapters/implementace-technologie}
-    \include{pages/chapters/implementace-architektura}
-    \include{pages/chapters/implementace-seating}
-    \include{pages/chapters/implementace-cart}
-    \include{pages/chapters/implementace-rezervace}
-    \include{pages/chapters/implementace-checkout}
-    \include{pages/chapters/implementace-deployment}
-    \include{pages/chapters/implementace-zaver}
+    \input{pages/chapters/implementace}
+    \input{pages/chapters/implementace-uvod}
+    \input{pages/chapters/implementace-technologie}
+    \input{pages/chapters/implementace-architektura}
+    \input{pages/chapters/implementace-seating}
+    \input{pages/chapters/implementace-cart}
+    \input{pages/chapters/implementace-rezervace}
+    \input{pages/chapters/implementace-checkout}
+    \input{pages/chapters/implementace-deployment}
+    \input{pages/chapters/implementace-zaver}
     % kapitola - výzvy a problémy
-    \include{pages/chapters/vyzvy-a-problemy}
+    \input{pages/chapters/vyzvy-a-problemy}
     % kapitola - závěr
-    \include{pages/chapters/zaver}
+    \input{pages/chapters/zaver}
 %%% seznam použité literatury
 %%% Reference se hledají v souboru priklady_literatury.bib. Aby se
 %%% vytvořil seznam literatury, je třeba ocitovat alespoň jednu
