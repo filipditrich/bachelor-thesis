@@ -20,14 +20,7 @@ Správa košíku je pro aplikaci klíčová, jelikož slouží jako most mezi in
     \label{subsec:implementace-kosik-kontext}
     \foreign{State}, česky stav, košíku je spravován globálně v celé aplikaci pomocí kontextu.
     Toto zajišťuje \texttt{CartContext} komponenta, která obaluje celou aplikaci a poskytuje tak přístup a manipulaci se stavem košíku.
-    Hlavní logika se odehrává v \texttt{useCart} hooku košíku, který vytváří instanci nákupního košíku, která obsahuje stav a nabízí dostupné akce, kterými lze stav košíku měnit, jak lze vidět na diagramu~\ref{fig:cart-context-diagram}.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.6\textwidth]{\FIGDIR/diagrams/use-cart}
-        \caption{Diagram \texttt{useCart} hooku}
-        \label{fig:cart-context-diagram}
-    \end{figure}
+    Hlavní logika se odehrává v \texttt{useCart} hooku košíku, který vytváří instanci nákupního košíku, která obsahuje stav a nabízí dostupné akce, kterými lze stav košíku měnit.
 \end{subsection}
 
 %%% Podsekce – Stav a funkce košíku

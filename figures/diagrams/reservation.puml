@@ -1,0 +1,33 @@
+@startuml
+|Klient|
+start
+:Přidání vstupenky do košíku;
+if (Existuje rezervace?) then (ano)
+  :V pořádku;
+else (ne)
+|Klient|
+  :Odešli API request na vytvoření rezervace;
+|API|
+#cornsilk:Vytvoření rezervace na API;
+
+|Klient|
+  :Aktualizuj vnitřní stav;
+endif
+
+:Košík s rezervací;
+while (Objednávka ještě nebyla vytvořena?) is (ano)
+  if (Vypršela rezervace?) then (ne)
+  |Klient|
+    :Pokračuj v kontrole;
+  else (ano)
+    |Klient|
+        :Synchronizuj stav s API;
+    |API|
+        #cornsilk:Vyčištění rezervace na API;
+    |Klient|
+        :Vyčisti vnitřní stav;
+  endif
+endwhile (ne)
+
+stop
+@enduml

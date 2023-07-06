@@ -7,7 +7,16 @@
 \section{Rezervační systém}
 \label{sec:implementace-rezervace}
 Rezervační systém je klíčovou součástí aplikace, jelikož se stará o rezervaci sedadel a vstupenek a také je zodpovědný za vypršení rezervace a jejího vymazání.
-Rezervační systém je pouze jakousi integrací, nebo spíše rozšířením jádra logiky košíku.
+Celkový proces fungování rezervačního systému je znázorněn na diagramu na obrázku~\ref{fig:reservation-system-diagram}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{\FIGDIR/diagrams/reservation}
+    \caption{Diagram fungování rezervačního systému}
+    \label{fig:reservation-system-diagram}
+\end{figure}
+
+Tento systém je pouze jakousi integrací, nebo spíše rozšířením jádra logiky košíku.
 Košík ve své podstatě pouze uchovává referenci na rezervaci ve svém stavu reprezentovanou velmi jednoduchým objektem ve tvaru rozhraní zobrazeného v ukázce kódu~\ref{lst:reservation}.
 
 \begin{listing}[H]

@@ -6,38 +6,48 @@ class "SeatingMapProvider" as SMP {
 }
 
 class "SeatingMap" as SM {
-  +background? : String
-  +height : Number
-  +width : Number
-  +svgData : String
-  --
-  +renderNodeChild(node : Node) : Function
++background? : String
++height : Number
++width : Number
++svgData : String
+--
++renderNodeChild(node : Node) : Function
 }
 
 class "VirtualMap" as VM {
-  +withRotation? : Boolean
-  +width : Number
-  +baseWidth : Number
-  +height : Number
-  +baseHeight : Number
-  +minScaleFactor? : Number
-  +maxScaleFactor? : Number
-  --
-  +handeZoomAction(scale : Number) : Function
++withRotation? : Boolean
++width : Number
++baseWidth : Number
++height : Number
++baseHeight : Number
++minScaleFactor? : Number
++maxScaleFactor? : Number
+--
++handeZoomAction(scale : Number) : Function
 }
 
+
 class "SeatSheet" as Sheet {
-    +seatConfiguration? : Object
-    --
+ +seatConfiguration? : Object
+ --
 }
 
 class "Seat" as Seat {
-  +seat : Object
++seat : Object
 }
 
-SMP -> SM
-SM --> VM
-SM -> Sheet
-VM -> Seat
+class "ZoomControls" as ZoomControls {
++handeZoomAction(scale : Number) : Function
+}
+
+cloud "API" {
+}
+
+SMP <-down-* SM
+SMP -.right> API : GET /api/venue/:venueId
+SM <-down-* VM
+SM <-down-* Sheet
+VM <-down-o Seat
+VM <-down-* ZoomControls
 
 @enduml

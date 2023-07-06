@@ -22,16 +22,7 @@ Tato mapa je také zodpovědná za zobrazení informací o vstupenkách, které 
 %%% --------------------------------------------------------------
 \begin{subsection}{Struktura}
     \label{subsec:implementace-seating-struktura}
-    Struktura tohoto prvku je postavena na několika komponentách, které spolu harmonicky spolupracují.
-    Primárními komponentami jsou:
-
-    \begin{itemize}
-        \item \texttt{SeatingMapProvider}
-        \item \texttt{SeatingMap}
-        \item \texttt{VirtualMap}
-        \item \texttt{Seat}
-        \item \texttt{SeatSheet}
-    \end{itemize}
+    Struktura tohoto prvku je postavena na několika komponentách, které spolu harmonicky spolupracují:
 
     \textbf{SeatingMapProvider} je nadřazená komponenta, která získává data z \ac{api} a zpřístupňuje je svým ostatním potomkům.
     Tato data zahrnují podrobnosti o místu konání, sedadlech, jejich stavech a vstupenkách.
@@ -45,35 +36,7 @@ Tato mapa je také zodpovědná za zobrazení informací o vstupenkách, které 
 
     \textbf{Seat} a \textbf{SeatSheet} komponenty představují jednotlivá sedadla na mapě a podrobnosti zobrazené při jejich výběru.
 
-    Souhra a struktura těchto komponent je znázorněna v zjednodušené ukázce kódu~\ref{listing:seating-map-structure} a na diagramu~\ref{fig:seating-map-structure}.
-
-    \begin{listing}[H]
-        \begin{minted}[breaklines]{html}
-<SeatingMapProvider venue={venue}>
-	{/* seating map */}
-	<SeatingMap width={width} height={height}>
-		{/* virtual map */}
-		<VirtualMap minScaleFactor={1.1} maxScaleFactor={0.1}>
-			{/* individual seats */}
-			<Seat />
-			<Seat />
-			<Seat />
-			{/* + any other svg elements */}
-		</VirtualMap>
-
-		{/* seat sheet detail */}
-		<Sheet>
-			<Sheet.Header />
-			<Sheet.Body>
-				<SeatSheet />
-			</Sheet.Body>
-		</Sheet>
-	</SeatingMap>
-</SeatingMapProvider>
-        \end{minted}
-        \caption{Struktura komponent mapy sedadel}
-        \label{listing:seating-map-structure}
-    \end{listing}
+    Souhra a struktura těchto komponent je znázorněna na diagramu na obrázku~\ref{fig:seating-map-structure}.
 
     \begin{figure}[H]
         \centering
