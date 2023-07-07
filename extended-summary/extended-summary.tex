@@ -16,7 +16,30 @@
 %%%%% ---------------------------------------------------------------
 \include{../preamble}
 
-%%%%% Obrázky
+%%%%% Hyperlinks settings
+%%%%% ------------------------------------------------------------
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[unicode]{hyperref}
+\hypersetup{pdftitle=Web-based ticketing solution with seat reservation,
+    pdfauthor=Filip Ditrich
+    ps2pdf,
+    colorlinks=false,
+    urlcolor=blue,
+    pdfstartview=FitH,
+    pdfpagemode=UseOutlines,
+    pdfnewwindow,
+    breaklinks
+}
+\renewcommand\UrlFont{\small}
+
+%%%%% Bibliography
+%%%%% ---------------------------------------------------------------
+\bibliographystyle{unsrt}
+\usepackage{bibentry}
+\nobibliography*
+\renewcommand{\fullcite}[1]{\cite{#1}~\bibentry{#1}}
+
+%%%%% Images
 %%%%% ---------------------------------------------------------------
 \newcommand{\FIGDIR}{../figures}    %%% cesta do adresáře s obrázky
 
@@ -25,6 +48,8 @@
 \titlespacing*{\chapter}{0pt}{-10mm}{5mm}
 \titleformat{\chapter}{\normalfont\Large\bfseries}{\thechapter}{1em}{}
 \titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{0pt}{-10pt}
 
 %%%%% Main document part
 %%%%% ------------------------------------------------------------
@@ -34,4 +59,12 @@
 %%% main content
     \pagenumbering{gobble}
     \input{pages/extended-summary}
+%%% bibliography
+    \hphantom{
+        \vphantom{
+            \begin{minipage}{\textwidth}
+                \bibliography{/Users/filipditrich/University/BC_THESIS/thesis/extended-summary/top}
+            \end{minipage}
+        }
+    }
 \end{document}

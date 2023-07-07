@@ -2,11 +2,6 @@
 %%%%% ---------------------------------------------------------------
 \usepackage[utf8]{inputenc}
 
-%%%%% Nastavení češtiny
-%%%%% ---------------------------------------------------------------
-\usepackage[czech]{babel}
-\ifx\uv\undefined\newcommand{\uv}[1]{,,#1``}\fi
-
 %%%%% Nastavení textu
 %%%%% ---------------------------------------------------------------
 \usepackage{setspace}
@@ -122,20 +117,6 @@
 \DeclareAcronym{xsrf}{short=XSRF,   long=Cross-Site Request Forgery }
 \DeclareAcronym{cd}{short=CD,       long=Continuous Development }
 \DeclareAcronym{ws}{short=WS,       long=Websockets }
-
-%%%%% Nastavení hyperodkazů
-%%%%% ------------------------------------------------------------
-\usepackage[unicode]{hyperref}      %%% zajištuje generování hyperodkazů, bookmarků atp.
-\hypersetup{pdftitle=Webové řešení na prodej vstupenek s~rezervací míst,
-    pdfauthor=Filip Ditrich
-    ps2pdf,
-    colorlinks=false,               %% hyperlinky budou označeny červenými rámečky, které se nebudou tisknout
-    urlcolor=blue,
-    pdfstartview=FitH,
-    pdfpagemode=UseOutlines,
-    pdfnewwindow,
-    breaklinks                      %% zajistí, aby se dlouhé hyperodkazy mohly lámat přes více řádků
-}
 
 %%%%% Nastavení nadpisů
 %%%%% ------------------------------------------------------------

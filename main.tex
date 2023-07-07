@@ -24,9 +24,28 @@
 % \setlength\headheight{0mm}
 % \let\openright=\cleardoublepage
 
+%%%%% Nastavení češtiny
+%%%%% ---------------------------------------------------------------
+\usepackage[czech]{babel}
+\ifx\uv\undefined\newcommand{\uv}[1]{,,#1``}\fi
+
 %%%%% Preambule s vlastními příkazy a nastaveními
 %%%%% ---------------------------------------------------------------
 \include{preamble}
+
+%%%%% Nastavení hyperodkazů
+%%%%% ------------------------------------------------------------
+\usepackage[unicode]{hyperref}      %%% zajištuje generování hyperodkazů, bookmarků atp.
+\hypersetup{pdftitle=Webové řešení na prodej vstupenek s~rezervací míst,
+    pdfauthor=Filip Ditrich
+    ps2pdf,
+    colorlinks=false,               %% hyperlinky budou označeny červenými rámečky, které se nebudou tisknout
+    urlcolor=blue,
+    pdfstartview=FitH,
+    pdfpagemode=UseOutlines,
+    pdfnewwindow,
+    breaklinks                      %% zajistí, aby se dlouhé hyperodkazy mohly lámat přes více řádků
+}
 
 %%%%% Seznam použité literatury
 %%%%% ---------------------------------------------------------------
