@@ -7,15 +7,15 @@
 \section{Návrh produktu}
 \label{sec:navrh-ui-navrh-produktu}
 \acl{ui} a \acl{ux} jsou oba úzce spjaty s pochopením potřeb uživatele.
-Když je produkt navrhován, není vždy okamžitě jasné, jakým způsobem by mělo být jeho uživatelské rozhraní vypadat.
+Když je produkt navrhován, není vždy okamžitě jasné, jakým způsobem by mělo jeho uživatelské rozhraní vypadat.
 Uživatelské příběhy, pokud jsou správně navrženy, usnadňují spojení mezi potřebami uživatele a strukturální kompozicí produktu.
-Primárním cílem je v této sekci přetvořit výše navržené uživatelské příběhy do \ac{ui} jednotlivých komponent uživatelského rozhraní, které nakonec utvoří interaktivní architekturu produktu.
+Primárním cílem je v této sekci přetvořit výše navržené uživatelské příběhy do jednotlivých \ac{ui} komponent uživatelského rozhraní, které nakonec utvoří interaktivní architekturu produktu.
 
 \ac{ui} komponenty jsou prvky, které tvoří interaktivní a vizuální aspekty uživatelského rozhraní produktu.
 Tyto komponenty mohou zahrnovat menší jednodušší designové prvky, jako jsou například tlačítka či ikony, nebo větší a složitější funkční jednotky, jako je ku příkladu navigační menu nebo interaktivní plánek sedaček.
 
-Převedení uživatelských příběhů do \ac{ui} komponent je klíčovým krokem tomto v procesu, který vyžaduje hluboké porozumění potřebám uživatele tak, jak jsou vyjádřeny v uživatelských příbězích, a schopnost vizualizovat, jak tyto potřeby mohou být zhmotněny prostřednictvím různých \ac{ui} komponent.
-Pro produkt, jako je aplikace na prodej vstupenek, to znamená zaměřit se na komponenty, které umožňují uživatelům navigovat po interaktivním plánu sedadel, vybrat si svá požadovaná místa a dokončit nákup vstupenek s minimálním distrakcí a maximální jednoduchostí.
+Převedení uživatelských příběhů do \ac{ui} komponent je klíčovým krokem v tomto procesu, který vyžaduje hluboké porozumění potřebám uživatele tak, jak jsou vyjádřeny v uživatelských příbězích, a schopnost vizualizovat, jak tyto potřeby mohou být zhmotněny prostřednictvím různých \ac{ui} komponent.
+Pro produkt, jako je aplikace na prodej vstupenek, to znamená zaměřit se na komponenty, které umožňují uživatelům pohybovat se po interaktivním plánu sedadel, vybrat si svá požadovaná místa a dokončit nákup vstupenek s minimálním distrakcí a maximální jednoduchostí.
 
 Tato kapitola se dále zaměří na proces převodu výše sestrojených uživatelských příběhů do konkrétních \ac{ui} komponent, které budou tvořit výsledný návrh uživatelského rozhraní vyvíjené webové aplikace.
 
@@ -29,7 +29,7 @@ Tato kapitola se dále zaměří na proces převodu výše sestrojených uživat
     \label{subsec:narvh-ui-transformace-uzivatelskych-pribehu-vizualizace-mista-konani}
     \userstoryvenuemap
 
-    Základní myšlenkou tohoto příběhu je, že by uživatelé měli mít možnost zobrazit plán sedadel místa konání, aby mohli snadno vybrat svá preferovaná místa.
+    Základní myšlenkou tohoto příběhu je, že by uživatelé měli mít možnost zobrazit plán sedadel místa konání, aby si mohli snadno vybrat svá preferovaná místa.
     To znamená navržení komplexní komponenty, která bude tuto funkčnost zajišťovat.
     Tato komponenta by měla být schopna zobrazit plán sedadel místa konání, který bude obsahovat sedadla a případné další objekty umístěné v místě konání.
 
@@ -108,7 +108,7 @@ Tato kapitola se dále zaměří na proces převodu výše sestrojených uživat
         \label{fig:component-seat}
     \end{figure}
 
-    Součástí návrh této komplexní komponenty, ačkoliv není přímo součástí uživatelského příběhu, je i komponenta zobrazující přehledný detail právě vybraného sedadla.
+    Součástí návrhu této komplexní komponenty, ačkoliv není přímo součástí uživatelského příběhu, je i komponenta zobrazující přehledný detail právě vybraného sedadla.
     Sedadla totiž mohou nést různé informace, jako například číslo sedadla, jeho kategorie, cena, či informace o tom, zda je již obsazené nebo má například zhoršenou viditelnost na jeviště.
     Hlavní funkcí této komponenty je potvrzení výběru sedadla, tedy jeho přidání do košíku, či zrušení výběru.
     Na obrázku~\ref{fig:component-seat-} je vyobrazen návrh této komponenty.
@@ -261,7 +261,7 @@ Tato kapitola se dále zaměří na proces převodu výše sestrojených uživat
     \end{figure}
 
     Dále je v rámci této komponenty zobrazen přehled dostupných informací o objednávce, jako je například číslo objednávky, datum a čas jejího vytvoření, stav, částka, informace o platbě či seznam zakoupených vstupenek a jejich míst.
-    V tomto kroku, byť opět není nutnou součástí zadání této práce, by bylo užitečné zákazníka dále vybídnout z dokončení registrace a vytvoření účtu, aby mohl v budoucnu snadněji sledovat stav svých objednávek a měl přehled o svých vstupenkách.
+    V tomto kroku, byť opět není nutnou součástí zadání této práce, by bylo užitečné zákazníka dále vybídnout k dokončení registrace a vytvoření účtu, aby mohl v budoucnu snadněji sledovat stav svých objednávek a měl přehled o svých vstupenkách.
     Tento krok je naznačen v pravém sloupci na obrázku~\ref{fig:us4-order-confirmation-desktop} výše, kde je zákazník vybídnut k vytvoření hesla pro svůj účet a tím tak vytvoření nového účtu.
 
     \begin{figure}[H]
@@ -284,7 +284,7 @@ Tato kapitola se dále zaměří na proces převodu výše sestrojených uživat
 
     Tato kapitola vytvořila pevný základ pro pochopení návrhu uživatelského rozhraní, konkrétně v kontextu webového řešení pro prodej vstupenek s rezervací míst.
     To mj.\ zahrnovalo vytvoření uživatelských příběhů, jejich překlad do komponent uživatelského rozhraní a aplikaci efektivních principů návrhu uživatelského rozhraní.
-    Dále bylo vyzdvihnut výběr nástroje Figma pro návrh těchto uživatelského rozhraní.
+    Dále byl vyzdvihnut výběr nástroje Figma pro návrh toho uživatelského rozhraní.
 
-    V následující kapitole se pozornost přesouvá k implementaci těchto návrhů do funkčního online rezervačního systému s výběrem míst.
+    V následující kapitole se pozornost přesouvá k implementaci těchto návrhů do funkčního systému prodeje vstupenek s výběrem míst.
 \end{subsection}

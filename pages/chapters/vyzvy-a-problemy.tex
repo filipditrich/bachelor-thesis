@@ -6,7 +6,7 @@
 %%% --------------------------------------------------------------
 \chapter{Výzvy a problémy}
 \label{ch:vyzvy-a-problemy}
-Tato kapitola se zabývá zajímavými výzvami, které se vyskytly během vývoje aplikace a stojí za to je zmínit.
+Tato kapitola se zabývá zajímavými výzvami a problémy, které se vyskytly během vývoje aplikace a které stojí za zmínku.
 Každá sekce popisuje konkrétní problém, který byl řešen, různé alternativy, které byly zvažovány, a konečná řešení, která byla implementována.
 Sdílením těchto zkušeností lze dosáhnout hlubšího porozumění vývojového procesu a složitého rozhodování, které je zapotřebí při vývoji komplexních aplikací.
 
@@ -52,10 +52,10 @@ Tento problém byl nakonec vyřešení hlubším porozuměním transformacím \a
 \label{sec:vyzvy-a-problemy-absence-api}
 Vývoj aplikace probíhal v nepřítomnosti dedikovaného \ac{api}.
 To znamenalo, že bylo zapotřebí definovat datové struktury a simulovat různá \ac{api} volání v rámci kódu.
-To bylo provedeno implementací asynchronních funkcí s umělým zpožděním, které napodobovaly skutečná \ac{api} volání.
+Toho bylo docíleno implementací asynchronních funkcí s umělým zpožděním, které napodobovaly skutečná \ac{api} volání.
 
-Tato řešení poskytovala požadovanou funkcionalitu, ale přinášela také výzvu zajištění konzistence dat a správy potenciálních chyb, podobně jako by se očekávalo u skutečných \ac{api} volání.
-Tato výzva byla vyřešena jednak vytvořením vlastního mock \ac{api} endpointu díky Next.js \ac{api} routingu\cite{n_basics_api_routes} a jednak vytvořením vlastního \ac{api} klienta, který poskytoval konzistentní rozhraní pro komunikaci s \ac{api}.
+Takové řešení poskytovalo požadovanou funkcionalitu, ale přinášelo také výzvu zajištění konzistence dat a správy potenciálních chyb, podobně jako by se očekávalo u skutečných \ac{api} volání.
+Tato výzva byla vyřešena jednak vytvořením vlastního mock \ac{api} endpointu díky Next.js \ac{api} routingu\cite{n_basics_api_routes} a jednak vytvořením \ac{api} klienta, který poskytoval konzistentní rozhraní pro potenciální komunikaci se skutečným \ac{api}.
 
 %%% Sekce – Zachování jednoduchosti v komplexní aplikaci
 %%%%% Wording: ✅
@@ -70,10 +70,10 @@ Tato výzva byla vyřešena jednak vytvořením vlastního mock \ac{api} endpoin
 Jednou z opakujících se výzev během vývoje byl vnitřní osobní konflikt při konstrukci komplexní aplikace produkční kvality, která by zároveň zachovávala jednoduchost a přímočarost.
 Například implementace komplexního routingu a správy stavu byla zvažována, ale nakonec byla zavrhnuta ve prospěch jednoduchého řešení, které bylo dostatečné pro potřeby aplikace.
 
-K tomuto řešení byla například implementována vlastního komponenta \texttt{MultiView}, která podmíněně vykresluje zadané pohledy na základě aktivního pohledu, čímž se obešla potřeba složitého routování.
+K tomuto řešení byla například implementována vlastního komponenta \texttt{MultiView}, která podmíněně vykresluje zadané pohledy na základě jednoho aktivního, čímž se obešla potřeba složitého routování.
 Tato strategie zachovala jednoduchost aplikace, aniž by to mělo vliv na její funkčnost.
 
-Dalším problémem bylo rozhodování, které funkce pro produkční nasazení implementovat, jako je internacionalizace, přístupnost, optimalizace pro vyhledávače – \ac{seo}, správa uživatelských relací či aktualizace dat v reálném čase pomocí \ac{ws}\cite{mdn_api_websockets_api}.
+Dalším problémem bylo rozhodování, které funkcionality pro produkční nasazení implementovat; funkcionality jako je internacionalizace, přístupnost, optimalizace pro vyhledávače – \ac{seo}, správa uživatelských relací či aktualizace dat v reálném čase pomocí \ac{ws}\cite{mdn_api_websockets_api}.
 Nakonec bylo rozhodnuto zaměřit se na základní funkčnost aplikace a implementaci těchto funkcí ponechat na možné budoucí iterace.
 
 %%% Sekce – Shrnutí
@@ -88,4 +88,4 @@ Nakonec bylo rozhodnuto zaměřit se na základní funkčnost aplikace a impleme
 \label{sec:vyzvy-a-problemy-shrnuti}
 Tato kapitola zkoumala některé z kritických výzev, které se objevily během vývoje aplikace.
 Od vykreslování interaktivní mapy pomocí \ac{svg}, simulace \ac{api} volání, až po zachování jednoduchosti v komplexní a rostoucí aplikaci.
-Každá výzva přinesla své jedinečné problémy, učící příležitosti a zajímavá řešení, které ukázaly složitý proces vývoje aplikací v praxi.
+Každá výzva přinesla své jedinečné problémy, učící příležitosti a zajímavá řešení, která ukázala složitý proces vývoje frontendových aplikací v praxi.

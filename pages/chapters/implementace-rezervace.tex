@@ -82,7 +82,7 @@ Obdobně je rezervace vymazána, když je z košíku odebrána poslední vstupen
 \begin{subsection}{Expirace a vymazání rezervace}
     \label{subsec:implementace-rezervace-expirace}
     Více zajímavý je proces vypršení a vymazání rezervace.
-    Toho je docíleno pomocí vlastního hooku \texttt{useWaitUntil()}, který bere jako argumenty datum a \foreign{callback funkcí}\footnote{\foreign{Callback funkce} je funkce, která je předána jako argument jiné funkci a je zavolána v rámci této funkce.}.
+    Toho je docíleno pomocí vlastního hooku \texttt{useWaitUntil()}, který bere jako argumenty datum a \foreign{callback funkci}\footnote{\foreign{Callback funkce} je funkce, která je předána jako argument jiné funkci a je zavolána v rámci této funkce.}.
     Jednoduše čeká, dokud není dosaženo datumu, a poté zavolá tuto callback funkci, která je znázorněna v ukázce kódu~\ref{lst:clear-reservation-handler}.
 
     \begin{listing}[H]
@@ -129,10 +129,10 @@ const clearReservationHandler = useHandler<Types.UseCart.ClearReservationCb>(
 
     \begin{figure}[H]
         \centering
-        \caption{\geq 1 min}
+        \caption{Upozornění na rezervaci v hlavičce košíku}
         \begin{subfigure}{0.3\textwidth}
             \includegraphics[width=\textwidth]{\FIGDIR/seating-map-reservation-normal}
-            \source{}
+            \caption{\geq 1 min}
             \label{fig:seating-map-reservation-normal}
         \end{subfigure}
         \hfill
@@ -147,7 +147,7 @@ const clearReservationHandler = useHandler<Types.UseCart.ClearReservationCb>(
             \caption{\leq 30 s}
             \label{fig:seating-map-reservation-danger}
         \end{subfigure}
-        \caption{Upozornění na rezervaci v hlavičce košíku}
+        \source{}
         \label{fig:seating-map-reservation}
     \end{figure}
 

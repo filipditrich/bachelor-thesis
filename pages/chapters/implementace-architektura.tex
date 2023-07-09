@@ -24,14 +24,13 @@ Cílem bylo vyvinout frontendovou aplikaci, která bude udržitelná, škálovat
 
     Jakmile bylo počáteční nastavení projektu dokončeno, následovalo odstranění vygenerovaného boilerplate kódu a přidání vybraných knihoven a technologií pro projekt.
     Tento proces zahrnoval odstranění výchozích \ac{css} souborů, jelikož projekt využívá Tailwind CSS pro stylování a přidání MantineUI, komplexní knihovny pro uživatelské rozhraní Reactu.
-    Přidání ostatních technologií a knihoven zmíněných v sekci~\ref{sec:implementace-technologie}, jako jsou Prettier, ESLint, axios a react-query, byly také součástí této počáteční fáze nastavení.
+    Přidání ostatních technologií a knihoven zmíněných v sekci~\ref{sec:implementace-technologie}, bylo také součástí této počáteční fáze nastavení.
 
-    V tomto projektu bylo pro správu balíčků upřednostněno použití \mintinline{bash}{pnpm}.
-    Vyniká svým efektivním zacházením s Node.js moduly, čímž zajišťuje rychlejší a spolehlivější \foreign{build proces}\footnote{\foreign{Build proces} je proces, kdy se zdrojový kód překládá neboli transpiluje, do spustitelného formátu, který může být spuštěn na cílovém zařízení.}\cite{p__pnpm_io}.
+    V tomto projektu bylo pro správu balíčků upřednostněno použití \mintinline{bash}{pnpm} nástroje, který vyniká svým efektivním zacházením s Node.js moduly, čímž zajišťuje rychlejší a spolehlivější \foreign{build proces}\footnote{\foreign{Build proces} je proces, kdy se zdrojový kód překládá neboli transpiluje, do spustitelného formátu, který může být spuštěn na cílovém zařízení.}\cite{p__pnpm_io}.
 
     Dalším krokem bylo vytvoření celkové struktury projektu, která vyhovuje potřebám aplikace a podporuje osvědčené postupy.
-    Dobře promyšlená a organizovaná struktura projektu je zásadní pro udržení čitelnosti kódu, škálovatelnosti a snadné navigace, zejména když \foreign{codebase} roste.
 \end{subsection}
+\pagebreak
 
 %%% Podesekce – Základní struktura
 %%%%% Wording: ✅
@@ -41,7 +40,7 @@ Cílem bylo vyvinout frontendovou aplikaci, která bude udržitelná, škálovat
 %%% --------------------------------------------------------------
 \begin{subsection}{Základní struktura}
     \label{subsec:implementace-architektura-struktura}
-    Efektivně definovaná struktura projektu hraje klíčovou roli při zajišťování udržovatelnosti, škálovatelnosti a čitelnosti kódu.
+    Efektivně definovaná struktura projektu hraje zásadní roli při zajišťování udržovatelnosti, škálovatelnosti a čitelnosti kódu.
     Logická, jasná a konzistentně udržovaná struktura umožňuje vývojářům snadno procházet a porozumět aplikaci, i když se \foreign{codebase} časem rozrůstá a vyvíjí.
 
     Tento projekt využívá modulární architekturu, kde je kód kategoricky organizován do odlišných modulů na základě jejich specifických funkcí.
@@ -121,18 +120,17 @@ tailwind.config.js
 
     Aplikace se skládá ze tří primárních oblastí, a to interaktivní mapy, nákupního košíku a \ac{api} klienta.
 
-    \textbf{Interaktivní mapa} slouží jako ústřední bod aplikace a poskytuje vizuální znázornění uspořádání sedadel.
-    Tato oblast zahrnuje správu mapy sedadel, kde se zpracovávají data získaná z \ac{api}, a také virtuální mapu, která vizuálně prezentuje rozvržení sedadel a umožňuje uživatelům vybrat si požadovaná sedadla.
-    Po výběru sedadla systém naváže komunikaci s modulem košíku pro přidání vstupenky se zvoleným sedadlem do nákupního košíku zákazníka.
+    \textbf{Interaktivní mapa} slouží jako ústřední bod, který zahrnuje správu mapy sedadel, kde se zpracovávají data získaná z \ac{api} a virtuální mapu, která vizuálně reprezentuje rozvržení sedadel a umožňuje uživatelům vybrat si požadovaná místa.
+    Po výběru systém naváže komunikaci s modulem košíku pro přidání vstupenky se zvoleným sedadlem.
 
     \textbf{Nákupní košík} je komplexní prostředí se třemi odlišnými sekcemi.
     \textit{Správa košíku} zahrnuje prezentaci a manipulaci s obsahem košíku, včetně informací o výběru sedadla získaných z virtuální mapy.
     Po kontrole obsahu košíku mají zákazníci možnost vytvořit svou objednávku prostřednictvím \textit{správy objednávek}.
-    \textit{Rezervační modul} zajišťuje vytvoření či úpravu rezervace a její harmonizaci s obsahem košíku.
+    \textit{Rezervační mechanismus} zajišťuje vytvoření či úpravu rezervace skrze API a její harmonizaci s obsahem košíku.
 
     \textbf{\ac{api} klient} slouží jako univerzální komunikační bod mezi frontendovou aplikací a potenciálním backendem, který by mohl být v budoucnu implementován.
     Zodpovídá za získávání dat mapy sedadel, správu rezervací či vytvoření objednávky.
-    Díky tomu, že \ac{api} klient poskytuje pouze jednotné rozhraní pro komunikaci s backendem, je možné v budoucnu snadno implementovat vlastní \ac{api} klient pro komunikaci s jiným backendem.
+    Díky tomu, že \ac{api} klient poskytuje pouze jednotné rozhraní pro komunikaci s backendem, je možné v budoucnu snadno implementovat vlastní řešení pro komunikaci s jiným backendem.
 
     V následujících částech budou implementačně rozebrány jednotlivé klíčové oblasti aplikace jako jsou interaktivní mapa sedadel, správa nákupního košíku, rezervační systém a proces vyřízení objednávky.
 \end{subsection}
