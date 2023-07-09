@@ -4,6 +4,7 @@
 %%%%% References: ✅
 %%%%% Grammar: ✅
 %%% --------------------------------------------------------------
+\pagebreak
 \section{Rezervační systém}
 \label{sec:implementace-rezervace}
 Rezervační systém je klíčovou součástí aplikace, jelikož se stará o rezervaci sedadel a vstupenek a také je zodpovědný za vypršení rezervace a jejího vymazání.
@@ -11,8 +12,9 @@ Celkový proces fungování rezervačního systému je znázorněn na diagramu n
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{\FIGDIR/diagrams/reservation}
     \caption{Diagram fungování rezervačního systému}
+    \includegraphics[width=0.8\textwidth]{\FIGDIR/diagrams/reservation}
+    \source{}
     \label{fig:reservation-system-diagram}
 \end{figure}
 
@@ -127,9 +129,10 @@ const clearReservationHandler = useHandler<Types.UseCart.ClearReservationCb>(
 
     \begin{figure}[H]
         \centering
+        \caption{\geq 1 min}
         \begin{subfigure}{0.3\textwidth}
             \includegraphics[width=\textwidth]{\FIGDIR/seating-map-reservation-normal}
-            \caption{\geq 1 min}
+            \source{}
             \label{fig:seating-map-reservation-normal}
         \end{subfigure}
         \hfill

@@ -40,8 +40,9 @@ Tato mapa je také zodpovědná za zobrazení informací o vstupenkách, které 
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{\FIGDIR/diagrams/seating-map}
         \caption{Diagram komponent mapy sedadel}
+        \includegraphics[width=\textwidth]{\FIGDIR/diagrams/seating-map}
+        \source{}
         \label{fig:seating-map-structure}
     \end{figure}
 \end{subsection}
@@ -63,6 +64,7 @@ Tato mapa je také zodpovědná za zobrazení informací o vstupenkách, které 
     Podrobná struktura dat je znázorněna v ukázce kódu~\ref{listing:venue-api-schema}.
 
     \begin{listing}[H]
+        \caption{Struktura odpovědi \ac{api} obsahující data o uspořádání sedadel}
         \begin{minted}[breaklines]{typescript}
 /**
  * Venue API response schema
@@ -111,7 +113,6 @@ export const venueApiSchema = z.object({
 	),
 });
         \end{minted}
-        \caption{Struktura odpovědi \ac{api} obsahující data o uspořádání sedadel}
         \label{listing:venue-api-schema}
     \end{listing}
 
@@ -136,33 +137,23 @@ export const venueApiSchema = z.object({
     Zjednodušené znázornění této struktury je vyobrazeno v ukázce kódu~\ref{listing:seating-svg-structure}.
 
     \begin{listing}[H]
+        \caption{Ukázka struktury \ac{svg} dat}
         \begin{minted}{xml}
 <svg width="1287" height="1115" viewBox="0 0 1287 1115" fill="#F2F4F7" xmlns="http://www.w3.org/2000/svg">
     <!-- seats -->
     <g id="seats:back">
-        <!-- seat H+1 -->
         <circle id="seat:H+1" cx="48" cy="785" r="50" fill="#D0D5DD"/>
-        <!-- seat I+1 -->
         <circle id="seat:I+1" cx="48" cy="805" r="50" fill="#D0D5DD"/>
         <!-- ... -->
     </g>
-    <g id="seats:right">
-        <!-- ... -->
-    </g>
-    <g id="seats:left">
-        <!-- ... -->
-    </g>
-    <g id="seats:center">
-        <!-- ... -->
-    </g>
+    <g id="seats:right"><!-- ... --></g>
+    <g id="seats:left"><!-- ... --></g>
+    <g id="seats:center"><!-- ... --></g>
     <!-- details -->
-    <g id="details:patio">
-        <!-- ... -->
-    </g>
+    <g id="details:patio"><!-- ... --></g>
     <!-- ... -->
 </svg>
         \end{minted}
-        \caption{Ukázka struktury \ac{svg} dat}
         \label{listing:seating-svg-structure}
     \end{listing}
 
@@ -202,13 +193,15 @@ export const venueApiSchema = z.object({
 
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.75\textwidth]{\FIGDIR/seating-map-seat-sheet}
         \caption{Snímek obrazovky komponenty \texttt{SeatSheet}}
+        \includegraphics[width=\textwidth]{\FIGDIR/seating-map-seat-sheet}
+        \source{}
         \label{fig:seating-map-seats-sheet}
     \end{figure}
 
     Na obrázku~\ref{fig:seating-map-seats-sheet} je zobrazena komponenta \texttt{SeatingSheet} s detaily vybraného sedadla, včetně jeho kategorie, řady, místa a dostupných vstupenek.
 
+    \pagebreak
     Vstupenky jsou vázány na kategorii sedadla a kategorie může mít několik příslušných vstupenek.
     Cena vstupenky je poté definována kombinací její kategorie a vybraného sedadla.
 
@@ -218,8 +211,9 @@ export const venueApiSchema = z.object({
 
     \begin{figure}[h]
         \centering
-        \includegraphics[width=\textwidth]{\FIGDIR/seating-map-seat}
         \caption{Snímek obrazovky interaktivní mapy sedadel}
+        \includegraphics[width=\textwidth]{\FIGDIR/seating-map-seat}
+        \source{}
         \label{fig:seating-map-seat}
     \end{figure}
 

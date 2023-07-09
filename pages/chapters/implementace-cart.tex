@@ -4,6 +4,7 @@
 %%%%% References: ✅
 %%%%% Grammar: ✅
 %%% --------------------------------------------------------------
+\pagebreak
 \section{Správa košíku}
 \label{sec:implementace-kosik}
 Druhým hlavním prvkem této aplikace je správa nákupního košíku.
@@ -22,6 +23,7 @@ Správa košíku je pro aplikaci klíčová, jelikož slouží jako most mezi in
     Toto zajišťuje \texttt{CartContext} komponenta, která obaluje celou aplikaci a poskytuje tak přístup a manipulaci se stavem košíku.
     Hlavní logika se odehrává v \texttt{useCart} hooku košíku, který vytváří instanci nákupního košíku, která obsahuje stav a nabízí dostupné akce, kterými lze stav košíku měnit.
 \end{subsection}
+\pagebreak
 
 %%% Podsekce – Stav a funkce košíku
 %%%%% Wording: ✅
@@ -63,7 +65,7 @@ export type CartedTicket = {
     Košík, jak již bylo zmíněno, nabízí akce, kterými lze stav košíku měnit.
     Tyto akce, reprezentované tzv. \foreign{handlery}\footnote{\foreign{Handlery} jsou v tomto případě funkce vytvořené pomocí vlastního \texttt{useHandler} hooku, který je implementován v souboru \texttt{src/lib/hooks/useHandler.ts}.}, zahrnují především \texttt{addToCartHandler()}, \texttt{removeFromCartHandler()} a \texttt{replaceCartedTicketHandler()}.
     Také poskytuje metodu \texttt{getCartedTicketPrice()}, která vrací cenu konkrétní vstupenky v košíku na základě sedadla a kategorie vstupenky, jelikož cena vstupenky je definována kombinací její kategorie a vybraného sedadla.
-    Implementace metody \texttt{getCartedTicketPrice()} je pro ilustraci uvedena v ukázce kódu~\ref{lst:get-carted-ticket-price}.
+    Implementace metody \linebreak\texttt{getCartedTicketPrice()} je pro ilustraci uvedena v ukázce kódu~\ref{lst:get-carted-ticket-price}.
 
     \begin{listing}[H]
         \begin{minted}{typescript}
@@ -84,8 +86,9 @@ const getCartedTicketPrice = (cartedTicket: Types.CartedTicket) => {
         \label{lst:get-carted-ticket-price}
     \end{listing}
 
-    V poslední řadě košík uchovává \foreign{memoizovanou}\footnote{\foreign{Memoizace} je optimalizacační technika, která ukládá výsledky volání funkce a při jejím opakovaném volání s týmiž parametry vrací uložený výsledek místo opětovného výpočtu.} hodnotu celkové ceny všech vstupenek v košíku, která je implementována jednoduše pomocí redukce pole vstupenek v košíku sečtením cen všech vstupenek prostřednictvím metody \texttt{getCartedTicketPrice} zmíněné výše.
+    V poslední řadě košík uchovává \foreign{memoizovanou}\footnote{\foreign{Memoizace} je optimalizacační technika, která ukládá výsledky volání funkce a při jejím opakovaném volání s týmiž parametry vrací uložený výsledek místo opětovného výpočtu.} hodnotu celkové ceny všech vstupenek v košíku, která je implementována jednoduše pomocí redukce pole vstupenek v košíku sečtením cen všech vstupenek prostřednictvím metody \linebreak\texttt{getCartedTicketPrice()} zmíněné výše.
 \end{subsection}
+\pagebreak
 
 %%% Podsekce – Vizualizace košíku
 %%%%% Wording: ✅
@@ -103,11 +106,13 @@ const getCartedTicketPrice = (cartedTicket: Types.CartedTicket) => {
 
     \begin{figure}[h]
         \centering
-        \includegraphics[width=\textwidth]{\FIGDIR/seating-map-cart}
         \caption{Snímek obrazovky košíku}
+        \includegraphics[width=\textwidth]{\FIGDIR/seating-map-cart}
+        \source{}
         \label{fig:seating-map-cart}
     \end{figure}
 \end{subsection}
+\pagebreak
 
 %%% Podsekce – Integrace API
 %%%%% Wording: ✅
@@ -126,7 +131,6 @@ const getCartedTicketPrice = (cartedTicket: Types.CartedTicket) => {
         \begin{minted}{typescript}
 /**
  * Simulates network delay
- * @param {"normal" | "heavy"} type
  * @return {Promise<void>}
  */
 export const simulatedNetworkDelay = async (type: 'normal' | 'heavy' = 'normal') => {
@@ -136,27 +140,18 @@ export const simulatedNetworkDelay = async (type: 'normal' | 'heavy' = 'normal')
 
 /**
  * Resolves generated promise with optional value
- * @param {number} delay
- * @param {() => any} resolver
- * @param value
  * @returns {Promise<unknown>}
  */
 export const fakePromise = (delay: number, resolver?: () => any, value?: any) =>
 	new Promise((resolve) =>
-		setTimeout(
-			() => {
+		setTimeout(() => {
 				resolver?.();
 				resolve(value);
-			},
-			delay,
-			value,
-		),
+			}, delay, value),
 	);
 
 /**
  * Returns random integer from an interval
- * @param {number} min
- * @param {number} max
  * @return {number}
  */
 export const randomIntBetween = (min: number, max: number): number => Math.floor(randomNumBetween(min, max));
@@ -165,6 +160,7 @@ export const randomIntBetween = (min: number, max: number): number => Math.floor
         \label{lst:simulated-network-delay}
     \end{listing}
 
+    \pagebreak
     Užití funkce \texttt{simulatedNetworkDelay()} je pak zobrazeno v ukázce kódu~\ref{lst:remove-from-cart-handler}, která implementuje metodu \texttt{removeFromCartHandler}.
 
     \begin{listing}[H]

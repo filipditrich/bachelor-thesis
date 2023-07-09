@@ -4,6 +4,7 @@
 %%%%% References: ✅
 %%%%% Grammar: ✅
 %%% --------------------------------------------------------------
+\pagebreak
 \section{Vyřízení a potvrzení objednávky}
 \label{sec:implementace-checkout}
 Proces vyřízení objednávky je posledním hlavním krokem nákupu vstupenek, který je touto prací řešen.
@@ -85,6 +86,7 @@ export enum PAYMENT_METHOD {
 
     Jako mikro rozšíření obsahuje košík jednoduchý stav aktuálně vybrané platební metody, který by byl dále použit v procesu platby.
 \end{subsection}
+\pagebreak
 
 %%% Podesekce – Souhrn objednávky
 %%%%% Wording: ✅
@@ -136,11 +138,13 @@ const createOrderHandler = useHandler<Types.UseCart.CreateOrderCb>(
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{\FIGDIR/seating-map-checkout}
         \caption{Potvrzení objednávky}
+        \includegraphics[width=\textwidth]{\FIGDIR/seating-map-checkout}
+        \source{}
         \label{fig:seating-map-checkout}
     \end{figure}
 \end{subsection}
+\pagebreak
 
 %%% Podsekce – Potvrzení objednávky
 %%%%% Wording: ✅
@@ -158,8 +162,9 @@ const createOrderHandler = useHandler<Types.UseCart.CreateOrderCb>(
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{\FIGDIR/seating-map-order}
         \caption{Stránka s potvrzením objednávky}
+        \includegraphics[width=\textwidth]{\FIGDIR/seating-map-order}
+        \source{}
         \label{fig:seating-map-order}
     \end{figure}
 

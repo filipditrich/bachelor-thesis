@@ -11,7 +11,7 @@ Tento proces je většinou rozdělen do několika kroků, které zákazníka pos
 
 Tato sekce se bude těmito kroky zabývat a bude se snažit popsat jejich jednotlivé části a funkčnosti, které by měly být v takovémto systému implementovány.
 
-Avšak je nutné nejprve uvést, že následující funkčnosti jsou v práci uvedené pouze z důvodu kompletnosti představení celého procesu nákupu vstupenek s rezervací míst a záměrně nebudou v rámci praktické části plně implementovány nýbrž pouze orientačně využity – a to z důvodu toho, že se jedná, již převážně o funkčnosti a procesy na straně backendového systému a ne frontendového, který je předmětem této práce.
+Avšak je nutné nejprve uvést, že následující funkčnosti jsou v práci uvedené pouze z důvodu kompletnosti představení celého komplexního procesu a záměrně nebudou v rámci práce plně implementovány nýbrž pouze orientačně demonstrovány – a to z důvodu toho, že se jedná, již převážně o funkčnosti a procesy na straně backendového systému a ne frontendového, který je předmětem této práce.
 
 %%% Podsekce - Osobní informace
 %%%%% Wording: ✅
@@ -38,7 +38,7 @@ Avšak je nutné nejprve uvést, že následující funkčnosti jsou v práci uv
     V rámci dokončení objednávky je také časté vybídnutí zákazníka k dokončení registrace na dané platformě či službě, přes kterou vstupenky nakupuje.
     Tato registrace je většinou dobrovolná, ale může být i povinná, pokud chce zákazník využít některé z výhod, které jsou s touto registrací spojeny.
 \end{subsection}
-
+\pagebreak
 %%% Podsekce - Výběr platební metody
 %%%%% Wording: ✅
 %%%%% Styling: ✅
@@ -60,9 +60,10 @@ Avšak je nutné nejprve uvést, že následující funkčnosti jsou v práci uv
     \end{itemize}
 
     \begin{figure}[H]
-        \includegraphics[width=\linewidth]{\FIGDIR/goout-payment-methods}
         \centering
-        \caption{Výběr platební metody na GoOut.net\cite{g__goout_net}}
+        \caption{Výběr platební metody na GoOut.net}
+        \includegraphics[width=\linewidth]{\FIGDIR/goout-payment-methods}
+        \source[\citeauthor{g__goout_net}]{}
         \label{fig:goout-payment-methods}
     \end{figure}
 
@@ -83,16 +84,18 @@ Avšak je nutné nejprve uvést, že následující funkčnosti jsou v práci uv
     Na obrázcích~\ref{fig:comgate-fees-table} a~\ref{fig:comgate-payment-methods} je vidět, že každý poskytovatel platební brány nabízí jiné výhody a poplatkové modely, nicméně všechny mají společné to, že zpracovávají platby z různých platebních karet a poskytovatelů a přímo podporují i mobilní platby přes Apple Pay a Google Pay.
 
     \begin{figure}[H]
-        \includegraphics[width=\linewidth]{\FIGDIR/comgate-fees-table}
         \centering
-        \caption{Srovnání platebních bran dle Comgate.cz~\cite{comgate_srovnani_platebnich_bran}}
+        \caption{Srovnání platebních bran dle Comgate.cz~}
+        \includegraphics[width=\linewidth]{\FIGDIR/comgate-fees-table}
+        \source[\citeauthor{comgate_srovnani_platebnich_bran}]{}
         \label{fig:comgate-fees-table}
     \end{figure}
 
     \begin{figure}[H]
-        \includegraphics[width=\linewidth]{\FIGDIR/comgate-payment-methods}
         \centering
-        \caption{Platební metody poskytované platebními poskytovateli dle Comgate.cz~\cite{comgate_srovnani_platebnich_bran}}
+        \caption{Platební metody poskytované platebními poskytovateli dle Comgate.cz~}
+        \includegraphics[width=\linewidth]{\FIGDIR/comgate-payment-methods}
+        \source[\citeauthor{comgate_srovnani_platebnich_bran}]{}
         \label{fig:comgate-payment-methods}
     \end{figure}
 
@@ -105,7 +108,7 @@ Avšak je nutné nejprve uvést, že následující funkčnosti jsou v práci uv
     Do nedávna mohla být platba bankovním převodem pro zákazníky stále méně oblíbená, jelikož bylo nutné počkat na připsání peněz na účet poskytovatele, což mohlo trvat i několik dní.
     V dnešní době je však možné využít tzv.
     instantní platby, které jsou schopny převést peníze mezi účty různých bank během několika sekund.
-    V České republice aktuálně podporuje instantní platby již několik bank, jako například Komerční banka, a.s., MONETA Money Bank, a.s.\ či Fio banka, a.s.\ a další\footnote{kompletní seznam účastníků okamžitých plateb dle ČNB dostupný z: \url{https://www.cnb.cz/export/sites/cnb/cs/platebni-styk/.galleries/certis/download/seznam_okamzite_platby.pdf}}.
+    V České republice aktuálně podporuje instantní platby již několik bank, jako například Komerční banka, a.s., MONETA Money Bank, a.s.\ či Fio banka, a.s.\ a další\footnote{\url{https://www.cnb.cz/export/sites/cnb/cs/platebni-styk/.galleries/certis/download/seznam_okamzite_platby.pdf}}.
 \end{subsection}
 
 %%% Podsekce - Souhrn objednávky
