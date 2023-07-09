@@ -15,10 +15,11 @@
 %%%%% Preamble with custom settings and commands
 %%%%% ---------------------------------------------------------------
 \include{../preamble}
+\renewcommand{\sourceLabel}{Source:}
+\renewcommand{\sourceDefaultLabel}{Author's own work}
 
 %%%%% Hyperlinks settings
 %%%%% ------------------------------------------------------------
-\PassOptionsToPackage{hyphens}{url}
 \usepackage[unicode]{hyperref}
 \hypersetup{pdftitle=Web-based ticketing solution with seat reservation,
     pdfauthor=Filip Ditrich
@@ -34,10 +35,10 @@
 
 %%%%% Bibliography
 %%%%% ---------------------------------------------------------------
-\bibliographystyle{unsrt}
+\bibliographystyle{/Users/filipditrich/University/BC_THESIS/thesis/czplainnat.bst}
 \usepackage{bibentry}
 \nobibliography*
-\renewcommand{\fullcite}[1]{\cite{#1}~\bibentry{#1}}
+\renewcommand{\fullcite}[1]{\bibentry{#1}}
 
 %%%%% Images
 %%%%% ---------------------------------------------------------------

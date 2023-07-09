@@ -69,6 +69,9 @@
     captionpos=t
 }
 
+% zalomení dlouhých URL
+\PassOptionsToPackage{hyphens}{url}
+
 %%%%% Další užitečné balíčky
 %%%%% ----------------------------------------------------------------
 \usepackage{amsmath}                %%% rozšíření pro sazbu matematiky
@@ -77,7 +80,9 @@
 \usepackage{bm}                     %%% tučné symboly (příkaz \bm)
 \usepackage{graphicx}               %%% vkládání obrázků
 \usepackage[labelfont=bf]{caption}  %%% popisky obrázků, tabulek apod.
-\newcommand{\source}[1][Vlastní zpracování]{\caption*{\hfill\footnotesize{Zdroj: \textit{#1}}}}
+\newcommand{\sourceDefaultLabel}{Vlastní zpracování}
+\newcommand{\sourceLabel}{Zdroj:}
+\newcommand{\source}[1][\sourceDefaultLabel]{\caption*{\hfill\footnotesize{\sourceLabel~\textit{#1}}}}
 \usepackage{psfrag}                 %%% dodatečná úprava popisků v postscriptových obrázcích
 \usepackage{fancyvrb}               %%% vylepšené prostředí pro strojové písmo
 \usepackage[numbers]{natbib}                 %%% zajištuje možnost odkazovat na reference stylem AUTOR (ROK), resp. AUTOR [ČÍSLO]
