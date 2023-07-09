@@ -66,7 +66,7 @@
     showstringspaces=false,
     keywordstyle=\bfseries,
     commentstyle=\itshape\color{gray},
-    captionpos=b
+    captionpos=t
 }
 
 %%%%% Další užitečné balíčky
@@ -76,9 +76,12 @@
 \usepackage{amsthm}                 %%% sazba vět, definic apod.
 \usepackage{bm}                     %%% tučné symboly (příkaz \bm)
 \usepackage{graphicx}               %%% vkládání obrázků
+\usepackage[labelfont=bf]{caption}  %%% popisky obrázků, tabulek apod.
+\newcommand{\source}[1][Vlastní zpracování]{\caption*{\hfill\footnotesize{Zdroj: \textit{#1}}}}
 \usepackage{psfrag}                 %%% dodatečná úprava popisků v postscriptových obrázcích
 \usepackage{fancyvrb}               %%% vylepšené prostředí pro strojové písmo
-\usepackage{natbib}                 %%% zajištuje možnost odkazovat na reference stylem AUTOR (ROK), resp. AUTOR [ČÍSLO]
+\usepackage[numbers]{natbib}                 %%% zajištuje možnost odkazovat na reference stylem AUTOR (ROK), resp. AUTOR [ČÍSLO]
+\usepackage{usebib}                 %%% umožňuje používat bibliografické databáze
 \usepackage{tikz}                   %%% vkládání vektorových obrázků
 \usepackage{bbding}                 %%% balíček s nejrůznějšími symboly
 \usepackage{icomma}                 %%% inteligetní čárka v matematickém módu
