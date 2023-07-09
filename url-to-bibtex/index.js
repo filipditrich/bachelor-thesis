@@ -63,7 +63,7 @@ const getMdnCitation = async (url) => {
     const citeKey = `${citeKeyAuthor}_${citeKeyTitle}`;
 
     const bibtex = `@misc{${citeKey},
-    author = {${author}},
+    author = {{${author}}},
     title = {${title}},
     howpublished = {${howPublished}},
     year = {${year}},
